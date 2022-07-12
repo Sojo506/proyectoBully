@@ -31,7 +31,7 @@ public class Home extends javax.swing.JFrame {
         
         
         panelInicio inicio = new panelInicio();
-        inicio.setSize(680, 330);
+        inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
         panelContenido.removeAll();
         panelContenido.add(inicio);
@@ -279,7 +279,7 @@ public class Home extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
         panelLateral.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 220, 20));
 
-        bgPanel.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 510));
+        bgPanel.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 540));
 
         panelEncabezado.setBackground(new java.awt.Color(197, 168, 14));
 
@@ -321,10 +321,10 @@ public class Home extends javax.swing.JFrame {
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        bgPanel.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 680, 330));
+        bgPanel.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 680, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,7 +355,7 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelInicio inicio = new panelInicio();
-        inicio.setSize(680, 330);
+        inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
@@ -374,7 +374,7 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelEstudiantes estudiantes = new panelEstudiantes();
-        estudiantes.setSize(680, 330);
+        estudiantes.setSize(680, 360);
         estudiantes.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
@@ -420,7 +420,7 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelCursos cursos = new panelCursos();
-        cursos.setSize(680, 330);
+        cursos.setSize(680, 360);
         cursos.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
@@ -452,7 +452,7 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelInfo info = new panelInfo();
-        info.setSize(680, 330);
+        info.setSize(680, 360);
         info.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo

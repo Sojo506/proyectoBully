@@ -7,21 +7,36 @@ package code;
 import static code.Home.panelContenido;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author XPC
+ * @author Sojo
  */
 public class panelEstudiantes extends javax.swing.JPanel {
-
+    private DefaultTableModel modeloTabla = new DefaultTableModel();
     public panelEstudiantes() {
+        llenarModelo();
         initComponents();
-        
         panelContenido.removeAll();
         panelContenido.add(this);
         panelContenido.revalidate();
         panelContenido.repaint();
+    }
+    
+    public void llenarModelo() {
+        modeloTabla.addColumn("Nombre");
+        modeloTabla.addColumn("Primer Apellido");
+        modeloTabla.addColumn("Segundo Apellido");
+        modeloTabla.addColumn("Edad");
+        modeloTabla.addColumn("Cédula");
+        modeloTabla.addColumn("Teléfono");
+        /*
+        String a[] = {"Fabián", "Sojo", "Mejías", "19", "118740180", "87947110"};
+        modeloTabla.addRow(a);
+        */
     }
 
     /**
@@ -55,25 +70,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+        jTable1.setModel(modeloTabla);
         jScrollPane1.setViewportView(jTable1);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, 240));
@@ -99,7 +96,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel1.setText("Agregar");
         btnAgregar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 80, 30));
+        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 80, 30));
 
         btnModificar.setBackground(new java.awt.Color(18, 90, 173));
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -122,7 +119,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel2.setText("Modificar");
         btnModificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 80, 30));
+        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -132,9 +129,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 360, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -142,9 +137,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
         System.out.println("Hola");
         // Instanciamos el panel
         panelRegistroEstudiantes rAg = new panelRegistroEstudiantes();
-        rAg.setSize(680, 330);
+        rAg.setSize(680, 360);
         rAg.setLocation(0, 0);
-        rAg.etiquetaCambio.setText("Registrar");
+        rAg.etiquetaTitulo.setText("Registrar Estudiante");
+        rAg.etiquetaGuardar.setText("Registrar");
         
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
@@ -168,9 +164,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
         System.out.println("Hola");
         // Instanciamos el panel
         panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
-        rUp.setSize(680, 330);
+        rUp.setSize(680, 360);
         rUp.setLocation(0, 0);
-        rUp.etiquetaCambio.setText("Actualizar");
+        rUp.etiquetaTitulo.setText("Modificar Estudiante");
+        rUp.etiquetaGuardar.setText("Modificar");
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         
