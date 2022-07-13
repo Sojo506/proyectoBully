@@ -5,8 +5,14 @@
 package code;
 
 import static code.Home.panelContenido;
+import java.sql.Connection;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -16,14 +22,26 @@ import javax.swing.table.DefaultTableModel;
  * @author Sojo
  */
 public class panelEstudiantes extends javax.swing.JPanel {
+    Conexion conn;
+    Connection reg;
     private DefaultTableModel modeloTabla = new DefaultTableModel();
+    
     public panelEstudiantes() {
-        llenarModelo();
+        //llenarModelo();
         initComponents();
+        conn = new Conexion();
+        reg = conn.getConexion();
+        try {
+            getStudents();
+        } catch (SQLException ex) {
+            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*
         panelContenido.removeAll();
         panelContenido.add(this);
         panelContenido.revalidate();
         panelContenido.repaint();
+        */
     }
     
     public void llenarModelo() {
@@ -52,7 +70,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaEstudiantes = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
@@ -70,8 +88,8 @@ public class panelEstudiantes extends javax.swing.JPanel {
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
-        jTable1.setModel(modeloTabla);
-        jScrollPane1.setViewportView(jTable1);
+        tablaEstudiantes.setModel(modeloTabla);
+        jScrollPane1.setViewportView(tablaEstudiantes);
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, 240));
 
@@ -185,6 +203,35 @@ public class panelEstudiantes extends javax.swing.JPanel {
    
     }//GEN-LAST:event_btnModificarMouseExited
 
+    private void getStudents() throws SQLException{
+        Statement stm = reg.createStatement();
+        ResultSet counter = stm.executeQuery("SELECT * FROM `estudiantes`");
+        
+        // para obtener el numero de filas
+        int contador = 0;
+        while(counter.next()) {
+            contador++;
+        }
+        
+        String estudiantes[][] = new String[contador][6]; // [filas][columnas]
+        int i = 0; // itera las filas
+        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
+        while(re.next()){
+            estudiantes[i][0] = re.getString("nombre");
+            estudiantes[i][1] = re.getString("primerApellido");
+            estudiantes[i][2] = re.getString("segundoApellido");
+            estudiantes[i][3] = re.getString("edad");
+            estudiantes[i][4] = re.getString("cedula");
+            estudiantes[i][5] = re.getString("telefono");
+            i++;
+        }
+        
+        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
+        estudiantes,
+        new String [] {
+            "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
+        }));
+    }
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -196,6 +243,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tablaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }

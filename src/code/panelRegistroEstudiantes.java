@@ -4,6 +4,12 @@
  */
 package code;
 
+import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -14,9 +20,13 @@ import javax.swing.JTextField;
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
     private String regexNums = "^[0-9]+";
+    Conexion conn;
+    Connection reg;
     
     public panelRegistroEstudiantes() {
         initComponents();
+        conn = new Conexion();
+        reg = conn.getConexion();
     }
 
     /**
@@ -141,8 +151,8 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
         // Comprobar que todos los campos estén llenos
         if(inputNombre.getText().equals("") || inputPrimerApellido.getText().equals("") || inputSegundoApellido.getText().equals("")
-                || !inputEdad.getText().matches(regexNums)  || inputCedula.getText().equals("")
-                || inputTelefono.getText().equals("")) {
+                || !inputEdad.getText().matches(regexNums)  || inputEdad.getText().equals("") 
+                || inputCedula.getText().equals("") || inputTelefono.getText().equals("")) {
             if(!inputEdad.getText().matches(regexNums)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la Edad\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -150,12 +160,74 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             }
            inputNombre.requestFocus();
         } else {
+            // Comprobar que la edad sea válida
+            int comprobarEdad = Integer.parseInt(inputEdad.getText());
+            if(comprobarEdad < 0 && comprobarEdad > 150) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Edad no válida\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                inputEdad.requestFocus();
+                System.out.println(((Object)comprobarEdad).getClass().getSimpleName());
+            } else {
+                // guardar datos en variables
+                String nombre = inputNombre.getText();
+                String pA = inputPrimerApellido.getText();
+                String sP = inputSegundoApellido.getText();
+                int edad = comprobarEdad;
+                String cedula = inputCedula.getText();
+                String tel = inputTelefono.getText();
+                
+                try {
+                    if(etiquetaGuardar.getText().equals("Modificar"))
+                        modificarEstudiante(nombre, pA, sP, edad, cedula, tel);
+                    else
+                        insertarEstudiante(nombre, pA, sP, edad, cedula, tel);
+
+                    // Resetear los campos y centrar el click en el textField nombre
+                    inputNombre.setText("");
+                    inputPrimerApellido.setText("");
+                    inputSegundoApellido.setText("");
+                    inputEdad.setText("");
+                    inputTelefono.setText("");
+                    inputCedula.setText("");
+                    inputNombre.requestFocus();
+                    /*
+                    if(edit){
+                        Users p1 = new Users();
+                        p1.setSize(750, 430);
+                        p1.setLocation(0, 0);
+
+                        content.removeAll();
+                        content.add(p1, BorderLayout.CENTER);
+                        content.revalidate();
+                        content.repaint();
+                    }
+                    */
+                } catch (SQLException ex) {
+                    Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            /*
             Estudiante student = new Estudiante(inputNombre.getText(), inputPrimerApellido.getText(), inputSegundoApellido.getText(),
                     inputEdad.getText(), inputCedula.getText(), inputTelefono.getText());
             javax.swing.JOptionPane.showMessageDialog(this, "Estudiante Registrado \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            */
         }
     }//GEN-LAST:event_btnGuardarMousePressed
-
+    // Metodo para insertar estudiante
+    public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel) throws SQLException{
+        Statement stm = reg.createStatement();
+        
+        stm.executeUpdate("INSERT INTO `estudiantes` (`nombre`, `primerApellido`, `segundoApellido`, `edad`, `cedula`, `telefono`) VALUES ('"+nombre+"', '"+pA+"', '"+ sP +"', '"+ edad +"', '"+cedula+"', '"+tel+"')");
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Usuario registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+    }
+    // Metodo para modificar estudiante
+    public void modificarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel) throws SQLException{
+        Statement stm = reg.createStatement();
+        
+        stm.executeUpdate("INSERT INTO `estudiantes` (`nombre`, `primerApellido`, `segundoApellido`, `edad`, `cedula`, `telefono`) VALUES ('"+nombre+"', '"+pA+"', '"+ sP +"', '"+ edad +"', '"+cedula+", " +tel+"')");
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Usuario editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardar;
