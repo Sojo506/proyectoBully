@@ -253,6 +253,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             if (filaEstudiante <= -1) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el usuario a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
+                // para ejecutar la consulta
                 Statement stm = reg.createStatement();
                 ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
 
@@ -264,9 +265,11 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
                 String estudiantes[][] = new String[fila][7]; // [filas][columnas]
                 int i = 0; // itera las filas
+                // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
                 // recorre la tabla estudiantes
-                while (re.next()) {
+                
+                while (re.next()) { //re.next obtiene la cantidad de filas a iterar
                     estudiantes[i][0] = re.getString("idEstudiante");
                     estudiantes[i][1] = re.getString("nombre");
                     estudiantes[i][2] = re.getString("primerApellido");
@@ -282,6 +285,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                 if (idEstudiante <= 0) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
+                    // para ejecutar la consulta
                     Statement stm2 = null;
                     try {
                         stm2 = reg.createStatement();
@@ -305,6 +309,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBorrarMousePressed
 
     private void getStudents() throws SQLException {
+        // para ejecutar la consulta
         Statement stm = reg.createStatement();
         ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
 
@@ -313,9 +318,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
         while (contador.next()) {
             fila++;
         }
-
+        
         String estudiantes[][] = new String[fila][6]; // [filas][columnas]
         int i = 0; // itera las filas
+        // para reccorer los datos
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {

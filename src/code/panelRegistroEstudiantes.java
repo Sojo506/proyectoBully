@@ -217,7 +217,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         Statement stm = reg.createStatement();
         
         stm.executeUpdate("INSERT INTO `estudiantes` (`nombre`, `primerApellido`, `segundoApellido`, `edad`, `cedula`, `telefono`) VALUES ('"+nombre+"', '"+pA+"', '"+ sP +"', '"+ edad +"', '"+cedula+"', '"+tel+"')");
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Usuario registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
     // Metodo para modificar estudiante
@@ -225,7 +225,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         Statement stm = reg.createStatement();
         
         stm.executeUpdate("INSERT INTO `estudiantes` (`nombre`, `primerApellido`, `segundoApellido`, `edad`, `cedula`, `telefono`) VALUES ('"+nombre+"', '"+pA+"', '"+ sP +"', '"+ edad +"', '"+cedula+", " +tel+"')");
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Usuario editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
 
