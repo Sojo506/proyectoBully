@@ -14,7 +14,7 @@ import javax.swing.JPanel;
  * @author XPC
  */
 public class Home extends javax.swing.JFrame {
-
+    // Hola
     /**
      * Creates new form Home
      */
