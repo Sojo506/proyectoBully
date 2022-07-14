@@ -214,7 +214,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         }
         
         String estudiantes[][] = new String[contador][6]; // [filas][columnas]
-        int i = 0; // itera las filas
+        int i = 0; // itera las filas   
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         while(re.next()){
             estudiantes[i][0] = re.getString("nombre");
