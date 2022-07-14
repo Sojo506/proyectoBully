@@ -185,7 +185,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     }
 
                     // Resetear los campos y centrar el click en el textField nombre
-                    inputNombre.setText("");
+                    inputNombre.setText("");    
                     inputPrimerApellido.setText("");
                     inputSegundoApellido.setText("");
                     inputEdad.setText("");
