@@ -4,6 +4,7 @@
  */
 package code;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
 import javax.swing.JPanel;
@@ -34,7 +35,7 @@ public class Home extends javax.swing.JFrame {
         inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
         panelContenido.removeAll();
-        panelContenido.add(inicio);
+        panelContenido.add(inicio, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }
@@ -360,7 +361,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(inicio);
+        panelContenido.add(inicio, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInicioMousePressed
@@ -379,7 +380,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(estudiantes);
+        panelContenido.add(estudiantes, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnEstudiantesMousePressed
@@ -425,7 +426,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(cursos);
+        panelContenido.add(cursos, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnCursosMousePressed
@@ -457,7 +458,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(info);
+        panelContenido.add(info, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInfoMousePressed
