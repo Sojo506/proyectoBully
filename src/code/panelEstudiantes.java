@@ -249,7 +249,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         try {
             int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
             if (filaEstudiante <= -1) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el usuario a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // para ejecutar la consulta
                 Statement stm = reg.createStatement();
@@ -336,9 +336,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             i++;
         }
 
-        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
-                estudiantes,
-                new String[]{
+        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
                     "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
                 }));
     }
