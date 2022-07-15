@@ -250,7 +250,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         try {
             int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
             if (filaEstudiante <= -1) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el usuario a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // para ejecutar la consulta
                 Statement stm = reg.createStatement();
@@ -324,11 +324,14 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
         String estudiantes[][] = new String[fila][6]; // [filas][columnas]
         int i = 0; // itera las filas
+<<<<<<< HEAD
         // para reccorer los datos
      
          //estudiantes[][] = new String[contador][6]; // [filas][columnas]
          i = 0; // itera las filas   
         
+=======
+>>>>>>> 12e22a68a2bb1864bb24a97cd1115b12533be912
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {
@@ -341,9 +344,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             i++;
         }
 
-        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
-                estudiantes,
-                new String[]{
+        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
                     "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
                 }));
     }
