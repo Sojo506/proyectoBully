@@ -236,7 +236,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
         if (btnBorrar.getBackground().getRGB() == -15574355) {
             establecerColor(btnBorrar);
         }
-<<<<<<< HEAD
     }//GEN-LAST:event_btnBorrarMouseEntered
 
     private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
@@ -325,11 +324,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         String estudiantes[][] = new String[fila][6]; // [filas][columnas]
         int i = 0; // itera las filas
         // para reccorer los datos
-=======
-        
-        String estudiantes[][] = new String[contador][6]; // [filas][columnas]
-        int i = 0; // itera las filas   
->>>>>>> andresCursos
+
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {

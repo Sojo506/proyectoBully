@@ -361,7 +361,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(inicio, BorderLayout.CENTER);
+        panelContenido.add(inicio);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInicioMousePressed
@@ -380,7 +380,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(estudiantes, BorderLayout.CENTER);
+        panelContenido.add(estudiantes);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnEstudiantesMousePressed
@@ -426,7 +426,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(cursos, BorderLayout.CENTER);
+        panelContenido.add(cursos);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnCursosMousePressed
@@ -458,7 +458,7 @@ public class Home extends javax.swing.JFrame {
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(info, BorderLayout.CENTER);
+        panelContenido.add(info);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInfoMousePressed
