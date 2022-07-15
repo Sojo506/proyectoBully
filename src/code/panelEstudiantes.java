@@ -87,7 +87,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        Title.setText("Estudiantes");
+        Title.setText("Matriculados");
         panel.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
 
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -324,6 +324,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
         String estudiantes[][] = new String[fila][6]; // [filas][columnas]
         int i = 0; // itera las filas
+        // para reccorer los datos
+     
+         //estudiantes[][] = new String[contador][6]; // [filas][columnas]
+         
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {
@@ -337,14 +341,15 @@ public class panelEstudiantes extends javax.swing.JPanel {
         }
 
         tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
-                    "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
-                }));
+                    "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono", "Curso"}));
     }
 
     // Obtener el estudiante para ser modificado
     public void getStudent() {
         try {
-            int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
+            // Obtenemos la fila del estudiante seleccionado
+            int filaEstudiante = tablaEstudiantes.getSelectedRow(); 
+            
             if (filaEstudiante <= -1) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificarr. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -375,7 +380,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     i++;
                 }
 
-                // obtenemos los datos del estudiante
+                // obtenemos el id del estudiante
                 idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
                 
                 if (idEstudianteModificar <= 0) {
