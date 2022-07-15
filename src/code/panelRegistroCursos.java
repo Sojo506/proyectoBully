@@ -60,6 +60,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
+<<<<<<< HEAD
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 46, 83, 32));
 
         inputNombreC.setForeground(new java.awt.Color(204, 204, 204));
@@ -70,6 +71,10 @@ public class panelRegistroCursos extends javax.swing.JPanel {
             }
         });
         jPanel1.add(inputNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 84, 190, 30));
+=======
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 50, 20));
+        jPanel1.add(inputNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 190, 30));
+>>>>>>> andresCursos
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -78,11 +83,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Horario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 144, 110, 31));
-        jPanel1.add(inputHorarioC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 181, 190, 35));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 20));
+        jPanel1.add(inputHorarioC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 181, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Modalidad");
+<<<<<<< HEAD
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 234, 106, 29));
 
         inputModalidadC.setForeground(new java.awt.Color(204, 204, 204));
@@ -106,8 +112,18 @@ public class panelRegistroCursos extends javax.swing.JPanel {
             }
         });
         jPanel1.add(inputCantidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 66, 180, 31));
+=======
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 70, 20));
+        jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, 30));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel4.setText("Cantidad");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 60, 20));
+        jPanel1.add(inputCantidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 190, 30));
+>>>>>>> andresCursos
 
         btnGuardarC.setBackground(new java.awt.Color(18, 90, 173));
+        btnGuardarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnGuardarC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnGuardarCMousePressed(evt);
@@ -115,20 +131,18 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         });
         btnGuardarC.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        etiquetaGuardar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        etiquetaGuardar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         etiquetaGuardar.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnGuardarC.add(etiquetaGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 60));
+        btnGuardarC.add(etiquetaGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
-        jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, 170, 70));
+        jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 210, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,7 +178,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
                 try{
                     if(etiquetaGuardar.getText().equals("Modificar")){
                         //Agregar metodo
-                        modificarCurso(nombre, horario, modalidad, cantidad);
+                        int id = panelCursos.idCursoModificar;
+                        modificarCurso(nombre, horario, modalidad, cantidad, id);
                     }else{
                         insertarCurso(nombre, horario, modalidad, cantidad);
                     }
@@ -237,10 +252,10 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     }
      
      //Metodo para modificar curso en la BD
-     public void modificarCurso(String nombre, String horario, String modalidad, int cantidad) throws SQLException{
+     public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, int id) throws SQLException{
         Statement stm = reg.createStatement();
         
-        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad +"', '"+ cantidad+"')" );
+        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad +"' WHERE `idCurso` = " + id + ";");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
@@ -248,10 +263,10 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardarC;
     public javax.swing.JLabel etiquetaGuardar;
-    private javax.swing.JTextField inputCantidadC;
-    private javax.swing.JTextField inputHorarioC;
-    private javax.swing.JTextField inputModalidadC;
-    private javax.swing.JTextField inputNombreC;
+    public javax.swing.JTextField inputCantidadC;
+    public javax.swing.JTextField inputHorarioC;
+    public javax.swing.JTextField inputModalidadC;
+    public javax.swing.JTextField inputNombreC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

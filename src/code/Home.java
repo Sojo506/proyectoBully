@@ -383,7 +383,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInfo);
         establecerColor(btnEstudiantes);
         
-        // Instanciamos el panel
+        // Instanciamos el panel&
         panelEstudiantes estudiantes = new panelEstudiantes();
         estudiantes.setSize(680, 360);
         estudiantes.setLocation(0, 0);
