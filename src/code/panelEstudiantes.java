@@ -326,8 +326,8 @@ public class panelEstudiantes extends javax.swing.JPanel {
         int i = 0; // itera las filas
         // para reccorer los datos
      
-        String estudiantes[][] = new String[contador][6]; // [filas][columnas]
-        int i = 0; // itera las filas   
+         //estudiantes[][] = new String[contador][6]; // [filas][columnas]
+         i = 0; // itera las filas   
         
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
