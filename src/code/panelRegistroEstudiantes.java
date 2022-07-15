@@ -68,6 +68,11 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         panel1.add(etiquetaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         inputNombre.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        inputNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputNombreMousePressed(evt);
+            }
+        });
         inputNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputNombreActionPerformed(evt);
@@ -185,20 +190,42 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     }
 
                     // Resetear los campos y centrar el click en el textField nombre
-                    inputNombre.setText("");    
+                    inputNombre.setText("");
                     inputPrimerApellido.setText("");
                     inputSegundoApellido.setText("");
                     inputEdad.setText("");
                     inputTelefono.setText("");
                     inputCedula.setText("");
                     inputNombre.requestFocus();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }//GEN-LAST:event_btnGuardarMousePressed
+
+    private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
+        if (inputNombre.getText().equals("Ingrese el nombre")) {
+            inputNombre.setText("");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido == null) {
+            inputPrimerApellido.setText("Ingrese el primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null) {
+            inputSegundoApellido.setText("Ingrese el segundo apellido");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null) {
+            inputEdad.setText("Ingrese la edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null) {
+            inputCedula.setText("Ingrese la cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null) {
+            inputTelefono.setText("Ingrese un número telefónico");
+        }
+        
+    }//GEN-LAST:event_inputNombreMousePressed
     // Metodo para insertar estudiante
     public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel) throws SQLException {
         Statement stm = reg.createStatement();
@@ -210,15 +237,15 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     // Metodo para modificar estudiante
     public void modificarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel, int id) throws SQLException {
-        Statement stm = reg.createStatement();        
+        Statement stm = reg.createStatement();
         stm.executeUpdate("UPDATE `estudiantes` SET `nombre` = '" + nombre + "', `primerApellido` = '" + pA + "', `segundoApellido` = '" + sP + "', `edad` = '" + edad + "', `cedula` = '" + cedula + "', `telefono` = '" + tel + "' WHERE `idEstudiante` = " + id + ";");
-        
+
         javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante modificado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
     }
 
     public void seleccionarEstudiante() {
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
