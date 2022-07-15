@@ -62,6 +62,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel1.setText("Nombre");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 46, 83, 32));
 
+        inputNombreC.setForeground(new java.awt.Color(204, 204, 204));
+        inputNombreC.setText("Ingresar nombre");
         inputNombreC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputNombreCMousePressed(evt);
@@ -83,6 +85,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel2.setText("Modalidad");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 234, 106, 29));
 
+        inputModalidadC.setForeground(new java.awt.Color(204, 204, 204));
+        inputModalidadC.setText("Ingresar modalidad");
         inputModalidadC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputModalidadCMousePressed(evt);
@@ -94,6 +98,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel4.setText("Cantidad");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 28, 119, 32));
 
+        inputCantidadC.setForeground(new java.awt.Color(204, 204, 204));
+        inputCantidadC.setText("Ingresar cantidad disponible");
         inputCantidadC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputCantidadCMousePressed(evt);
@@ -179,14 +185,14 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarCMousePressed
 
     private void inputNombreCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreCMousePressed
-        if (inputNombreC.getText().equals("Ingrese el nombre del curso ")) {
+        if (inputNombreC.getText().equals("Ingresar nombre")) {
             inputNombreC.setText("");
         }
         if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
-            inputModalidadC.setText("Ingrese la modalidad");
+            inputModalidadC.setText("Ingresar modalidad");
         }
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
-            inputCantidadC.setText("Ingrese la cantidad disponible de cursos");
+            inputCantidadC.setText("Ingresar cantidad disponible");
         }
        
         
@@ -196,25 +202,25 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void inputModalidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputModalidadCMousePressed
         
         if (inputNombreC.getText().equals("") || inputNombreC.getText() == null ) {
-            inputNombreC.setText("Ingrese el nombre");
+            inputNombreC.setText("Ingresar nombre");
         }
-        if (inputModalidadC.getText().equals("Ingrese la modalidad"))  {
-            inputModalidadC.setText("Ingrese la cantidad");
+        if (inputModalidadC.getText().equals("Ingresar modalidad"))  {
+            inputModalidadC.setText("");
         }
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
-            inputCantidadC.setText("Ingrese la cantidad disponible de cursos");
+            inputCantidadC.setText("Ingresar cantidad disponible");
         }
         
     }//GEN-LAST:event_inputModalidadCMousePressed
 /*Autor : Andy*/
     private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
        if (inputNombreC.getText().equals("") || inputNombreC.getText()== null) {
-            inputNombreC.setText("Ingrese el nombre del curso");
+            inputNombreC.setText("Ingresar nombre");
         }
         if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
-            inputModalidadC.setText("Ingrese la modalidad");
+            inputModalidadC.setText("Ingresar modalidad");
         }
-        if (inputCantidadC.getText().equals("Ingrese la cantidad disponible") ) {
+        if (inputCantidadC.getText().equals("Ingresar cantidad disponible") ) {
             inputCantidadC.setText("");
         }
         
