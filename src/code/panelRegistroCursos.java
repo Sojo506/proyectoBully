@@ -61,6 +61,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 46, 83, 32));
+
+        inputNombreC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputNombreCMousePressed(evt);
+            }
+        });
         jPanel1.add(inputNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 84, 190, 30));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
@@ -76,11 +82,23 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Modalidad");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 234, 106, 29));
+
+        inputModalidadC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputModalidadCMousePressed(evt);
+            }
+        });
         jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 269, 190, 35));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 28, 119, 32));
+
+        inputCantidadC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputCantidadCMousePressed(evt);
+            }
+        });
         jPanel1.add(inputCantidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 66, 180, 31));
 
         btnGuardarC.setBackground(new java.awt.Color(18, 90, 173));
@@ -159,6 +177,49 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_btnGuardarCMousePressed
+
+    private void inputNombreCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreCMousePressed
+        if (inputNombreC.getText().equals("Ingrese el nombre del curso ")) {
+            inputNombreC.setText("");
+        }
+        if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
+            inputModalidadC.setText("Ingrese la modalidad");
+        }
+        if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
+            inputCantidadC.setText("Ingrese la cantidad disponible de cursos");
+        }
+       
+        
+        
+    }//GEN-LAST:event_inputNombreCMousePressed
+/*Autor : Andy*/
+    private void inputModalidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputModalidadCMousePressed
+        
+        if (inputNombreC.getText().equals("") || inputNombreC.getText() == null ) {
+            inputNombreC.setText("Ingrese el nombre");
+        }
+        if (inputModalidadC.getText().equals("Ingrese la modalidad"))  {
+            inputModalidadC.setText("Ingrese la cantidad");
+        }
+        if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
+            inputCantidadC.setText("Ingrese la cantidad disponible de cursos");
+        }
+        
+    }//GEN-LAST:event_inputModalidadCMousePressed
+/*Autor : Andy*/
+    private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
+       if (inputNombreC.getText().equals("") || inputNombreC.getText()== null) {
+            inputNombreC.setText("Ingrese el nombre del curso");
+        }
+        if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
+            inputModalidadC.setText("Ingrese la modalidad");
+        }
+        if (inputCantidadC.getText().equals("Ingrese la cantidad disponible") ) {
+            inputCantidadC.setText("");
+        }
+        
+        
+    }//GEN-LAST:event_inputCantidadCMousePressed
     
     //Metodo para insertar curso a la BD
      public void insertarCurso(String nombre, String horario, String modalidad, int cantidad) throws SQLException{

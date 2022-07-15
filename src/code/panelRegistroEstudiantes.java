@@ -83,21 +83,45 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaPrimerApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaPrimerApellido.setText("Primer Apellido");
         panel1.add(etiquetaPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        inputPrimerApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputPrimerApellidoMousePressed(evt);
+            }
+        });
         panel1.add(inputPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
 
         etiquetaSegundoApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaSegundoApellido.setText("Segundo Apellido");
         panel1.add(etiquetaSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        inputSegundoApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputSegundoApellidoMousePressed(evt);
+            }
+        });
         panel1.add(inputSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         etiquetaEdad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaEdad.setText("Edad");
         panel1.add(etiquetaEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+
+        inputEdad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputEdadMousePressed(evt);
+            }
+        });
         panel1.add(inputEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 180, 30));
 
         etiquetaCedula.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaCedula.setText("Cédula");
         panel1.add(etiquetaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        inputCedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputCedulaMousePressed(evt);
+            }
+        });
         panel1.add(inputCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 190, 30));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
@@ -108,6 +132,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaTelefono.setText("Teléfono");
         panel1.add(etiquetaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
+
+        inputTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputTelefonoMousePressed(evt);
+            }
+        });
         panel1.add(inputTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 190, 30));
 
         btnGuardar.setBackground(new java.awt.Color(18, 90, 173));
@@ -204,7 +234,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_btnGuardarMousePressed
-
+/*Autor : Andy*/
     private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
         if (inputNombre.getText().equals("Ingrese el nombre")) {
             inputNombre.setText("");
@@ -226,6 +256,121 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         }
         
     }//GEN-LAST:event_inputNombreMousePressed
+/*Autor :Andy*/
+    private void inputPrimerApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPrimerApellidoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null) {
+            inputNombre.setText("Ingrese su nombre");
+        }
+        if (inputPrimerApellido.getText().equals("Ingrese su primer apellido")) {
+            inputPrimerApellido.setText("");
+        }
+        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null) {
+            inputSegundoApellido.setText("Ingrese el segundo apellido");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null) {
+            inputEdad.setText("Ingrese la edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null) {
+            inputCedula.setText("Ingrese la cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null) {
+            inputTelefono.setText("Ingrese un número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputPrimerApellidoMousePressed
+/*Autor : Andy*/
+    private void inputSegundoApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputSegundoApellidoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null) {
+            inputNombre.setText("Ingrese su nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null ) {
+            inputPrimerApellido.setText("Ingrese su primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("Ingrese su segundo apellido")) {
+            inputSegundoApellido.setText("");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null) {
+            inputEdad.setText("Ingrese la edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null) {
+            inputCedula.setText("Ingrese la cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null) {
+            inputTelefono.setText("Ingrese un número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputSegundoApellidoMousePressed
+/*Autor : Andy*/
+    private void inputEdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEdadMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null) {
+            inputNombre.setText("Ingrese su nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null ) {
+            inputPrimerApellido.setText("Ingrese su primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null ) {
+            inputSegundoApellido.setText("Ingrese su segundo apellido");
+        }
+        if (inputEdad.getText().equals("Ingrese su edad") ) {
+            inputEdad.setText("");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null) {
+            inputCedula.setText("Ingrese la cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null) {
+            inputTelefono.setText("Ingrese un número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputEdadMousePressed
+/*Autor : Andy*/
+    private void inputCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCedulaMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null) {
+            inputNombre.setText("Ingrese su nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null ) {
+            inputPrimerApellido.setText("Ingrese su primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null ) {
+            inputSegundoApellido.setText("Ingrese su segundo apellido");
+        }
+        if (inputEdad.getText().equals("Ingrese su edad")|| inputEdad.getText() == null  ) {
+            inputEdad.setText("Ingrese su edad");
+        }
+        if (inputCedula.getText().equals("Ingrese su cedula")) {
+            inputCedula.setText("");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null) {
+            inputTelefono.setText("Ingrese un número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputCedulaMousePressed
+/*Autor : Andy*/
+    private void inputTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTelefonoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null) {
+            inputNombre.setText("Ingrese su nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null ) {
+            inputPrimerApellido.setText("Ingrese su primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null ) {
+            inputSegundoApellido.setText("Ingrese su segundo apellido");
+        }
+        if (inputEdad.getText().equals("")|| inputEdad.getText() == null  ) {
+            inputEdad.setText("Ingrese su edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null ) {
+            inputCedula.setText("Ingrese su cedula");
+        }
+        if (inputTelefono.getText().equals("Ingrese su numero telefonico")) {
+            inputTelefono.setText("");
+        }
+        
+        
+    }//GEN-LAST:event_inputTelefonoMousePressed
     // Metodo para insertar estudiante
     public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel) throws SQLException {
         Statement stm = reg.createStatement();
