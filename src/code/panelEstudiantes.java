@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
@@ -324,14 +324,13 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
         String estudiantes[][] = new String[fila][6]; // [filas][columnas]
         int i = 0; // itera las filas
-<<<<<<< HEAD
+
         // para reccorer los datos
      
          //estudiantes[][] = new String[contador][6]; // [filas][columnas]
-         i = 0; // itera las filas   
+          // itera las filas   
         
-=======
->>>>>>> 12e22a68a2bb1864bb24a97cd1115b12533be912
+
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {
@@ -386,7 +385,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                 // obtenemos los datos del estudiante
                 idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
                 
-                if (idEstudianteModificar <= 0) {
+                if (idEstudianteModificar <= 0) {   
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // mostramos el panel
