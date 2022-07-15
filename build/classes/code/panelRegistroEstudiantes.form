@@ -73,8 +73,10 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="12" style="0"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="Ingresar nombre"/>
           </Properties>
           <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputNombreMousePressed"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputNombreActionPerformed"/>
           </Events>
           <AuxValues>
@@ -100,6 +102,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="inputPrimerApellido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresar primer apellido"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputPrimerApellidoMousePressed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -123,6 +131,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="inputSegundoApellido">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresar segundo apellido"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputSegundoApellidoMousePressed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -146,6 +160,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="inputEdad">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresar edad"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputEdadMousePressed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -169,6 +189,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="inputCedula">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresar c&#xe9;dula"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputCedulaMousePressed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
@@ -208,6 +234,12 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="inputTelefono">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Ingresar n&#xfa;mero telef&#xf3;nico"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="inputTelefonoMousePressed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>

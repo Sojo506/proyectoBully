@@ -68,6 +68,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         panel1.add(etiquetaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         inputNombre.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        inputNombre.setText("Ingresar nombre");
+        inputNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputNombreMousePressed(evt);
+            }
+        });
         inputNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputNombreActionPerformed(evt);
@@ -78,21 +84,49 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaPrimerApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaPrimerApellido.setText("Primer Apellido");
         panel1.add(etiquetaPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
+
+        inputPrimerApellido.setText("Ingresar primer apellido");
+        inputPrimerApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputPrimerApellidoMousePressed(evt);
+            }
+        });
         panel1.add(inputPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
 
         etiquetaSegundoApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaSegundoApellido.setText("Segundo Apellido");
         panel1.add(etiquetaSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
+
+        inputSegundoApellido.setText("Ingresar segundo apellido");
+        inputSegundoApellido.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputSegundoApellidoMousePressed(evt);
+            }
+        });
         panel1.add(inputSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         etiquetaEdad.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaEdad.setText("Edad");
         panel1.add(etiquetaEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 20, -1, -1));
+
+        inputEdad.setText("Ingresar edad");
+        inputEdad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputEdadMousePressed(evt);
+            }
+        });
         panel1.add(inputEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, 180, 30));
 
         etiquetaCedula.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaCedula.setText("Cédula");
         panel1.add(etiquetaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+
+        inputCedula.setText("Ingresar cédula");
+        inputCedula.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputCedulaMousePressed(evt);
+            }
+        });
         panel1.add(inputCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 190, 30));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
@@ -103,6 +137,13 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaTelefono.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaTelefono.setText("Teléfono");
         panel1.add(etiquetaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, -1, -1));
+
+        inputTelefono.setText("Ingresar número telefónico");
+        inputTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                inputTelefonoMousePressed(evt);
+            }
+        });
         panel1.add(inputTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 190, 30));
 
         btnGuardar.setBackground(new java.awt.Color(18, 90, 173));
@@ -185,20 +226,157 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     }
 
                     // Resetear los campos y centrar el click en el textField nombre
-                    inputNombre.setText("");    
+                    inputNombre.setText("");
                     inputPrimerApellido.setText("");
                     inputSegundoApellido.setText("");
                     inputEdad.setText("");
                     inputTelefono.setText("");
                     inputCedula.setText("");
                     inputNombre.requestFocus();
-                    
+
                 } catch (SQLException ex) {
                     Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         }
     }//GEN-LAST:event_btnGuardarMousePressed
+/*Autor : Andy*/
+    private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
+        if (inputNombre.getText().equals("Ingresar nombre")) {
+            inputNombre.setText("");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido == null || inputPrimerApellido.getText().equals(" ")) {
+            inputPrimerApellido.setText("Ingresar primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
+            inputSegundoApellido.setText("Ingresar segundo apellido");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
+            inputEdad.setText("Ingresar edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
+            inputCedula.setText("Ingresar cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
+            inputTelefono.setText("Ingresar número telefónico");
+        }
+        
+    }//GEN-LAST:event_inputNombreMousePressed
+/*Autor :Andy*/
+    private void inputPrimerApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPrimerApellidoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
+            inputNombre.setText("Ingresar nombre");
+        }
+        if (inputPrimerApellido.getText().equals("Ingresar primer apellido")) {
+            inputPrimerApellido.setText("");
+        }
+        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
+            inputSegundoApellido.setText("Ingresar segundo apellido");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
+            inputEdad.setText("Ingresar edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
+            inputCedula.setText("Ingresar cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
+            inputTelefono.setText("Ingresar número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputPrimerApellidoMousePressed
+/*Autor : Andy*/
+    private void inputSegundoApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputSegundoApellidoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
+            inputNombre.setText("Ingresar nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
+            inputPrimerApellido.setText("Ingresar primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("Ingresar segundo apellido")) {
+            inputSegundoApellido.setText("");
+        }
+        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
+            inputEdad.setText("Ingresar edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
+            inputCedula.setText("Ingresar cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
+            inputTelefono.setText("Ingresar número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputSegundoApellidoMousePressed
+/*Autor : Andy*/
+    private void inputEdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEdadMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
+            inputNombre.setText("Ingresar nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
+            inputPrimerApellido.setText("Ingresar primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
+            inputSegundoApellido.setText("Ingresar segundo apellido");
+        }
+        if (inputEdad.getText().equals("Ingresar edad") ) {
+            inputEdad.setText("");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
+            inputCedula.setText("Ingresar cédula");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
+            inputTelefono.setText("Ingresar número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputEdadMousePressed
+/*Autor : Andy*/
+    private void inputCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCedulaMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
+            inputNombre.setText("Ingresar nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
+            inputPrimerApellido.setText("Ingresar primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
+            inputSegundoApellido.setText("Ingresar segundo apellido");
+        }
+        if (inputEdad.getText().equals("Ingresar edad")|| inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
+            inputEdad.setText("Ingresar edad");
+        }
+        if (inputCedula.getText().equals("Ingresar cédula")) {
+            inputCedula.setText("");
+        }
+        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
+            inputTelefono.setText("Ingresar número telefónico");
+        }
+        
+        
+    }//GEN-LAST:event_inputCedulaMousePressed
+/*Autor : Andy*/
+    private void inputTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTelefonoMousePressed
+        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
+            inputNombre.setText("Ingresar nombre");
+        }
+        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
+            inputPrimerApellido.setText("Ingresar primer apellido");
+        }
+        if (inputSegundoApellido.getText().equals("") ||inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
+            inputSegundoApellido.setText("Ingresar segundo apellido");
+        }
+        if (inputEdad.getText().equals("")|| inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
+            inputEdad.setText("Ingresar edad");
+        }
+        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
+            inputCedula.setText("Ingresar cédula");
+        }
+        if (inputTelefono.getText().equals("Ingresar número telefónico")) {
+            inputTelefono.setText("");
+        }
+        
+        
+    }//GEN-LAST:event_inputTelefonoMousePressed
     // Metodo para insertar estudiante
     public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel) throws SQLException {
         Statement stm = reg.createStatement();
@@ -210,15 +388,15 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     // Metodo para modificar estudiante
     public void modificarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel, int id) throws SQLException {
-        Statement stm = reg.createStatement();        
+        Statement stm = reg.createStatement();
         stm.executeUpdate("UPDATE `estudiantes` SET `nombre` = '" + nombre + "', `primerApellido` = '" + pA + "', `segundoApellido` = '" + sP + "', `edad` = '" + edad + "', `cedula` = '" + cedula + "', `telefono` = '" + tel + "' WHERE `idEstudiante` = " + id + ";");
-        
+
         javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante modificado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
 
     }
 
     public void seleccionarEstudiante() {
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

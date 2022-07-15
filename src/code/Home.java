@@ -69,6 +69,7 @@ public class Home extends javax.swing.JFrame {
         etiquetaPalabrasClaves = new javax.swing.JLabel();
         etiquetaFecha = new javax.swing.JLabel();
         panelContenido = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -327,6 +328,15 @@ public class Home extends javax.swing.JFrame {
 
         bgPanel.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 680, 360));
 
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalirMousePressed(evt);
+            }
+        });
+        bgPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 30, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -373,7 +383,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInfo);
         establecerColor(btnEstudiantes);
         
-        // Instanciamos el panel
+        // Instanciamos el panel&
         panelEstudiantes estudiantes = new panelEstudiantes();
         estudiantes.setSize(680, 360);
         estudiantes.setLocation(0, 0);
@@ -476,6 +486,10 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnInfoMouseExited
 
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -526,6 +540,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btnEstudiantes;
     private javax.swing.JPanel btnInfo;
     private javax.swing.JPanel btnInicio;
+    private javax.swing.JLabel btnSalir;
     private javax.swing.JLabel etiquetaCursos;
     private javax.swing.JLabel etiquetaEstudiante;
     private javax.swing.JLabel etiquetaFecha;
