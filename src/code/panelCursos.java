@@ -337,7 +337,7 @@ public class panelCursos extends javax.swing.JPanel {
     private void getModificarCurso() {
         try {
             int filaCurso = tablaCursos.getSelectedRow(); //Para obtener la fila del curso
-            System.out.println("fila seleccionada "+filaCurso);
+            
             //Condicional para verificar que se seleccione un curso para ser modificado
             if (filaCurso < 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un curso para poder modificarlo. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -367,7 +367,6 @@ public class panelCursos extends javax.swing.JPanel {
 
                 //Para obtener los datos de los cursos
                 idCursoModificar = Integer.parseInt(cursos[filaCurso][0]);
-                System.out.println("Seleccionado"+ idCursoModificar);
 
                 //Otro condicional para verificar que se seleccione un curso a modificar
                 if (idCursoModificar < 0) {
@@ -380,10 +379,10 @@ public class panelCursos extends javax.swing.JPanel {
                     pRc.etiquetaGuardar.setText("Modificar");
 
                     //Poner los datos en los campos
-                    pRc.inputNombreC.setText(cursos[filaCurso][0]);
+                    pRc.inputCantidadC.setText(cursos[filaCurso][0]);
                     pRc.inputHorarioC.setText(cursos[filaCurso][1]);
                     pRc.inputModalidadC.setText(cursos[filaCurso][2]);
-                    pRc.inputCantidadC.setText(cursos[filaCurso][3]);
+                    pRc.inputNombreC.setText(cursos[filaCurso][3]);
 
                     //Remover el panel anterior
                     panelContenido.removeAll();
