@@ -352,16 +352,17 @@ public class panelCursos extends javax.swing.JPanel {
                     fila++;
                 }
 
-                String cursos[][] = new String[fila][4];
+                String cursos[][] = new String[fila][5];
                 int i = 0; //Iterador de las filas
                 ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
 
                 //Recorrer la tabla
                 while (re.next()) {
-                    cursos[i][0] = re.getString("nombre");
-                    cursos[i][1] = re.getString("horario");
-                    cursos[i][2] = re.getString("modalidad");
-                    cursos[i][3] = re.getString("cantidad");
+                    cursos[i][0] = re.getString("idCurso");
+                    cursos[i][1] = re.getString("nombre");
+                    cursos[i][2] = re.getString("horario");
+                    cursos[i][3] = re.getString("modalidad");
+                    cursos[i][4] = re.getString("cantidad");
                     i++;
                 }
 
@@ -379,10 +380,10 @@ public class panelCursos extends javax.swing.JPanel {
                     pRc.etiquetaGuardar.setText("Modificar");
 
                     //Poner los datos en los campos
-                    pRc.inputCantidadC.setText(cursos[filaCurso][0]);
-                    pRc.inputHorarioC.setText(cursos[filaCurso][1]);
-                    pRc.inputModalidadC.setText(cursos[filaCurso][2]);
-                    pRc.inputNombreC.setText(cursos[filaCurso][3]);
+                    pRc.inputNombreC.setText(cursos[filaCurso][1]);
+                    pRc.inputHorarioC.setText(cursos[filaCurso][2]);
+                    pRc.inputModalidadC.setText(cursos[filaCurso][3]);
+                    pRc.inputCantidadC.setText(cursos[filaCurso][4]);
 
                     //Remover el panel anterior
                     panelContenido.removeAll();
