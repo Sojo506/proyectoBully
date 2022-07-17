@@ -223,7 +223,7 @@ public class panelCursos extends javax.swing.JPanel {
         panelRC.etiquetaGuardar.setText("Guardar");
 
         panelContenido.removeAll();
-        panelContenido.add(panelRC);
+        panelContenido.add(panelRC, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
 

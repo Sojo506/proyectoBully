@@ -60,7 +60,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("Nombre");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 50, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 50, 20));
 
         inputCantidadC.setText("Ingresar cantidad disponible");
         inputCantidadC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -68,7 +68,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
                 inputCantidadCMousePressed(evt);
             }
         });
-        jPanel1.add(inputCantidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 100, 190, 30));
+        jPanel1.add(inputCantidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, 190, 30));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -77,12 +77,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Horario");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 50, 20));
-        jPanel1.add(inputHorarioC, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 181, 190, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 50, 20));
+        jPanel1.add(inputHorarioC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Modalidad");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 70, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 70, 20));
 
         inputModalidadC.setText("Ingresar modalidad");
         inputModalidadC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,11 +90,11 @@ public class panelRegistroCursos extends javax.swing.JPanel {
                 inputModalidadCMousePressed(evt);
             }
         });
-        jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 190, 30));
+        jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 70, 60, 20));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 20));
 
         inputNombreC.setText("Ingresar nombre");
         inputNombreC.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -102,7 +102,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
                 inputNombreCMousePressed(evt);
             }
         });
-        jPanel1.add(inputNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 190, 30));
+        jPanel1.add(inputNombreC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
 
         btnGuardarC.setBackground(new java.awt.Color(18, 90, 173));
         btnGuardarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -118,7 +118,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         etiquetaGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         btnGuardarC.add(etiquetaGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
-        jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, 210, 50));
+        jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 210, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
