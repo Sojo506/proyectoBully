@@ -28,7 +28,7 @@ public class Home extends javax.swing.JFrame {
         int mes = now.getMonthValue();
         String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
             ,"Octubre","Noviembre","Diciemrbre"};
-        etiquetaFecha.setText("Hoy es "+dia+" de "+meses[mes - 1]+" de "+ano);
+        etiquetaFecha.setText(+dia+"/"+meses[mes - 1]+"/"+ano);
         
         
         panelInicio inicio = new panelInicio();
@@ -36,6 +36,7 @@ public class Home extends javax.swing.JFrame {
         inicio.setLocation(0, 0);
         panelContenido.removeAll();
         panelContenido.add(inicio, BorderLayout.CENTER);
+        establecerColor(btnInicio);
         panelContenido.revalidate();
         panelContenido.repaint();
     }

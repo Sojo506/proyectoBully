@@ -227,6 +227,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 || inputCedula.getText().equals("") || !inputCedula.getText().matches(regexNums)
                 || inputTelefono.getText().equals("") || !inputTelefono.getText().matches(regexNums)
                 || cu == null) {
+            
             javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             inputNombre.requestFocus();
 
@@ -248,9 +249,11 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 es.setCurso(listaCursos.getSelectedItem().toString());
 
                 try {
+                    // Control para saber si se debe hacer un UPDATE o INSERT
                     if (etiquetaGuardar.getText().equals("Modificar")) {
                         int id = panelEstudiantes.idEstudianteModificar;
                         String c = panelEstudiantes.nombreCurso;
+                        
                         modificarCantidadCurso(es.getCurso(), c);
                         modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
 
@@ -259,13 +262,14 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                         insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
                     }
 
-                    // Resetear los campos y centrar el click en el textField nombre
+                    // Reiniciar los campos
                     inputNombre.setText("");
                     inputPrimerApellido.setText("");
                     inputSegundoApellido.setText("");
                     inputEdad.setText("");
                     inputTelefono.setText("");
                     inputCedula.setText("");
+                    
                     inputNombre.requestFocus();
 
                 } catch (SQLException ex) {
@@ -451,8 +455,13 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             while (contador.next()) {
                 fila++;
             }
-            String cursos[][] = new String[fila][5]; // [filas][columnas]
-            int i = 0; //Iterador de las filas
+            
+            // [filas][columnas]
+            String cursos[][] = new String[fila][5]; 
+            
+            // iterador
+            int i = 0;
+            
             // Para recorrer los datos 
             ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
 
@@ -463,11 +472,15 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 cursos[i][2] = re.getString("horario");
                 cursos[i][3] = re.getString("modalidad");
                 cursos[i][4] = re.getString("cantidad");
+                
+                // Comprobar y obtener datos
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
                     cr.setNombreCurso(curso);
                     cr.setCantidad(Integer.parseInt(cursos[i][4]));
                 }
+                
+                // Comprobar y obtener datos
                 if (cursos[i][1].equals(c)) {
                     idAux = Integer.parseInt(cursos[i][0]);
                     cantidadAux = Integer.parseInt(cursos[i][4]);
@@ -480,7 +493,6 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     cr.setCantidad(cr.getCantidad()-1);
                     cantidadAux += 1;
                     if(!c.equals(curso)) {
-                        System.out.println("Lo logró señor");
                         stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "' WHERE `idCurso` = " + idCurso + ";");
                         stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "' WHERE `idCurso` = " + idAux + ";");
                     }
