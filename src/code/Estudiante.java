@@ -11,18 +11,11 @@ public class Estudiante {
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
-    private String edad;
+    private int edad;
     private String cedula;
     private String telefono;
+    private String curso;
 
-    public Estudiante(String nombre, String primerApellido, String segundoApellido, String edad, String cedula, String telefono) {
-        this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.edad = edad;
-        this.cedula = cedula;
-        this.telefono = telefono;
-    }
 
     public String getNombre() {
         return nombre;
@@ -48,11 +41,11 @@ public class Estudiante {
         this.segundoApellido = segundoApellido;
     }
 
-    public String getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -71,5 +64,14 @@ public class Estudiante {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     } 
+
+    public String getCurso() {
+        return curso;
+    }
+
+    public void setCurso(String curso) {
+        this.curso = curso;
+    }
+    
     
 }

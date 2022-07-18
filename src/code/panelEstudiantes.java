@@ -13,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -30,7 +29,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
     public static int idEstudianteModificar;
 
     public panelEstudiantes() {
-        //llenarModelo();
         initComponents();
         conn = new Conexion();
         reg = conn.getConexion();
@@ -47,18 +45,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
          */
     }
 
-    public void llenarModelo() {
-        modeloTabla.addColumn("Nombre");
-        modeloTabla.addColumn("Primer Apellido");
-        modeloTabla.addColumn("Segundo Apellido");
-        modeloTabla.addColumn("Edad");
-        modeloTabla.addColumn("Cédula");
-        modeloTabla.addColumn("Teléfono");
-        /*
-        String a[] = {"Fabián", "Sojo", "Mejías", "19", "118740180", "87947110"};
-        modeloTabla.addRow(a);
-         */
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -88,7 +74,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
         Title.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         Title.setText("Matriculados");
-        panel.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        panel.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         panel.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
@@ -102,7 +88,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         tablaEstudiantes.setModel(modeloTabla);
         jScrollPane1.setViewportView(tablaEstudiantes);
 
-        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, 260));
+        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 680, 260));
 
         btnAgregar.setBackground(new java.awt.Color(18, 90, 173));
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -123,9 +109,9 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Agregar");
-        btnAgregar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
+        btnAgregar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 90, 40));
+        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 80, 30));
 
         btnModificar.setBackground(new java.awt.Color(18, 90, 173));
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,9 +132,9 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Modificar");
-        btnModificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
+        btnModificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        panel.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 310, 90, 40));
+        panel.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 80, 30));
 
         btnBorrar.setBackground(new java.awt.Color(18, 90, 173));
         btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -169,9 +155,9 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Borrar");
-        btnBorrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 90, 40));
+        btnBorrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        panel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 310, 90, 40));
+        panel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -261,7 +247,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     fila++;
                 }
 
-                String estudiantes[][] = new String[fila][7]; // [filas][columnas]
+                String estudiantes[][] = new String[fila][1]; // [filas][columnas]
                 int i = 0; // itera las filas
                 // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
@@ -269,12 +255,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
                 while (re.next()) { //re.next obtiene la cantidad de filas a iterar
                     estudiantes[i][0] = re.getString("idEstudiante");
-                    estudiantes[i][1] = re.getString("nombre");
-                    estudiantes[i][2] = re.getString("primerApellido");
-                    estudiantes[i][3] = re.getString("segundoApellido");
-                    estudiantes[i][4] = re.getString("edad");
-                    estudiantes[i][5] = re.getString("cedula");
-                    estudiantes[i][6] = re.getString("telefono");
                     i++;
                 }
 
@@ -321,7 +301,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             fila++;
         }
 
-        String estudiantes[][] = new String[fila][6]; // [filas][columnas]
+        String estudiantes[][] = new String[fila][7]; // [filas][columnas]
         int i = 0; // itera las filas
 
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
@@ -333,6 +313,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             estudiantes[i][3] = re.getString("edad");
             estudiantes[i][4] = re.getString("cedula");
             estudiantes[i][5] = re.getString("telefono");
+            estudiantes[i][6] = re.getString("curso");
             i++;
         }
 

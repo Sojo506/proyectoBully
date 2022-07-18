@@ -56,7 +56,7 @@ public class panelCursos extends javax.swing.JPanel {
     }
 
     //Metodo para mostrar los datos en las tablas
-    private void getCursos() throws SQLException {
+    public void getCursos() throws SQLException {
         Statement stm = reg.createStatement(); //Para procesar una sentencia SQL
         ResultSet counter = stm.executeQuery("SELECT * FROM `cursos`"); //Para indicar que tabla vamos a utlizar
 
@@ -123,7 +123,7 @@ public class panelCursos extends javax.swing.JPanel {
 
         Title.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         Title.setText("Cursos");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
@@ -131,7 +131,7 @@ public class panelCursos extends javax.swing.JPanel {
         tablaCursos.setModel(modeloTabla2);
         jScrollPane1.setViewportView(tablaCursos);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 680, 260));
 
         btnAgregarC.setBackground(new java.awt.Color(18, 90, 173));
         btnAgregarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -154,7 +154,7 @@ public class panelCursos extends javax.swing.JPanel {
         agregar.setText("Agregar");
         btnAgregarC.add(agregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnAgregarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 310, 80, 30));
+        jPanel1.add(btnAgregarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 80, 30));
 
         btnModificarC.setBackground(new java.awt.Color(18, 90, 173));
         btnModificarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -177,7 +177,7 @@ public class panelCursos extends javax.swing.JPanel {
         jLabel1.setText("Modificar");
         btnModificarC.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnModificarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 80, 30));
+        jPanel1.add(btnModificarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 80, 30));
 
         btnBorrarC.setBackground(new java.awt.Color(18, 90, 173));
         btnBorrarC.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -201,7 +201,7 @@ public class panelCursos extends javax.swing.JPanel {
         jLabel2.setText("Borrar");
         btnBorrarC.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnBorrarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 310, 80, 30));
+        jPanel1.add(btnBorrarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -287,7 +287,6 @@ public class panelCursos extends javax.swing.JPanel {
                     } catch (SQLException ex) {
                         System.out.println("Error 2" + ex);
                     }
-
                 }
             }
         } catch (SQLException ex) {

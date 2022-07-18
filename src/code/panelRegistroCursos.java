@@ -93,8 +93,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setText("Cantidad");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 60, 20));
+        jLabel4.setText("Cantidad disponible");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 130, 20));
 
         inputNombreC.setText("Ingresar nombre");
         inputNombreC.addMouseListener(new java.awt.event.MouseAdapter() {

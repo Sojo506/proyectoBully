@@ -11,6 +11,10 @@ public class Curso {
     private String modalidad;
     private int cantidad;
 
+    public Curso() {
+        
+    }
+    
     public Curso(String nombreCurso, String horario, String modalidad, int cantidad) {
         this.nombreCurso = nombreCurso;
         this.horario = horario;
