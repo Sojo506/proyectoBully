@@ -26,7 +26,8 @@ public class panelEstudiantes extends javax.swing.JPanel {
     Conexion conn;
     Connection reg;
     private DefaultTableModel modeloTabla = new DefaultTableModel();
-    public static int idEstudianteModificar;
+    public static int idEstudianteModificar=0;
+    public static String nombreCurso="";
 
     public panelEstudiantes() {
         initComponents();
@@ -247,18 +248,24 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     fila++;
                 }
 
-                String estudiantes[][] = new String[fila][1]; // [filas][columnas]
-                int i = 0; // itera las filas
+                // [filas][columnas]
+                String estudiantes[][] = new String[fila][7]; 
+                
+                // itera las filas
+                int i = 0; 
+                
                 // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
                 // recorre la tabla estudiantes
 
                 while (re.next()) { //re.next obtiene la cantidad de filas a iterar
                     estudiantes[i][0] = re.getString("idEstudiante");
+                    estudiantes[i][6] = re.getString("curso");
                     i++;
                 }
 
                 int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]); // obtenemos el id del estudiante
+                modificarCantidadCurso(estudiantes[filaEstudiante][6]);
                 System.out.println(idEstudiante);
                 if (idEstudiante <= 0) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -340,7 +347,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     fila++;
                 }
 
-                String estudiantes[][] = new String[fila][7]; // [filas][columnas]
+                String estudiantes[][] = new String[fila][8]; // [filas][columnas]
                 int i = 0; // itera las filas
                 // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
@@ -354,11 +361,14 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     estudiantes[i][4] = re.getString("edad");
                     estudiantes[i][5] = re.getString("cedula");
                     estudiantes[i][6] = re.getString("telefono");
+                    estudiantes[i][7] = re.getString("curso");
                     i++;
                 }
 
                 // obtenemos el id del estudiante
                 idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
+                nombreCurso = estudiantes[filaEstudiante][7];
+                
                 
                 if (idEstudianteModificar <= 0) {   
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -398,6 +408,54 @@ public class panelEstudiantes extends javax.swing.JPanel {
     // Para devolver el color por defecto
     public void resetearColor(JPanel panel) {
         panel.setBackground(new Color(18, 90, 173));
+    }
+    
+     private void modificarCantidadCurso(String curso) throws SQLException {
+        panelCursos pC = new panelCursos();
+        Curso cr = new Curso();
+        int idCurso = -1;
+        try {
+            //Ejecutamos la consulta
+            Statement stm = reg.createStatement();
+
+            //Recorremos la tabla
+            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
+
+            // Obtener cantidad de filas de la tabla
+            int fila = 0;
+            while (contador.next()) {
+                fila++;
+            }
+            String cursos[][] = new String[fila][5]; // [filas][columnas]
+            int i = 0; //Iterador de las filas
+            // Para recorrer los datos 
+            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
+
+            //Recorrer la tabla de los cursos
+            while (re.next()) {
+                cursos[i][0] = re.getString("idCurso");
+                cursos[i][1] = re.getString("nombre");
+                cursos[i][2] = re.getString("horario");
+                cursos[i][3] = re.getString("modalidad");
+                cursos[i][4] = re.getString("cantidad");
+                if (cursos[i][1].equals(curso)) {
+                    idCurso = Integer.parseInt(cursos[i][0]);
+                    cr.setNombreCurso(curso);
+                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
+                }
+                i++;
+            }
+            try {
+                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                pC.getCursos();
+                
+            } catch (SQLException ex) {
+                System.out.println("Error 2 " + ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

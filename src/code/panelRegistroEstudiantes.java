@@ -23,7 +23,7 @@ import javax.swing.JTextField;
  * @author XPC
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
-
+    String cu = null;
     DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
     private String regexNums = "^[0-9]+";
@@ -32,8 +32,10 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     public panelRegistroEstudiantes() {
         initComponents();
+        
         conn = new Conexion();
         reg = conn.getConexion();
+        
         try {
             getListaCursos();
         } catch (NullPointerException ex) {
@@ -205,20 +207,21 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+                                    
 
     private void inputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputNombreActionPerformed
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
-        // Comprobar que todos los campos estén llenos
-        String cu = null;
         try {
             cu = listaCursos.getSelectedItem().toString();
             System.out.println(cu);
         } catch (NullPointerException ex) {
             System.out.println(cu);
         }
+        
+        // Comprobar que todos los campos estén llenos
         if (inputNombre.getText().equals("") || inputPrimerApellido.getText().equals("") || inputSegundoApellido.getText().equals("")
                 || inputEdad.getText().equals("") || !inputEdad.getText().matches(regexNums)
                 || inputCedula.getText().equals("") || !inputCedula.getText().matches(regexNums)
@@ -247,11 +250,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 try {
                     if (etiquetaGuardar.getText().equals("Modificar")) {
                         int id = panelEstudiantes.idEstudianteModificar;
-                        modificarCurso(es.getCurso());
+                        String c = panelEstudiantes.nombreCurso;
+                        modificarCantidadCurso(es.getCurso(), c);
                         modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
 
                     } else {
-                        modificarCurso(es.getCurso());
+                        modificarCantidadCurso(es.getCurso(), "");
                         insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
                     }
 
@@ -427,11 +431,14 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     }
 
-    // Metodo para modificar curso
-    public void modificarCurso(String curso) throws SQLException {
+    // Metodo para modificar cantidad de curso (agregar)
+    private void modificarCantidadCurso(String curso, String c) throws SQLException {
+        int idAux=0;
+        int cantidadAux=0;
         panelCursos pC = new panelCursos();
         Curso cr = new Curso();
         int idCurso = -1;
+        
         try {
             //Ejecutamos la consulta
             Statement stm = reg.createStatement();
@@ -461,10 +468,27 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     cr.setNombreCurso(curso);
                     cr.setCantidad(Integer.parseInt(cursos[i][4]));
                 }
+                if (cursos[i][1].equals(c)) {
+                    idAux = Integer.parseInt(cursos[i][0]);
+                    cantidadAux = Integer.parseInt(cursos[i][4]);
+                }
+                
                 i++;
             }
             try {
-                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() - 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                if(etiquetaGuardar.getText().equals("Modificar")) {
+                    cr.setCantidad(cr.getCantidad()-1);
+                    cantidadAux += 1;
+                    if(!c.equals(curso)) {
+                        System.out.println("Lo logró señor");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "' WHERE `idCurso` = " + idCurso + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "' WHERE `idCurso` = " + idAux + ";");
+                    }
+                } else {
+                    stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "' WHERE `idCurso` = " + idCurso + ";");
+                    
+                }
+                
                 pC.getCursos();
                 
             } catch (SQLException ex) {
