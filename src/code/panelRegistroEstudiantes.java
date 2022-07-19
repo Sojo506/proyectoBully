@@ -439,6 +439,8 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     private void modificarCantidadCurso(String curso, String c) throws SQLException {
         int idAux=0;
         int cantidadAux=0;
+        int ce=0;
+        int ce2=0;
         panelCursos pC = new panelCursos();
         Curso cr = new Curso();
         int idCurso = -1;
@@ -457,7 +459,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             }
             
             // [filas][columnas]
-            String cursos[][] = new String[fila][5]; 
+            String cursos[][] = new String[fila][6]; 
             
             // iterador
             int i = 0;
@@ -472,18 +474,21 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 cursos[i][2] = re.getString("horario");
                 cursos[i][3] = re.getString("modalidad");
                 cursos[i][4] = re.getString("cantidad");
+                cursos[i][5] = re.getString("cantidadEstudiantes");
                 
                 // Comprobar y obtener datos
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
                     cr.setNombreCurso(curso);
                     cr.setCantidad(Integer.parseInt(cursos[i][4]));
+                    ce = Integer.parseInt(cursos[i][5]);
                 }
                 
                 // Comprobar y obtener datos
                 if (cursos[i][1].equals(c)) {
                     idAux = Integer.parseInt(cursos[i][0]);
                     cantidadAux = Integer.parseInt(cursos[i][4]);
+                    ce2 = Integer.parseInt(cursos[i][5]);
                 }
                 
                 i++;
@@ -493,11 +498,17 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     cr.setCantidad(cr.getCantidad()-1);
                     cantidadAux += 1;
                     if(!c.equals(curso)) {
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "' WHERE `idCurso` = " + idCurso + ";");
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "' WHERE `idCurso` = " + idAux + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
+                        /*
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
+                        */
+                        
                     }
                 } else {
-                    stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "' WHERE `idCurso` = " + idCurso + ";");
+                    stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                    //stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
                     
                 }
                 

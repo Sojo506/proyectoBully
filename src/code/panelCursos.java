@@ -66,7 +66,7 @@ public class panelCursos extends javax.swing.JPanel {
             contador++;
         }
         //Creamos un arreglo para luego recorrerlo
-        String cursos[][] = new String[contador][4];//filas //columnas
+        String cursos[][] = new String[contador][5];//filas //columnas
         int i = 0;
         ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
         while (re.next()) {
@@ -74,11 +74,12 @@ public class panelCursos extends javax.swing.JPanel {
             cursos[i][1] = re.getString("horario");
             cursos[i][2] = re.getString("modalidad");
             cursos[i][3] = re.getString("cantidad");
+            cursos[i][4] = re.getString("cantidadEstudiantes");
             i++;
         }
 
         tablaCursos.setModel(new javax.swing.table.DefaultTableModel(cursos, new String[]{
-            "Nombre", "Horario", "Modalidad", "Cantidad"
+            "Nombre", "Horario", "Modalidad", "Cantidad", "Cantidad Estudiantes"
         }));
 
     }

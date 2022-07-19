@@ -227,7 +227,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
      public void insertarCurso(String nombre, String horario, String modalidad, int cantidad) throws SQLException{
         Statement stm = reg.createStatement();
         
-        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad+"', '"+ cantidad+"')");
+        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad+"', '"+ cantidad+"', '"+ 0 +"')");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
