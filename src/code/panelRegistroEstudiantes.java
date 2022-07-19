@@ -500,16 +500,9 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     if(!c.equals(curso)) {
                         stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
                         stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
-                        /*
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
-                        */
-                        
                     }
                 } else {
                     stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                    //stm.executeUpdate("UPDATE `cursos` SET `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                    
                 }
                 
                 pC.getCursos();
