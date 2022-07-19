@@ -437,8 +437,11 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     // Metodo para modificar cantidad de curso (agregar)
     private void modificarCantidadCurso(String curso, String c) throws SQLException {
+        // variblaes para obtener cantidad disponible
         int idAux=0;
         int cantidadAux=0;
+        
+        // variables para obtener cantidad de estudiantes
         int ce=0;
         int ce2=0;
         panelCursos pC = new panelCursos();
