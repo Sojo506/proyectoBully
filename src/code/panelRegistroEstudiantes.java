@@ -568,7 +568,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     public javax.swing.JTextField inputSegundoApellido;
     public javax.swing.JTextField inputTelefono;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JComboBox<String> listaCursos;
+    public javax.swing.JComboBox<String> listaCursos;
     private javax.swing.JPanel panel1;
     // End of variables declaration//GEN-END:variables
 }

@@ -387,6 +387,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                     rUp.inputEdad.setText(estudiantes[filaEstudiante][4]);
                     rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
                     rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
+                    rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
                     
                     // Removemos el panel anterior y pasamos el nuevo para mostrarlo
                     panelContenido.removeAll();
