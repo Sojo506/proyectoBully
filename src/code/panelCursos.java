@@ -66,7 +66,7 @@ public class panelCursos extends javax.swing.JPanel {
             contador++;
         }
         //Creamos un arreglo para luego recorrerlo
-        String cursos[][] = new String[contador][5];//filas //columnas
+        String cursos[][] = new String[contador][6];//filas //columnas
         int i = 0;
         ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
         while (re.next()) {
@@ -75,11 +75,12 @@ public class panelCursos extends javax.swing.JPanel {
             cursos[i][2] = re.getString("modalidad");
             cursos[i][3] = re.getString("cantidad");
             cursos[i][4] = re.getString("cantidadEstudiantes");
+            cursos[i][5] = re.getString("sede");
             i++;
         }
 
         tablaCursos.setModel(new javax.swing.table.DefaultTableModel(cursos, new String[]{
-            "Nombre", "Horario", "Modalidad", "Cantidad", "Cantidad Estudiantes"
+            "Nombre", "Horario", "Modalidad", "Cantidad", "Cantidad Estudiantes", "Campus"
         }));
 
     }
@@ -253,7 +254,7 @@ public class panelCursos extends javax.swing.JPanel {
                     fila++;
                 }
                 //primero las filas y despues las columnas
-                String cursos[][] = new String[fila][5];
+                String cursos[][] = new String[fila][6];
                 int i = 0; //Iterador de las filas
                 // Para recorrer los datos 
                 ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
@@ -265,6 +266,7 @@ public class panelCursos extends javax.swing.JPanel {
                     cursos[i][2] = re.getString("horario");
                     cursos[i][3] = re.getString("modalidad");
                     cursos[i][4] = re.getString("cantidad");
+                    cursos[i][5] = re.getString("sede");
                     i++;
                 }
                 //Variable para obtener el id del estudiante
@@ -352,7 +354,7 @@ public class panelCursos extends javax.swing.JPanel {
                     fila++;
                 }
 
-                String cursos[][] = new String[fila][5];
+                String cursos[][] = new String[fila][6];
                 int i = 0; //Iterador de las filas
                 ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
 
@@ -363,6 +365,7 @@ public class panelCursos extends javax.swing.JPanel {
                     cursos[i][2] = re.getString("horario");
                     cursos[i][3] = re.getString("modalidad");
                     cursos[i][4] = re.getString("cantidad");
+                    cursos[i][5] = re.getString("sede");
                     i++;
                 }
 
@@ -381,9 +384,10 @@ public class panelCursos extends javax.swing.JPanel {
 
                     //Poner los datos en los campos
                     pRc.inputNombreC.setText(cursos[filaCurso][1]);
-                    pRc.inputHorarioC.setText(cursos[filaCurso][2]);
-                    pRc.inputModalidadC.setText(cursos[filaCurso][3]);
+                    pRc.listaHorario.setSelectedItem(cursos[filaCurso][2]);
+                    pRc.listaModalidad.setSelectedItem(cursos[filaCurso][3]);
                     pRc.inputCantidadC.setText(cursos[filaCurso][4]);
+                    pRc.listaSedes.setSelectedItem(cursos[filaCurso][5]);
 
                     //Remover el panel anterior
                     panelContenido.removeAll();
