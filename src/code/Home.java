@@ -71,6 +71,7 @@ public class Home extends javax.swing.JFrame {
         etiquetaFecha = new javax.swing.JLabel();
         panelContenido = new javax.swing.JPanel();
         btnSalir = new javax.swing.JLabel();
+        honor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -338,6 +339,10 @@ public class Home extends javax.swing.JFrame {
         });
         bgPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 30, 30));
 
+        honor.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        honor.setText("Si puedes imaginarlo, puedes programarlo. Alejandro Miguel Taboada (1996 - 2019)");
+        bgPanel.add(honor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 410, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -549,6 +554,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaInicio;
     private javax.swing.JLabel etiquetaInicio2;
     private javax.swing.JLabel etiquetaPalabrasClaves;
+    private javax.swing.JLabel honor;
     private javax.swing.JLabel iconCursos;
     private javax.swing.JLabel iconEstudiante;
     private javax.swing.JLabel iconInfo;
