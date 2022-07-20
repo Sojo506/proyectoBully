@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -21,6 +22,9 @@ import javax.swing.JTextField;
  */
 public class panelRegistroCursos extends javax.swing.JPanel {
     private String regexNums = "^[0-9]+";
+    DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
+    DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
+    DefaultComboBoxModel modeloSedeC = new DefaultComboBoxModel();
     Conexion conn;
     Connection reg;
 
@@ -28,6 +32,9 @@ public class panelRegistroCursos extends javax.swing.JPanel {
      * Creates new form panelRegistroCursos
      */
     public panelRegistroCursos() {
+        agregarModeloListaModalidad();
+        agregarModeloListaHorario();
+        agregarModeloListaSede();
         initComponents();
         conn = new Conexion();
         reg = conn.getConexion();
@@ -47,13 +54,15 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         inputCantidadC = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
-        inputHorarioC = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        inputModalidadC = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         inputNombreC = new javax.swing.JTextField();
         btnGuardarC = new javax.swing.JPanel();
         etiquetaGuardar = new javax.swing.JLabel();
+        listaHorario = new javax.swing.JComboBox<>();
+        listaModalidad = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        listaSedes = new javax.swing.JComboBox<>();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -78,19 +87,10 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Horario");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 50, 20));
-        jPanel1.add(inputHorarioC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Modalidad");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 70, 20));
-
-        inputModalidadC.setText("Ingresar modalidad");
-        inputModalidadC.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                inputModalidadCMousePressed(evt);
-            }
-        });
-        jPanel1.add(inputModalidadC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setText("Cantidad disponible");
@@ -120,6 +120,19 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 210, 50));
 
+        listaHorario.setModel(modeloHorarioC);
+        jPanel1.add(listaHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
+
+        listaModalidad.setModel(modeloModalidadC);
+        jPanel1.add(listaModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel5.setText("Campus");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 60, 20));
+
+        listaSedes.setModel(modeloSedeC);
+        jPanel1.add(listaSedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 190, 30));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,8 +148,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
         // Poner codigo aqui
         //Comprobar que todos los campos esten completos
-        if(inputCantidadC.getText().equals("")|| inputHorarioC.getText().equals("") || inputModalidadC.getText().equals("")
-                || !inputCantidadC.getText().matches(regexNums) || inputNombreC.getText().equals("")){
+        if(inputCantidadC.getText().equals("")|| !inputCantidadC.getText().matches(regexNums) || inputNombreC.getText().equals("") ){
             if(!inputCantidadC.getText().matches(regexNums)){
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso");
             }else{
@@ -144,31 +156,35 @@ public class panelRegistroCursos extends javax.swing.JPanel {
             }
             inputNombreC.requestFocus();
         }else{
+            //Comprobar que virtual sea igual a la sede
+            String verificarModalidadC = listaModalidad.getSelectedItem().toString();
+            String verificarSedeC = listaSedes.getSelectedItem().toString();
+            
             //Comprobar que la cantidad sea valida
             int comprobarCantidad = Integer.parseInt(inputCantidadC.getText());
-            if(comprobarCantidad < 0){
-                javax.swing.JOptionPane.showMessageDialog(this, "Cantidad de cursos no valida");
+            //Verificamos la cantidad y que si la modalidad es virtual entonces la sede tambien tiene que ser virtual
+            if(comprobarCantidad < 0 || (verificarModalidadC.equals("Virtual") && !verificarModalidadC.equals(verificarSedeC))){
+                javax.swing.JOptionPane.showMessageDialog(this, "Cantidad de cursos no valida y/o verificar la sede");
                 inputNombreC.requestFocus();
                 System.out.println(((Object)comprobarCantidad).getClass().getSimpleName());
             }else {
                 //Guardamos los datos en las variables
                 String nombre = inputNombreC.getText();
-                String horario = inputHorarioC.getText();
-                String modalidad = inputModalidadC.getText();
+                String horario = listaHorario.getSelectedItem().toString();
+                String modalidad = listaModalidad.getSelectedItem().toString();
                 int cantidad = comprobarCantidad;
+                String sede = listaSedes.getSelectedItem().toString();
                 
                 try{
                     if(etiquetaGuardar.getText().equals("Modificar")){
                         //Agregar metodo
                         int id = panelCursos.idCursoModificar;
-                        modificarCurso(nombre, horario, modalidad, cantidad, id);
+                        modificarCurso(nombre, horario, modalidad, cantidad, sede, id);
                     }else{
-                        insertarCurso(nombre, horario, modalidad, cantidad);
+                        insertarCurso(nombre, horario, modalidad, cantidad, sede);
                     }
                     //Resetear los campos
                     inputCantidadC.setText("");
-                    inputHorarioC.setText("");
-                    inputModalidadC.setText("");
                     inputNombreC.setText("");
                         
                 }catch(SQLException ex){
@@ -184,9 +200,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         if (inputNombreC.getText().equals("Ingresar nombre")) {
             inputNombreC.setText("");
         }
-        if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
-            inputModalidadC.setText("Ingresar modalidad");
-        }
+        
+        
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
             inputCantidadC.setText("Ingresar cantidad disponible");
         }
@@ -194,28 +209,13 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_inputNombreCMousePressed
-/*Autor : Andy*/
-    private void inputModalidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputModalidadCMousePressed
-        
-        if (inputNombreC.getText().equals("") || inputNombreC.getText() == null ) {
-            inputNombreC.setText("Ingresar nombre");
-        }
-        if (inputModalidadC.getText().equals("Ingresar modalidad"))  {
-            inputModalidadC.setText("");
-        }
-        if (inputNombreC.getText().equals("") || inputNombreC.getText() == null) {
-            inputNombreC.setText("Ingresar cantidad disponible");
-        }
-        
-    }//GEN-LAST:event_inputModalidadCMousePressed
-/*Autor : Andy*/
+
+    /*Autor : Andy*/
     private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
        if (inputNombreC.getText().equals("") || inputNombreC.getText()== null) {
             inputNombreC.setText("Ingresar nombre");
         }
-        if (inputModalidadC.getText().equals("") || inputModalidadC.getText() == null) {
-            inputModalidadC.setText("Ingresar modalidad");
-        }
+        
         if (inputCantidadC.getText().equals("Ingresar cantidad disponible") ) {
             inputCantidadC.setText("");
         }
@@ -224,35 +224,60 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     }//GEN-LAST:event_inputCantidadCMousePressed
     
     //Metodo para insertar curso a la BD
-     public void insertarCurso(String nombre, String horario, String modalidad, int cantidad) throws SQLException{
+     public void insertarCurso(String nombre, String horario, String modalidad, int cantidad, String sede) throws SQLException{
         Statement stm = reg.createStatement();
         
-        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad+"', '"+ cantidad+"', '"+ 0 +"')");
+        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`, `sede`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad+"', '"+ cantidad+"', '"+ 0 +"', '"+ sede +"')");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
      
      //Metodo para modificar curso en la BD
-     public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, int id) throws SQLException{
+     public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, String sede, int id) throws SQLException{
         Statement stm = reg.createStatement();
         
-        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad +"' WHERE `idCurso` = " + id + ";");
+        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad + "', `sede` = '" + sede +"' WHERE `idCurso` = " + id + ";");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
         
     }
-
+     
+     private void agregarModeloListaHorario() {
+         modeloHorarioC.addElement("8:00am - 11:00am");
+        modeloHorarioC.addElement("9:00am - 12:00pm");
+        modeloHorarioC.addElement("11:00am - 2:00pm");
+        modeloHorarioC.addElement("2:00pm - 5:00pm");
+        modeloHorarioC.addElement("6:00pm - 9:00pm");
+       }
+     
+     private void agregarModeloListaModalidad(){
+     modeloModalidadC.addElement("Presencial");
+     modeloModalidadC.addElement("Virtual");
+     }
+     
+     private void agregarModeloListaSede(){
+     modeloSedeC.addElement("San Pedro");
+     modeloSedeC.addElement("Escazu");
+     modeloSedeC.addElement("Guanacaste");
+     modeloSedeC.addElement("Puerto Viejo");
+     modeloSedeC.addElement("Alajuelita");
+     modeloSedeC.addElement("Virtual");
+     }
+     
+     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardarC;
     public javax.swing.JLabel etiquetaGuardar;
     public javax.swing.JTextField inputCantidadC;
-    public javax.swing.JTextField inputHorarioC;
-    public javax.swing.JTextField inputModalidadC;
     public javax.swing.JTextField inputNombreC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator3;
+    public javax.swing.JComboBox<String> listaHorario;
+    public javax.swing.JComboBox<String> listaModalidad;
+    public javax.swing.JComboBox<String> listaSedes;
     // End of variables declaration//GEN-END:variables
 }
