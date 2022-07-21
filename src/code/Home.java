@@ -468,29 +468,15 @@ public class Home extends javax.swing.JFrame {
         establecerColor(btnInfo);
         
         // Instanciamos el panel
-        //panelInfo info = new panelInfo();
-        //info.setSize(680, 360);
-        //info.setLocation(0, 0);
+        panelInfo info = new panelInfo();
+        info.setSize(680, 360);
+        info.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        //panelContenido.add(info, BorderLayout.CENTER);
-        //panelInfo info = new panelInfo();
-        //info.setSize(680, 360);
-        //info.setLocation(0, 0);
-        
-        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-        panelContenido.removeAll();
-        //panelContenido.add(info, BorderLayout.CENTER);
-       // panelInfo info = new panelInfo();
-       // info.setSize(680, 360);
-        //info.setLocation(0, 0);
-        
-        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-        panelContenido.removeAll();
-        //panelContenido.add(info, BorderLayout.CENTER);
-        //panelContenido.revalidate();
-        //panelContenido.repaint();
+        panelContenido.add(info, BorderLayout.CENTER);
+        panelContenido.revalidate();
+        panelContenido.repaint();
     }//GEN-LAST:event_btnInfoMousePressed
 
     private void btnInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseEntered
