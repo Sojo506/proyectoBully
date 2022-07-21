@@ -5,24 +5,17 @@ package code;
  *
  * @author Sojo
  */
-public class Estudiantes {
+
+//prueba
+public class Estudiante {
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
     private int edad;
     private String cedula;
     private String telefono;
-    private String cursos[];
+    private String curso;
 
-    public Estudiantes(String nombre, String primerApellido, String segundoApellido, int edad, String cedula, String telefono, String[] cursos) {
-        this.nombre = nombre;
-        this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
-        this.edad = edad;
-        this.cedula = cedula;
-        this.telefono = telefono;
-        this.cursos = cursos;
-    }
 
     public String getNombre() {
         return nombre;
@@ -70,16 +63,15 @@ public class Estudiantes {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    } 
+
+    public String getCurso() {
+        return curso;
     }
 
-    public String[] getCursos() {
-        return cursos;
+    public void setCurso(String curso) {
+        this.curso = curso;
     }
-
-    public void setCursos(String[] cursos) {
-        this.cursos = cursos;
-    }
-    
     
     
 }
