@@ -4,6 +4,8 @@
  */
 package code;
 
+import java.awt.BorderLayout;
+
 /**
  *
  * @author XPC
@@ -15,6 +17,14 @@ public class panelInfo extends javax.swing.JPanel {
      */
     public panelInfo() {
         initComponents();
+        panelInfo pI= new panelInfo();
+        pI.setSize(680,420);
+        pI.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(pI, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
     }
 
     /**
@@ -29,6 +39,12 @@ public class panelInfo extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
+        Kevin = new javax.swing.JButton();
+        Fabian = new javax.swing.JButton();
+        Andy = new javax.swing.JButton();
+        Andres = new javax.swing.JButton();
+        Rolando = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMinimumSize(new java.awt.Dimension(750, 430));
@@ -37,10 +53,53 @@ public class panelInfo extends javax.swing.JPanel {
 
         Title.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
         Title.setText("Info");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, -1, -1));
+        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 20));
 
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+
+        Kevin.setText("Kevin Araya");
+        Kevin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KevinActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, -1, -1));
+
+        Fabian.setText("Fabian Sojo");
+        Fabian.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FabianActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, -1, -1));
+
+        Andy.setText("Andy Sequeira");
+        Andy.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AndyActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 110, -1));
+
+        Andres.setText("Andres Sanchez");
+        Andres.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AndresActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+
+        Rolando.setText("Rolando Algaba");
+        Rolando.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RolandoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(Rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 60, -1, -1));
+
+        jLabel1.setText("Este apartado es para presentar a los estudiantes encargados del programa y poder mostrar informacion de cada uno");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 620, 20));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -50,16 +109,75 @@ public class panelInfo extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void AndyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AndyActionPerformed
+     InfoAndy ia= new InfoAndy();
+        ia.setSize(680,420);
+       ia.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(ia, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_AndyActionPerformed
+
+    private void KevinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KevinActionPerformed
+     InfoKevin ik= new InfoKevin();
+        ik.setSize(680,420);
+        ik.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(ik, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_KevinActionPerformed
+
+    private void FabianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FabianActionPerformed
+      InfoFabian inf= new InfoFabian ();
+        inf.setSize(680,420);
+        inf.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(inf, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_FabianActionPerformed
+
+    private void AndresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AndresActionPerformed
+       InfoAndres iand= new  InfoAndres ();
+        iand.setSize(680,420);
+        iand.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(iand, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_AndresActionPerformed
+
+    private void RolandoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RolandoActionPerformed
+      InfoRolo iro= new InfoRolo();
+        iro.setSize(680,420);
+        iro.setLocation(0, 0);
+        
+        content.removeAll();
+        content.add(iro, BorderLayout.CENTER);
+        content.revalidate();
+        content.repaint();
+    }//GEN-LAST:event_RolandoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Andres;
+    private javax.swing.JButton Andy;
+    private javax.swing.JButton Fabian;
     private javax.swing.JLabel Image;
+    private javax.swing.JButton Kevin;
+    private javax.swing.JButton Rolando;
     private javax.swing.JLabel Title;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
