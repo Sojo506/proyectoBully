@@ -4,6 +4,7 @@
  */
 package code;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
 import javax.swing.JPanel;
@@ -13,7 +14,7 @@ import javax.swing.JPanel;
  * @author XPC
  */
 public class Home extends javax.swing.JFrame {
-
+    // Hola
     /**
      * Creates new form Home
      */
@@ -27,14 +28,15 @@ public class Home extends javax.swing.JFrame {
         int mes = now.getMonthValue();
         String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
             ,"Octubre","Noviembre","Diciemrbre"};
-        etiquetaFecha.setText("Hoy es "+dia+" de "+meses[mes - 1]+" de "+ano);
+        etiquetaFecha.setText(+dia+"/"+meses[mes - 1]+"/"+ano);
         
         
         panelInicio inicio = new panelInicio();
-        inicio.setSize(680, 330);
+        inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
         panelContenido.removeAll();
-        panelContenido.add(inicio);
+        panelContenido.add(inicio, BorderLayout.CENTER);
+        establecerColor(btnInicio);
         panelContenido.revalidate();
         panelContenido.repaint();
     }
@@ -68,6 +70,8 @@ public class Home extends javax.swing.JFrame {
         etiquetaPalabrasClaves = new javax.swing.JLabel();
         etiquetaFecha = new javax.swing.JLabel();
         panelContenido = new javax.swing.JPanel();
+        btnSalir = new javax.swing.JLabel();
+        honor = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -279,7 +283,7 @@ public class Home extends javax.swing.JFrame {
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
         panelLateral.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 220, 20));
 
-        bgPanel.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 510));
+        bgPanel.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 540));
 
         panelEncabezado.setBackground(new java.awt.Color(197, 168, 14));
 
@@ -321,10 +325,23 @@ public class Home extends javax.swing.JFrame {
         );
         panelContenidoLayout.setVerticalGroup(
             panelContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 330, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        bgPanel.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 680, 330));
+        bgPanel.add(panelContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 180, 680, 360));
+
+        btnSalir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/exit.png"))); // NOI18N
+        btnSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnSalir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnSalirMousePressed(evt);
+            }
+        });
+        bgPanel.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 0, 30, 30));
+
+        honor.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        honor.setText("Si puedes imaginarlo, puedes programarlo. Alejandro Miguel Taboada (1996 - 2019)");
+        bgPanel.add(honor, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 30, 410, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -355,12 +372,12 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelInicio inicio = new panelInicio();
-        inicio.setSize(680, 330);
+        inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(inicio);
+        panelContenido.add(inicio, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInicioMousePressed
@@ -372,14 +389,14 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInfo);
         establecerColor(btnEstudiantes);
         
-        // Instanciamos el panel
+        // Instanciamos el panel&
         panelEstudiantes estudiantes = new panelEstudiantes();
-        estudiantes.setSize(680, 330);
+        estudiantes.setSize(680, 360);
         estudiantes.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(estudiantes);
+        panelContenido.add(estudiantes, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnEstudiantesMousePressed
@@ -420,12 +437,12 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelCursos cursos = new panelCursos();
-        cursos.setSize(680, 330);
+        cursos.setSize(680, 360);
         cursos.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(cursos);
+        panelContenido.add(cursos, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnCursosMousePressed
@@ -452,12 +469,12 @@ public class Home extends javax.swing.JFrame {
         
         // Instanciamos el panel
         panelInfo info = new panelInfo();
-        info.setSize(680, 330);
+        info.setSize(680, 360);
         info.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
-        panelContenido.add(info);
+        panelContenido.add(info, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnInfoMousePressed
@@ -474,6 +491,10 @@ public class Home extends javax.swing.JFrame {
             resetearColor(btnInfo);
         }
     }//GEN-LAST:event_btnInfoMouseExited
+
+    private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_btnSalirMousePressed
 
     /**
      * @param args the command line arguments
@@ -525,6 +546,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btnEstudiantes;
     private javax.swing.JPanel btnInfo;
     private javax.swing.JPanel btnInicio;
+    private javax.swing.JLabel btnSalir;
     private javax.swing.JLabel etiquetaCursos;
     private javax.swing.JLabel etiquetaEstudiante;
     private javax.swing.JLabel etiquetaFecha;
@@ -532,6 +554,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaInicio;
     private javax.swing.JLabel etiquetaInicio2;
     private javax.swing.JLabel etiquetaPalabrasClaves;
+    private javax.swing.JLabel honor;
     private javax.swing.JLabel iconCursos;
     private javax.swing.JLabel iconEstudiante;
     private javax.swing.JLabel iconInfo;

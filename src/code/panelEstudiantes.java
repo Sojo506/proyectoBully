@@ -1,28 +1,51 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package code;
 
 import static code.Home.panelContenido;
+import java.sql.Connection;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
+
 
 /**
  *
- * @author XPC
+ * @author Sojo
  */
 public class panelEstudiantes extends javax.swing.JPanel {
 
+    Conexion conn;
+    Connection reg;
+    private DefaultTableModel modeloTabla = new DefaultTableModel();
+    public static int idEstudianteModificar=0;
+    public static String nombreCurso="";
+
     public panelEstudiantes() {
         initComponents();
-        
+        conn = new Conexion();
+        reg = conn.getConexion();
+        try {
+            getStudents();
+        } catch (SQLException ex) {
+            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        /*
         panelContenido.removeAll();
         panelContenido.add(this);
         panelContenido.revalidate();
         panelContenido.repaint();
+         */
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,50 +56,40 @@ public class panelEstudiantes extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        panel = new javax.swing.JPanel();
         Title = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaEstudiantes = new javax.swing.JTable();
         btnAgregar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        btnBorrar = new javax.swing.JPanel();
+        jLabel3 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(750, 430));
-        jPanel1.setPreferredSize(new java.awt.Dimension(750, 430));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel.setBackground(new java.awt.Color(255, 255, 255));
+        panel.setMinimumSize(new java.awt.Dimension(680, 360));
+        panel.setPreferredSize(new java.awt.Dimension(750, 430));
+        panel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Title.setFont(new java.awt.Font("SansSerif", 0, 24)); // NOI18N
-        Title.setText("Estudiantes");
-        jPanel1.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, -1, -1));
+        Title.setText("Matriculados");
+        panel.add(Title, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+        panel.add(Image, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
-            },
-            new String [] {
-                "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
+        jScrollPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jScrollPane1MousePressed(evt);
             }
         });
-        jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 680, 240));
+        tablaEstudiantes.setModel(modeloTabla);
+        jScrollPane1.setViewportView(tablaEstudiantes);
+
+        panel.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 680, 260));
 
         btnAgregar.setBackground(new java.awt.Color(18, 90, 173));
         btnAgregar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -99,7 +112,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel1.setText("Agregar");
         btnAgregar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 290, 80, 30));
+        panel.add(btnAgregar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 320, 80, 30));
 
         btnModificar.setBackground(new java.awt.Color(18, 90, 173));
         btnModificar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -122,83 +135,341 @@ public class panelEstudiantes extends javax.swing.JPanel {
         jLabel2.setText("Modificar");
         btnModificar.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
 
-        jPanel1.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 290, 80, 30));
+        panel.add(btnModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 320, 80, 30));
+
+        btnBorrar.setBackground(new java.awt.Color(18, 90, 173));
+        btnBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBorrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBorrarMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnBorrarMousePressed(evt);
+            }
+        });
+        btnBorrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("Borrar");
+        btnBorrar.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 30));
+
+        panel.add(btnBorrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 80, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 680, Short.MAX_VALUE)
+            .addComponent(panel, javax.swing.GroupLayout.DEFAULT_SIZE, 680, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(panel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-
+    // Agregar Estudiantes
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
         System.out.println("Hola");
         // Instanciamos el panel
         panelRegistroEstudiantes rAg = new panelRegistroEstudiantes();
-        rAg.setSize(680, 330);
+        rAg.setSize(680, 360);
         rAg.setLocation(0, 0);
-        rAg.etiquetaCambio.setText("Registrar");
-        
-        
+        rAg.etiquetaTitulo.setText("Registrar Estudiante");
+        rAg.etiquetaGuardar.setText("Registrar");
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-        
         panelContenido.removeAll();
-        panelContenido.add(rAg);
+        panelContenido.add(rAg, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
-        
+
     }//GEN-LAST:event_btnAgregarMousePressed
 
     private void btnAgregarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseEntered
-
+        if (btnAgregar.getBackground().getRGB() == -15574355) {
+            establecerColor(btnAgregar);
+        }
     }//GEN-LAST:event_btnAgregarMouseEntered
 
     private void btnAgregarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMouseExited
- 
+        if (btnModificar.getBackground().getRGB() != -15574355 || btnBorrar.getBackground().getRGB() != -15574355) {
+            resetearColor(btnAgregar);
+        }
     }//GEN-LAST:event_btnAgregarMouseExited
-
+    // Modificar Estudiantes
     private void btnModificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMousePressed
-        System.out.println("Hola");
+      
         // Instanciamos el panel
-        panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
-        rUp.setSize(680, 330);
-        rUp.setLocation(0, 0);
-        rUp.etiquetaCambio.setText("Actualizar");
-        
-        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-        
-        panelContenido.removeAll();
-        panelContenido.add(rUp);
-        panelContenido.revalidate();
-        panelContenido.repaint();
+        getStudent();
     }//GEN-LAST:event_btnModificarMousePressed
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
-
+        if (btnModificar.getBackground().getRGB() == -15574355) {
+            establecerColor(btnModificar);
+        }
     }//GEN-LAST:event_btnModificarMouseEntered
 
     private void btnModificarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseExited
-   
+        if (btnAgregar.getBackground().getRGB() != -15574355 || btnBorrar.getBackground().getRGB() != -15574355) {
+            resetearColor(btnModificar);
+        }
     }//GEN-LAST:event_btnModificarMouseExited
 
-  
+    private void btnBorrarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseEntered
+        if (btnBorrar.getBackground().getRGB() == -15574355) {
+            establecerColor(btnBorrar);
+        }
+    }//GEN-LAST:event_btnBorrarMouseEntered
+
+    private void btnBorrarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMouseExited
+        if (btnAgregar.getBackground().getRGB() != -15574355 || btnModificar.getBackground().getRGB() != -15574355) {
+            resetearColor(btnBorrar);
+        }
+    }//GEN-LAST:event_btnBorrarMouseExited
+
+    // Borrar estudiantes
+    private void btnBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMousePressed
+        try {
+            int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
+            if (filaEstudiante <= -1) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // para ejecutar la consulta
+                Statement stm = reg.createStatement();
+                ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
+
+                // para obtener el numero de filas
+                int fila = 0;
+                while (contador.next()) {
+                    fila++;
+                }
+
+                // [filas][columnas]
+                String estudiantes[][] = new String[fila][7]; 
+                
+                // itera las filas
+                int i = 0; 
+                
+                // para reccorer los datos
+                ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
+                // recorre la tabla estudiantes
+
+                while (re.next()) { //re.next obtiene la cantidad de filas a iterar
+                    estudiantes[i][0] = re.getString("idEstudiante");
+                    estudiantes[i][6] = re.getString("curso");
+                    i++;
+                }
+
+                int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]); // obtenemos el id del estudiante
+                modificarCantidadCurso(estudiantes[filaEstudiante][6]);
+                System.out.println(idEstudiante);
+                if (idEstudiante <= 0) {
+                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    // para ejecutar la consulta
+                    Statement stm2 = null;
+                    try {
+                        stm2 = reg.createStatement();
+                    } catch (SQLException ex) {
+                        System.out.println("Error 1");
+                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    try {
+                        stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + idEstudiante + " LIMIT 1");
+                        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante borrado! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        getStudents();
+                    } catch (SQLException ex) {
+                        System.out.println("Error 2" + ex);
+                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnBorrarMousePressed
+
+    private void jScrollPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPane1MousePressed
+
+    private void getStudents() throws SQLException {
+        // para ejecutar la consulta
+        Statement stm = reg.createStatement();
+        ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
+
+        // para obtener el numero de filas
+        int fila = 0;
+        while (contador.next()) {
+            fila++;
+        }
+
+        String estudiantes[][] = new String[fila][7]; // [filas][columnas]
+        int i = 0; // itera las filas
+
+        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
+        // recorre la tabla estudiantes
+        while (re.next()) {
+            estudiantes[i][0] = re.getString("nombre");
+            estudiantes[i][1] = re.getString("primerApellido");
+            estudiantes[i][2] = re.getString("segundoApellido");
+            estudiantes[i][3] = re.getString("edad");
+            estudiantes[i][4] = re.getString("cedula");
+            estudiantes[i][5] = re.getString("telefono");
+            estudiantes[i][6] = re.getString("curso");
+            i++;
+        }
+
+        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
+                    "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono", "Curso"}));
+    }
+
+    // Obtener el estudiante para ser modificado
+    public void getStudent() {
+        try {
+            // Obtenemos la fila del estudiante seleccionado
+            int filaEstudiante = tablaEstudiantes.getSelectedRow(); 
+            
+            if (filaEstudiante <= -1) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificarr. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                // para ejecutar la consulta
+                Statement stm = reg.createStatement();
+                ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
+
+                // para obtener el numero de filas
+                int fila = 0;
+                while (contador.next()) {
+                    fila++;
+                }
+
+                String estudiantes[][] = new String[fila][8]; // [filas][columnas]
+                int i = 0; // itera las filas
+                // para reccorer los datos
+                ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
+                
+                // recorre la tabla estudiantes
+                while (re.next()) { 
+                    estudiantes[i][0] = re.getString("idEstudiante");
+                    estudiantes[i][1] = re.getString("nombre");
+                    estudiantes[i][2] = re.getString("primerApellido");
+                    estudiantes[i][3] = re.getString("segundoApellido");
+                    estudiantes[i][4] = re.getString("edad");
+                    estudiantes[i][5] = re.getString("cedula");
+                    estudiantes[i][6] = re.getString("telefono");
+                    estudiantes[i][7] = re.getString("curso");
+                    i++;
+                }
+
+                // obtenemos el id del estudiante
+                idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
+                nombreCurso = estudiantes[filaEstudiante][7];
+                
+                
+                if (idEstudianteModificar <= 0) {   
+                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    // mostramos el panel
+                    panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
+                    rUp.setSize(680, 360);
+                    rUp.setLocation(0, 0);
+                    rUp.etiquetaTitulo.setText("Modificar Estudiante");
+                    rUp.etiquetaGuardar.setText("Modificar");
+                    
+                    // Pasamos los datos
+                    rUp.inputNombre.setText(estudiantes[filaEstudiante][1]);
+                    rUp.inputPrimerApellido.setText(estudiantes[filaEstudiante][2]);
+                    rUp.inputSegundoApellido.setText(estudiantes[filaEstudiante][3]);
+                    rUp.inputEdad.setText(estudiantes[filaEstudiante][4]);
+                    rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
+                    rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
+                    rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
+                    
+                    // Removemos el panel anterior y pasamos el nuevo para mostrarlo
+                    panelContenido.removeAll();
+                    panelContenido.add(rUp, BorderLayout.CENTER);
+                    panelContenido.revalidate();
+                    panelContenido.repaint();
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    //Para obtener el color cuando pase MousePressed
+    public void establecerColor(JPanel panel) {
+        panel.setBackground(new Color(21, 101, 192));
+    }
+
+    // Para devolver el color por defecto
+    public void resetearColor(JPanel panel) {
+        panel.setBackground(new Color(18, 90, 173));
+    }
+    
+     private void modificarCantidadCurso(String curso) throws SQLException {
+        panelCursos pC = new panelCursos();
+        Curso cr = new Curso();
+        int idCurso = -1;
+        try {
+            //Ejecutamos la consulta
+            Statement stm = reg.createStatement();
+
+            //Recorremos la tabla
+            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
+
+            // Obtener cantidad de filas de la tabla
+            int fila = 0;
+            while (contador.next()) {
+                fila++;
+            }
+            String cursos[][] = new String[fila][5]; // [filas][columnas]
+            int i = 0; //Iterador de las filas
+            // Para recorrer los datos 
+            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
+
+            //Recorrer la tabla de los cursos
+            while (re.next()) {
+                cursos[i][0] = re.getString("idCurso");
+                cursos[i][1] = re.getString("nombre");
+                cursos[i][2] = re.getString("horario");
+                cursos[i][3] = re.getString("modalidad");
+                cursos[i][4] = re.getString("cantidad");
+                if (cursos[i][1].equals(curso)) {
+                    idCurso = Integer.parseInt(cursos[i][0]);
+                    cr.setNombreCurso(curso);
+                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
+                }
+                i++;
+            }
+            try {
+                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                pC.getCursos();
+                
+            } catch (SQLException ex) {
+                System.out.println("Error 2 " + ex);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Image;
     private javax.swing.JLabel Title;
     private javax.swing.JPanel btnAgregar;
+    private javax.swing.JPanel btnBorrar;
     private javax.swing.JPanel btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JPanel panel;
+    public javax.swing.JTable tablaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }
