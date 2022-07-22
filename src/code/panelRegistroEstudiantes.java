@@ -23,6 +23,7 @@ import javax.swing.JTextField;
  * @author XPC
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
+    boolean verificacion;
     String cu = null;
     DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
@@ -253,15 +254,20 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     if (etiquetaGuardar.getText().equals("Modificar")) {
                         int id = panelEstudiantes.idEstudianteModificar;
                         String c = panelEstudiantes.nombreCurso;
-                        
-                        modificarCantidadCurso(es.getCurso(), c);
-                        modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
+                        if(modificarCantidadCurso(es.getCurso(), c)) {
+                            modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
+                        }
 
                     } else {
-                        modificarCantidadCurso(es.getCurso(), "");
-                        insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
+                        if(modificarCantidadCurso(es.getCurso(), "")) {
+                            insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
+                        } else {
+                            JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
+                        }
+                        
                     }
-
                     // Reiniciar los campos
                     inputNombre.setText("");
                     inputPrimerApellido.setText("");
@@ -269,7 +275,6 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     inputEdad.setText("");
                     inputTelefono.setText("");
                     inputCedula.setText("");
-                    
                     inputNombre.requestFocus();
 
                 } catch (SQLException ex) {
@@ -436,7 +441,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     }
 
     // Metodo para modificar cantidad de curso (agregar)
-    private void modificarCantidadCurso(String curso, String c) throws SQLException {
+    private boolean modificarCantidadCurso(String curso, String c) throws SQLException {
         // variblaes para obtener cantidad disponible
         int idAux=0;
         int cantidadAux=0;
@@ -474,12 +479,10 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             while (re.next()) {
                 cursos[i][0] = re.getString("idCurso");
                 cursos[i][1] = re.getString("nombre");
-                cursos[i][2] = re.getString("horario");
-                cursos[i][3] = re.getString("modalidad");
                 cursos[i][4] = re.getString("cantidad");
                 cursos[i][5] = re.getString("cantidadEstudiantes");
                 
-                // Comprobar y obtener datos
+                // Comprobar y obtener datos del curso seleccionado
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
                     cr.setNombreCurso(curso);
@@ -487,7 +490,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     ce = Integer.parseInt(cursos[i][5]);
                 }
                 
-                // Comprobar y obtener datos
+                // Comprobar y obtener datos del curso seleccionado si la opcion es modificar
                 if (cursos[i][1].equals(c)) {
                     idAux = Integer.parseInt(cursos[i][0]);
                     cantidadAux = Integer.parseInt(cursos[i][4]);
@@ -498,18 +501,33 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             }
             try {
                 if(etiquetaGuardar.getText().equals("Modificar")) {
-                    cr.setCantidad(cr.getCantidad()-1);
-                    cantidadAux += 1;
-                    if(!c.equals(curso)) {
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
+                    // Verificar cantidad del curso
+                    if(cr.getCantidad() > 0) {
+                        cr.setCantidad(cr.getCantidad()-1);
+                        cantidadAux += 1;
+                        // Verificar que el curso seleccionado no sea el mismo al anterior
+                        if(!c.equals(curso)) {
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
+                        }
+                        verificacion = true;
+                    } else {
+                        verificacion = false;
                     }
+                    
                 } else {
-                    stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                    // Verificar cantidad del curso
+                    if(cr.getCantidad() > 0) {
+                        cr.setCantidad(cr.getCantidad()-1);
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                        verificacion = true;
+                    } else {
+                        verificacion = false;
+                    }
                 }
-                
+
                 pC.getCursos();
-                
+
             } catch (SQLException ex) {
                 System.out.println("Error 2 " + ex);
             }
@@ -517,6 +535,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return verificacion;
     }
 
     // Obtener el nombre de los cursos de la tabla en mysql
@@ -549,7 +568,73 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    // Obtener cantidad del curso
+    /*
+    public int cantidadCurso(String curso) {
+        // variblaes para obtener cantidad disponible
+        int idAux=0;
+        int cantidadAux=0;
+        
+        // variables para obtener cantidad de estudiantes
+        int ce=0;
+        int ce2=0;
+        panelCursos pC = new panelCursos();
+        Curso cr = new Curso();
+        int idCurso = -1;
+        
+        try {
+            //Ejecutamos la consulta
+            Statement stm = reg.createStatement();
 
+            //Recorremos la tabla
+            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
+
+            // Obtener cantidad de filas de la tabla
+            int fila = 0;
+            while (contador.next()) {
+                fila++;
+            }
+            
+            // [filas][columnas]
+            String cursos[][] = new String[fila][6]; 
+            
+            // iterador
+            int i = 0;
+            
+            // Para recorrer los datos 
+            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
+
+            //Recorrer la tabla de los cursos
+            while (re.next()) {
+                cursos[i][1] = re.getString("nombre");
+                cursos[i][4] = re.getString("cantidad");
+                
+                // Comprobar y obtener datos
+                if (cursos[i][1].equals(curso)) {
+                    idCurso = Integer.parseInt(cursos[i][0]);
+                    cr.setNombreCurso(curso);
+                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
+                    ce = Integer.parseInt(cursos[i][5]);
+                }
+                
+                // Comprobar y obtener datos
+                if (cursos[i][1].equals(c)) {
+                    idAux = Integer.parseInt(cursos[i][0]);
+                    cantidadAux = Integer.parseInt(cursos[i][4]);
+                    ce2 = Integer.parseInt(cursos[i][5]);
+                }
+                
+                i++;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 5;
+    }
+    */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JLabel etiquetaCedula;
