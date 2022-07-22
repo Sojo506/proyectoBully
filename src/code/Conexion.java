@@ -15,12 +15,14 @@ public class Conexion {
     private static final String url = "jdbc:mysql://localhost:3306/proyecto_bully";
     private static final String user = "root";
 
+
     private static final String pass = "Araya1712";
 
 
     
 
-    
+
+
     public Conexion() {
         conn = null;
         try{
