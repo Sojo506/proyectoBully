@@ -10,16 +10,18 @@ public class Curso {
     private String horario;
     private String modalidad;
     private int cantidad;
+    private int cantidadEstudiantes;
 
     public Curso() {
         
     }
     
-    public Curso(String nombreCurso, String horario, String modalidad, int cantidad) {
+    public Curso(String nombreCurso, String horario, String modalidad, int cantidad, int cantidadEstudiantes) {
         this.nombreCurso = nombreCurso;
         this.horario = horario;
         this.modalidad = modalidad;
         this.cantidad = cantidad;
+        this.cantidadEstudiantes = cantidadEstudiantes;
     }
 
     public String getNombreCurso() {
@@ -52,6 +54,14 @@ public class Curso {
 
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+
+    public int getCantidadEstudiantes() {
+        return cantidadEstudiantes;
+    }
+
+    public void setCantidadEstudiantes(int cantidadEstudiantes) {
+        this.cantidadEstudiantes = cantidadEstudiantes;
     }
     
     

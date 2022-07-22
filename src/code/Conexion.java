@@ -15,7 +15,7 @@ public class Conexion {
     private static final String url = "jdbc:mysql://localhost:3306/proyecto_bully";
     private static final String user = "root";
     private static final String pass = "Sojo8582";
-    
+
     public Conexion() {
         conn = null;
         try{

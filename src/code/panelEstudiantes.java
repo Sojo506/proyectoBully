@@ -427,7 +427,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             while (contador.next()) {
                 fila++;
             }
-            String cursos[][] = new String[fila][5]; // [filas][columnas]
+            String cursos[][] = new String[fila][6]; // [filas][columnas]
             int i = 0; //Iterador de las filas
             // Para recorrer los datos 
             ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
@@ -439,15 +439,17 @@ public class panelEstudiantes extends javax.swing.JPanel {
                 cursos[i][2] = re.getString("horario");
                 cursos[i][3] = re.getString("modalidad");
                 cursos[i][4] = re.getString("cantidad");
+                cursos[i][5] = re.getString("cantidadEstudiantes");
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
                     cr.setNombreCurso(curso);
                     cr.setCantidad(Integer.parseInt(cursos[i][4]));
+                    cr.setCantidadEstudiantes(Integer.parseInt(cursos[i][5]));
                 }
                 i++;
             }
             try {
-                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idCurso + ";");
                 pC.getCursos();
                 
             } catch (SQLException ex) {
