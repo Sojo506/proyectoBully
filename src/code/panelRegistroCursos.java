@@ -14,13 +14,12 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-
-
 /**
  *
  * @author andres
  */
 public class panelRegistroCursos extends javax.swing.JPanel {
+
     private String regexNums = "^[0-9]+";
     DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
@@ -148,122 +147,119 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
         // Poner codigo aqui
         //Comprobar que todos los campos esten completos
-        if(inputCantidadC.getText().equals("")|| !inputCantidadC.getText().matches(regexNums) || inputNombreC.getText().equals("") ){
-            if(!inputCantidadC.getText().matches(regexNums)){
+        if (inputCantidadC.getText().equals("") || !inputCantidadC.getText().matches(regexNums) || inputNombreC.getText().equals("")) {
+            if (!inputCantidadC.getText().matches(regexNums)) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso");
-            }else{
+            } else {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos para poder agregar el curso");
             }
             inputNombreC.requestFocus();
-        }else{
+        } else {
             //Comprobar que virtual sea igual a la sede
             String verificarModalidadC = listaModalidad.getSelectedItem().toString();
             String verificarSedeC = listaSedes.getSelectedItem().toString();
-            
+
             //Comprobar que la cantidad sea valida
             int comprobarCantidad = Integer.parseInt(inputCantidadC.getText());
             //Verificamos la cantidad y que si la modalidad es virtual entonces la sede tambien tiene que ser virtual
-            if(comprobarCantidad < 0 || (verificarModalidadC.equals("Virtual") && !verificarModalidadC.equals(verificarSedeC))){
+            if (comprobarCantidad < 0 || (verificarModalidadC.equals("Virtual") && !verificarModalidadC.equals(verificarSedeC))) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Cantidad de cursos no valida y/o verificar la sede");
                 inputNombreC.requestFocus();
-                System.out.println(((Object)comprobarCantidad).getClass().getSimpleName());
-            }else {
+            } else {
                 //Guardamos los datos en las variables
                 String nombre = inputNombreC.getText();
                 String horario = listaHorario.getSelectedItem().toString();
                 String modalidad = listaModalidad.getSelectedItem().toString();
                 int cantidad = comprobarCantidad;
                 String sede = listaSedes.getSelectedItem().toString();
-                
-                try{
-                    if(etiquetaGuardar.getText().equals("Modificar")){
+
+                try {
+                    if (etiquetaGuardar.getText().equals("Modificar")) {
                         //Agregar metodo
                         int id = panelCursos.idCursoModificar;
                         modificarCurso(nombre, horario, modalidad, cantidad, sede, id);
-                    }else{
+                    } else {
                         insertarCurso(nombre, horario, modalidad, cantidad, sede);
                     }
                     //Resetear los campos
                     inputCantidadC.setText("");
                     inputNombreC.setText("");
-                        
-                }catch(SQLException ex){
+
+                } catch (SQLException ex) {
                     Logger.getLogger(panelRegistroCursos.class.getName()).log(Level.SEVERE, null, ex);
                 }
-            
+
             }
         }
-        
+
     }//GEN-LAST:event_btnGuardarCMousePressed
 
     private void inputNombreCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreCMousePressed
         if (inputNombreC.getText().equals("Ingresar nombre")) {
             inputNombreC.setText("");
         }
-        
-        
+
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
             inputCantidadC.setText("Ingresar cantidad disponible");
         }
-       
-        
-        
+
+
     }//GEN-LAST:event_inputNombreCMousePressed
 
     /*Autor : Andy*/
     private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
-       if (inputNombreC.getText().equals("") || inputNombreC.getText()== null) {
+        if (inputNombreC.getText().equals("") || inputNombreC.getText() == null) {
             inputNombreC.setText("Ingresar nombre");
         }
-        
-        if (inputCantidadC.getText().equals("Ingresar cantidad disponible") ) {
+
+        if (inputCantidadC.getText().equals("Ingresar cantidad disponible")) {
             inputCantidadC.setText("");
         }
-        
-        
+
+
     }//GEN-LAST:event_inputCantidadCMousePressed
-    
+
     //Metodo para insertar curso a la BD
-     public void insertarCurso(String nombre, String horario, String modalidad, int cantidad, String sede) throws SQLException{
+    public void insertarCurso(String nombre, String horario, String modalidad, int cantidad, String sede) throws SQLException {
         Statement stm = reg.createStatement();
-        
-        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`, `sede`) VALUES ('"+nombre+"', '"+horario+"', '"+ modalidad+"', '"+ cantidad+"', '"+ 0 +"', '"+ sede +"')");
+
+        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`, `sede`) VALUES ('" + nombre + "', '" + horario + "', '" + modalidad + "', '" + cantidad + "', '" + 0 + "', '" + sede + "')");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
-     
-     //Metodo para modificar curso en la BD
-     public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, String sede, int id) throws SQLException{
+
+    //Metodo para modificar curso en la BD
+    public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, String sede, int id) throws SQLException {
         Statement stm = reg.createStatement();
-        
-        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad + "', `sede` = '" + sede +"' WHERE `idCurso` = " + id + ";");
+
+        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad + "', `sede` = '" + sede + "' WHERE `idCurso` = " + id + ";");
         javax.swing.JOptionPane.showMessageDialog(this, "¡Curso editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-        
+
     }
-     
-     private void agregarModeloListaHorario() {
-         modeloHorarioC.addElement("8:00am - 11:00am");
+
+    private void agregarModeloListaHorario() {
+        modeloHorarioC.addElement("8:00am - 11:00am");
         modeloHorarioC.addElement("9:00am - 12:00pm");
         modeloHorarioC.addElement("11:00am - 2:00pm");
         modeloHorarioC.addElement("2:00pm - 5:00pm");
         modeloHorarioC.addElement("6:00pm - 9:00pm");
-       }
-     
-     private void agregarModeloListaModalidad(){
-     modeloModalidadC.addElement("Presencial");
-     modeloModalidadC.addElement("Virtual");
-     }
-     
-     private void agregarModeloListaSede(){
-     modeloSedeC.addElement("San Pedro");
-     modeloSedeC.addElement("Escazu");
-     modeloSedeC.addElement("Guanacaste");
-     modeloSedeC.addElement("Puerto Viejo");
-     modeloSedeC.addElement("Alajuelita");
-     modeloSedeC.addElement("Virtual");
-     }
-     
-     
+    }
+
+    private void agregarModeloListaModalidad() {
+        modeloModalidadC.addElement("Presencial");
+        modeloModalidadC.addElement("Virtual");
+    }
+
+    private void agregarModeloListaSede() {
+        modeloSedeC.addElement("San Pedro");
+        modeloSedeC.addElement("Escazu");
+        modeloSedeC.addElement("Guanacaste");
+        modeloSedeC.addElement("Puerto Viejo");
+        modeloSedeC.addElement("Alajuelita");
+        modeloSedeC.addElement("Virtual");
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardarC;
     public javax.swing.JLabel etiquetaGuardar;

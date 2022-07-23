@@ -31,13 +31,13 @@ public class infoSojo extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        gitHubPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        linkPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        instaPanel = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
+        epicPanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         gitHub = new javax.swing.JLabel();
         linkedin = new javax.swing.JLabel();
@@ -69,13 +69,13 @@ public class infoSojo extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        gitHubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitHubPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel2MouseEntered(evt);
+                gitHubPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel2MouseExited(evt);
+                gitHubPanelMouseExited(evt);
             }
         });
 
@@ -83,115 +83,115 @@ public class infoSojo extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout gitHubPanelLayout = new javax.swing.GroupLayout(gitHubPanel);
+        gitHubPanel.setLayout(gitHubPanelLayout);
+        gitHubPanelLayout.setHorizontalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gitHubPanelLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        gitHubPanelLayout.setVerticalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitHubPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
+        add(gitHubPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
 
-        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel3.addMouseListener(new java.awt.event.MouseAdapter() {
+        linkPanel.setBackground(new java.awt.Color(255, 255, 255));
+        linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        linkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel3MouseEntered(evt);
+                linkPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel3MouseExited(evt);
+                linkPanelMouseExited(evt);
             }
         });
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linkedin.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout linkPanelLayout = new javax.swing.GroupLayout(linkPanel);
+        linkPanel.setLayout(linkPanelLayout);
+        linkPanelLayout.setHorizontalGroup(
+            linkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linkPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        linkPanelLayout.setVerticalGroup(
+            linkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linkPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 36, 36));
+        add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 36, 36));
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        instaPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        instaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel4MouseEntered(evt);
+                instaPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel4MouseExited(evt);
+                instaPanelMouseExited(evt);
             }
         });
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/insta.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout instaPanelLayout = new javax.swing.GroupLayout(instaPanel);
+        instaPanel.setLayout(instaPanelLayout);
+        instaPanelLayout.setHorizontalGroup(
+            instaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, instaPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+        instaPanelLayout.setVerticalGroup(
+            instaPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, instaPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 36, 36));
+        add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 36, 36));
 
-        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        epicPanel.setBackground(new java.awt.Color(255, 255, 255));
+        epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        epicPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jPanel5MouseEntered(evt);
+                epicPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                jPanel5MouseExited(evt);
+                epicPanelMouseExited(evt);
             }
         });
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/games.png"))); // NOI18N
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        javax.swing.GroupLayout epicPanelLayout = new javax.swing.GroupLayout(epicPanel);
+        epicPanel.setLayout(epicPanelLayout);
+        epicPanelLayout.setHorizontalGroup(
+            epicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, epicPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+        epicPanelLayout.setVerticalGroup(
+            epicPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, epicPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
+        add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
 
         gitHub.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
         add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 40, -1));
@@ -231,51 +231,54 @@ public class infoSojo extends javax.swing.JPanel {
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPanel2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseEntered
-        jPanel2.setBackground(new Color(204,204,204));
+    private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered
+        gitHubPanel.setBackground(new Color(204,204,204));
         gitHub.setText("Sojo506");
-    }//GEN-LAST:event_jPanel2MouseEntered
+    }//GEN-LAST:event_gitHubPanelMouseEntered
 
-    private void jPanel2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseExited
-        jPanel2.setBackground(Color.white);
+    private void gitHubPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseExited
+        gitHubPanel.setBackground(Color.white);
         gitHub.setText("");
-    }//GEN-LAST:event_jPanel2MouseExited
+    }//GEN-LAST:event_gitHubPanelMouseExited
 
-    private void jPanel3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseEntered
-        jPanel3.setBackground(new Color(204,204,204));
+    private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
+        linkPanel.setBackground(new Color(204,204,204));
         linkedin.setText("Fabián Sojo");
-    }//GEN-LAST:event_jPanel3MouseEntered
+    }//GEN-LAST:event_linkPanelMouseEntered
 
-    private void jPanel3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel3MouseExited
-        jPanel3.setBackground(Color.white);
+    private void linkPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseExited
+        linkPanel.setBackground(Color.white);
         linkedin.setText("");
-    }//GEN-LAST:event_jPanel3MouseExited
+    }//GEN-LAST:event_linkPanelMouseExited
 
-    private void jPanel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseEntered
-        jPanel5.setBackground(new Color(204,204,204));
+    private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
+        epicPanel.setBackground(new Color(204,204,204));
         epic.setText("Sojo506");
-    }//GEN-LAST:event_jPanel5MouseEntered
+    }//GEN-LAST:event_epicPanelMouseEntered
 
-    private void jPanel5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel5MouseExited
-        jPanel5.setBackground(Color.white);
+    private void epicPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseExited
+        epicPanel.setBackground(Color.white);
         epic.setText("");
-    }//GEN-LAST:event_jPanel5MouseExited
+    }//GEN-LAST:event_epicPanelMouseExited
 
-    private void jPanel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseEntered
-        jPanel4.setBackground(new Color(204,204,204));
+    private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
+        instaPanel.setBackground(new Color(204,204,204));
         insta.setText("sojo506");
-    }//GEN-LAST:event_jPanel4MouseEntered
+    }//GEN-LAST:event_instaPanelMouseEntered
 
-    private void jPanel4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel4MouseExited
-        jPanel4.setBackground(Color.white);
+    private void instaPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseExited
+        instaPanel.setBackground(Color.white);
         insta.setText("");
-    }//GEN-LAST:event_jPanel4MouseExited
+    }//GEN-LAST:event_instaPanelMouseExited
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel epic;
+    private javax.swing.JPanel epicPanel;
     private javax.swing.JLabel gitHub;
+    private javax.swing.JPanel gitHubPanel;
     private javax.swing.JLabel insta;
+    private javax.swing.JPanel instaPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -288,11 +291,8 @@ public class infoSojo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JPanel linkPanel;
     private javax.swing.JLabel linkedin;
     // End of variables declaration//GEN-END:variables
 }

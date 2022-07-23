@@ -173,7 +173,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Agregar Estudiantes
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        System.out.println("Hola");
+        
         // Instanciamos el panel
         panelRegistroEstudiantes rAg = new panelRegistroEstudiantes();
         rAg.setSize(680, 360);
@@ -235,7 +235,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
     private void btnBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMousePressed
         try {
             int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
-            if (filaEstudiante <= -1) {
+            if (filaEstudiante < 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // para ejecutar la consulta
@@ -252,11 +252,9 @@ public class panelEstudiantes extends javax.swing.JPanel {
                 String estudiantes[][] = new String[fila][7]; 
                 
                 // itera las filas
-                int i = 0; 
-                
+                int i = 0;
                 // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-                // recorre la tabla estudiantes
 
                 while (re.next()) { //re.next obtiene la cantidad de filas a iterar
                     estudiantes[i][0] = re.getString("idEstudiante");
@@ -267,7 +265,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
                 int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]); // obtenemos el id del estudiante
                 modificarCantidadCurso(estudiantes[filaEstudiante][6]);
                 System.out.println(idEstudiante);
-                if (idEstudiante <= 0) {
+                if (idEstudiante < 0) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // para ejecutar la consulta
@@ -334,7 +332,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
             // Obtenemos la fila del estudiante seleccionado
             int filaEstudiante = tablaEstudiantes.getSelectedRow(); 
             
-            if (filaEstudiante <= -1) {
+            if (filaEstudiante < 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificarr. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
                 // para ejecutar la consulta
