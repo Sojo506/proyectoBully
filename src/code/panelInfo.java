@@ -293,10 +293,12 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Kevin);
         establecerColor(rolando);
         
-        
+         RoloPanel RP = new RoloPanel();
+        RP.setSize(390, 360);
+        RP.setLocation(0, 0);
         
         Infodecadauno.removeAll();
-        
+        Infodecadauno.add(RP);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_rolandoMousePressed
@@ -309,10 +311,12 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Kevin);
         establecerColor(Andy);
         
-        
+         AndyPanel AP = new AndyPanel();
+        AP.setSize(390, 360);
+        AP.setLocation(0, 0);
         
         Infodecadauno.removeAll();
-        
+        Infodecadauno.add(AP);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_AndyMousePressed
