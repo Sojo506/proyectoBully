@@ -146,6 +146,14 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setText("Andrés");
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel5MouseEntered(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel5MousePressed(evt);
+            }
+        });
         Andres.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 28));
 
         panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, -1));
@@ -328,11 +336,14 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Fabian);
         resetearColor(Kevin);
         establecerColor(Andres);
+        System.out.print("andres");
+        InfoAnd IAnd = new InfoAnd();
+        IAnd.setSize(390, 360);
+        IAnd.setLocation(0, 0);
         
-        
-        
+       
         Infodecadauno.removeAll();
-        
+        Infodecadauno.add(IAnd);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_AndresMousePressed
@@ -345,13 +356,23 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Fabian);
         establecerColor(Kevin);
         
-        
+         InfoK IK = new InfoK();
+        IK.setSize(390, 360);
+        IK.setLocation(0, 0);
         
         Infodecadauno.removeAll();
-        
+        Infodecadauno.add(IK);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_KevinMousePressed
+
+    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MouseEntered
+
+    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel5MousePressed
 
     //Para obtener el color cuando pase MousePressed
     public void establecerColor(JPanel panel) {
