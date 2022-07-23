@@ -46,11 +46,11 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         Fabian = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Andres = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
         Kevin = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Infodecadauno = new javax.swing.JPanel();
+        Andres = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
@@ -127,37 +127,6 @@ public class panelInfo extends javax.swing.JPanel {
 
         panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 140, -1));
 
-        Andres.setBackground(new java.awt.Color(18, 90, 173));
-        Andres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Andres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AndresMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AndresMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                AndresMousePressed(evt);
-            }
-        });
-        Andres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Andrés");
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jLabel5MouseEntered(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel5MousePressed(evt);
-            }
-        });
-        Andres.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 28));
-
-        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, -1));
-
         Kevin.setBackground(new java.awt.Color(18, 90, 173));
         Kevin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Kevin.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,6 +165,29 @@ public class panelInfo extends javax.swing.JPanel {
 
         panelprin.add(Infodecadauno, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 390, 360));
 
+        Andres.setBackground(new java.awt.Color(18, 90, 173));
+        Andres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Andres.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AndresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AndresMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AndresMousePressed(evt);
+            }
+        });
+        Andres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Andrés");
+        Andres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 28));
+
+        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -209,20 +201,20 @@ public class panelInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rolandoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseEntered
-        if(rolando.getBackground().getRGB() == -15574355) {
+        if (rolando.getBackground().getRGB() == -15574355) {
             establecerColor(rolando);
         }
     }//GEN-LAST:event_rolandoMouseEntered
 
     private void rolandoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseExited
-        if(Andy.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
-            || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
+        if (Andy.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
+                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
             resetearColor(rolando);
         }
     }//GEN-LAST:event_rolandoMouseExited
 
     private void AndyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMouseEntered
-        if(Andy.getBackground().getRGB() == -15574355) {
+        if (Andy.getBackground().getRGB() == -15574355) {
             establecerColor(Andy);
         }
     }//GEN-LAST:event_AndyMouseEntered
@@ -235,7 +227,7 @@ public class panelInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_AndyMouseExited
 
     private void FabianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMouseEntered
-        if(Fabian.getBackground().getRGB() == -15574355) {
+        if (Fabian.getBackground().getRGB() == -15574355) {
             establecerColor(Fabian);
         }
     }//GEN-LAST:event_FabianMouseEntered
@@ -247,21 +239,8 @@ public class panelInfo extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_FabianMouseExited
 
-    private void AndresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseEntered
-        if(Andres.getBackground().getRGB() == -15574355) {
-            establecerColor(Andres);
-        }
-    }//GEN-LAST:event_AndresMouseEntered
-
-    private void AndresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseExited
-        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
-                || Kevin.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355) {
-            resetearColor(Andres);
-        }
-    }//GEN-LAST:event_AndresMouseExited
-
     private void KevinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMouseEntered
-        if(Kevin.getBackground().getRGB() == -15574355) {
+        if (Kevin.getBackground().getRGB() == -15574355) {
             establecerColor(Kevin);
         }
     }//GEN-LAST:event_KevinMouseEntered
@@ -280,7 +259,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Andres);
         resetearColor(Kevin);
         establecerColor(Fabian);
-        
+
         infoSojo so = new infoSojo();
         so.setSize(390, 360);
         so.setLocation(0, 0);
@@ -300,13 +279,13 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Andres);
         resetearColor(Kevin);
         establecerColor(rolando);
-        
-         RoloPanel RP = new RoloPanel();
+
+        RoloPanel RP = new RoloPanel();
         RP.setSize(390, 360);
         RP.setLocation(0, 0);
-        
+
         Infodecadauno.removeAll();
-        Infodecadauno.add(RP);
+        Infodecadauno.add(RP, BorderLayout.CENTER);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_rolandoMousePressed
@@ -318,35 +297,16 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Andres);
         resetearColor(Kevin);
         establecerColor(Andy);
-        
-         AndyPanel AP = new AndyPanel();
+
+        AndyPanel AP = new AndyPanel();
         AP.setSize(390, 360);
         AP.setLocation(0, 0);
-        
+
         Infodecadauno.removeAll();
-        Infodecadauno.add(AP);
+        Infodecadauno.add(AP, BorderLayout.CENTER);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_AndyMousePressed
-
-    private void AndresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(rolando);
-        resetearColor(Andy);
-        resetearColor(Fabian);
-        resetearColor(Kevin);
-        establecerColor(Andres);
-        System.out.print("andres");
-        InfoAnd IAnd = new InfoAnd();
-        IAnd.setSize(390, 360);
-        IAnd.setLocation(0, 0);
-        
-       
-        Infodecadauno.removeAll();
-        Infodecadauno.add(IAnd);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-    }//GEN-LAST:event_AndresMousePressed
 
     private void KevinMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMousePressed
         // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
@@ -355,24 +315,42 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Andres);
         resetearColor(Fabian);
         establecerColor(Kevin);
-        
-         InfoK IK = new InfoK();
+
+        InfoK IK = new InfoK();
         IK.setSize(390, 360);
         IK.setLocation(0, 0);
-        
+
         Infodecadauno.removeAll();
-        Infodecadauno.add(IK);
+        Infodecadauno.add(IK, BorderLayout.CENTER);
         Infodecadauno.revalidate();
         Infodecadauno.repaint();
     }//GEN-LAST:event_KevinMousePressed
 
-    private void jLabel5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseEntered
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MouseEntered
+    private void AndresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseEntered
+        
+    }//GEN-LAST:event_AndresMouseEntered
 
-    private void jLabel5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MousePressed
+    private void AndresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseExited
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel5MousePressed
+    }//GEN-LAST:event_AndresMouseExited
+
+    private void AndresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(rolando);
+        resetearColor(Andy);
+        resetearColor(Kevin);
+        resetearColor(Fabian);
+        establecerColor(Andres);
+
+        InfoAnd and = new InfoAnd();
+        and.setSize(390, 360);
+        and.setLocation(0, 0);
+
+        Infodecadauno.removeAll();
+        Infodecadauno.add(and, BorderLayout.CENTER);
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+    }//GEN-LAST:event_AndresMousePressed
 
     //Para obtener el color cuando pase MousePressed
     public void establecerColor(JPanel panel) {
@@ -393,8 +371,8 @@ public class panelInfo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel panelprin;
     private javax.swing.JPanel rolando;
     // End of variables declaration//GEN-END:variables

@@ -55,7 +55,7 @@ public class AndyPanel extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saitama.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Dragon ball.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 150));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -193,7 +193,7 @@ public class AndyPanel extends javax.swing.JPanel {
         jPanel1.add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
 
         gitHub.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 40, -1));
+        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 90, 20));
 
         linkedin.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
         jPanel1.add(linkedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));

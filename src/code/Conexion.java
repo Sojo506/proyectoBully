@@ -14,11 +14,7 @@ public class Conexion {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://localhost:3306/proyecto_bully";
     private static final String user = "root";
-<<<<<<< HEAD
-    private static final String pass = "an2017dy";
-=======
-    private static final String pass = "Araya1712";
->>>>>>> 13806025cc734e9bd9ed2176e7c1d64dd8d7f45c
+    private static final String pass = "Sojo8582";
 
     public Conexion() {
         conn = null;
