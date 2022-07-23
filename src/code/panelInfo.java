@@ -4,7 +4,9 @@
  */
 package code;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JPanel;
 
 /**
  *
@@ -17,6 +19,15 @@ public class panelInfo extends javax.swing.JPanel {
      */
     public panelInfo() {
         initComponents();
+        infoSojo so = new infoSojo();
+        so.setSize(390, 360);
+        so.setLocation(0, 0);
+
+        Infodecadauno.removeAll();
+        Infodecadauno.add(so, BorderLayout.CENTER);
+        establecerColor(Fabian);
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
     }
 
     /**
@@ -40,7 +51,6 @@ public class panelInfo extends javax.swing.JPanel {
         Kevin = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         Infodecadauno = new javax.swing.JPanel();
-        jSeparator3 = new javax.swing.JSeparator();
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
@@ -48,7 +58,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.setPreferredSize(new java.awt.Dimension(680, 360));
         panelprin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rolando.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        rolando.setBackground(new java.awt.Color(18, 90, 173));
         rolando.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         rolando.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -57,27 +67,21 @@ public class panelInfo extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 rolandoMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                rolandoMousePressed(evt);
+            }
         });
+        rolando.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Rolando");
+        rolando.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 30));
 
-        javax.swing.GroupLayout rolandoLayout = new javax.swing.GroupLayout(rolando);
-        rolando.setLayout(rolandoLayout);
-        rolandoLayout.setHorizontalGroup(
-            rolandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-        );
-        rolandoLayout.setVerticalGroup(
-            rolandoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-        );
+        panelprin.add(rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 140, 30));
 
-        panelprin.add(rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 140, -1));
-
-        Andy.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Andy.setBackground(new java.awt.Color(18, 90, 173));
         Andy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Andy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -86,27 +90,21 @@ public class panelInfo extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AndyMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AndyMousePressed(evt);
+            }
         });
+        Andy.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Andy");
+        Andy.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 30));
 
-        javax.swing.GroupLayout AndyLayout = new javax.swing.GroupLayout(Andy);
-        Andy.setLayout(AndyLayout);
-        AndyLayout.setHorizontalGroup(
-            AndyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
-        AndyLayout.setVerticalGroup(
-            AndyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-        );
+        panelprin.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 140, 30));
 
-        panelprin.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 143, -1));
-
-        Fabian.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Fabian.setBackground(new java.awt.Color(18, 90, 173));
         Fabian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fabian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -115,27 +113,21 @@ public class panelInfo extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 FabianMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                FabianMousePressed(evt);
+            }
         });
+        Fabian.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Fabian");
+        jLabel4.setText("Fabián");
+        Fabian.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 28));
 
-        javax.swing.GroupLayout FabianLayout = new javax.swing.GroupLayout(Fabian);
-        Fabian.setLayout(FabianLayout);
-        FabianLayout.setHorizontalGroup(
-            FabianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
-        FabianLayout.setVerticalGroup(
-            FabianLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-        );
+        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 140, -1));
 
-        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 143, -1));
-
-        Andres.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Andres.setBackground(new java.awt.Color(18, 90, 173));
         Andres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Andres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -144,27 +136,21 @@ public class panelInfo extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 AndresMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AndresMousePressed(evt);
+            }
         });
+        Andres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Andres");
+        jLabel5.setText("Andrés");
+        Andres.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 28));
 
-        javax.swing.GroupLayout AndresLayout = new javax.swing.GroupLayout(Andres);
-        Andres.setLayout(AndresLayout);
-        AndresLayout.setHorizontalGroup(
-            AndresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
-        AndresLayout.setVerticalGroup(
-            AndresLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-        );
+        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, -1));
 
-        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 143, -1));
-
-        Kevin.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Kevin.setBackground(new java.awt.Color(18, 90, 173));
         Kevin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Kevin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -173,45 +159,34 @@ public class panelInfo extends javax.swing.JPanel {
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 KevinMouseExited(evt);
             }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                KevinMousePressed(evt);
+            }
         });
+        Kevin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Kevin");
+        Kevin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 30));
 
-        javax.swing.GroupLayout KevinLayout = new javax.swing.GroupLayout(Kevin);
-        Kevin.setLayout(KevinLayout);
-        KevinLayout.setHorizontalGroup(
-            KevinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-        );
-        KevinLayout.setVerticalGroup(
-            KevinLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-        );
+        panelprin.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 140, 30));
 
-        panelprin.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 143, -1));
-
-        Infodecadauno.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Infodecadauno.setBackground(new java.awt.Color(255, 255, 255));
 
         javax.swing.GroupLayout InfodecadaunoLayout = new javax.swing.GroupLayout(Infodecadauno);
         Infodecadauno.setLayout(InfodecadaunoLayout);
         InfodecadaunoLayout.setHorizontalGroup(
             InfodecadaunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 386, Short.MAX_VALUE)
+            .addGap(0, 390, Short.MAX_VALUE)
         );
         InfodecadaunoLayout.setVerticalGroup(
             InfodecadaunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 346, Short.MAX_VALUE)
+            .addGap(0, 360, Short.MAX_VALUE)
         );
 
-        panelprin.add(Infodecadauno, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 10, 390, 350));
-
-        jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
-        jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
-        jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-        panelprin.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 10, 350));
+        panelprin.add(Infodecadauno, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 390, 360));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -226,45 +201,163 @@ public class panelInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rolandoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseEntered
-     rolando.setBackground(new Color(0,0,128));
+        if(rolando.getBackground().getRGB() == -15574355) {
+            establecerColor(rolando);
+        }
     }//GEN-LAST:event_rolandoMouseEntered
 
     private void rolandoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseExited
-     rolando.setBackground(new Color(0,0,204));
+        if(Andy.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
+            || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
+            resetearColor(rolando);
+        }
     }//GEN-LAST:event_rolandoMouseExited
 
     private void AndyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMouseEntered
-      Andy.setBackground(new Color(0,0,128));
+        if(Andy.getBackground().getRGB() == -15574355) {
+            establecerColor(Andy);
+        }
     }//GEN-LAST:event_AndyMouseEntered
 
     private void AndyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMouseExited
-     Andy.setBackground(new Color(0,0,204));
+        if (rolando.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
+                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
+            resetearColor(Andy);
+        }
     }//GEN-LAST:event_AndyMouseExited
 
     private void FabianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMouseEntered
-        Fabian.setBackground(new Color(0,0,128));
+        if(Fabian.getBackground().getRGB() == -15574355) {
+            establecerColor(Fabian);
+        }
     }//GEN-LAST:event_FabianMouseEntered
 
     private void FabianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMouseExited
-         Fabian.setBackground(new Color(0,0,204));
+        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
+                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
+            resetearColor(Fabian);
+        }
     }//GEN-LAST:event_FabianMouseExited
 
     private void AndresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseEntered
-       Andres.setBackground(new Color(0,0,128));
+        if(Andres.getBackground().getRGB() == -15574355) {
+            establecerColor(Andres);
+        }
     }//GEN-LAST:event_AndresMouseEntered
 
     private void AndresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseExited
-       Andres.setBackground(new Color(0,0,204));
+        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
+                || Kevin.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355) {
+            resetearColor(Andres);
+        }
     }//GEN-LAST:event_AndresMouseExited
 
     private void KevinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMouseEntered
-       Kevin.setBackground(new Color(0,0,128));
+        if(Kevin.getBackground().getRGB() == -15574355) {
+            establecerColor(Kevin);
+        }
     }//GEN-LAST:event_KevinMouseEntered
 
     private void KevinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMouseExited
-        Kevin.setBackground(new Color(0,0,204));
+        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
+                || Fabian.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
+            resetearColor(Kevin);
+        }
     }//GEN-LAST:event_KevinMouseExited
 
+    private void FabianMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(rolando);
+        resetearColor(Andy);
+        resetearColor(Andres);
+        resetearColor(Kevin);
+        establecerColor(Fabian);
+        
+        infoSojo so = new infoSojo();
+        so.setSize(390, 360);
+        so.setLocation(0, 0);
+
+        Infodecadauno.removeAll();
+        Infodecadauno.add(so, BorderLayout.CENTER);
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+
+
+    }//GEN-LAST:event_FabianMousePressed
+
+    private void rolandoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(Fabian);
+        resetearColor(Andy);
+        resetearColor(Andres);
+        resetearColor(Kevin);
+        establecerColor(rolando);
+        
+        
+        
+        Infodecadauno.removeAll();
+        
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+    }//GEN-LAST:event_rolandoMousePressed
+
+    private void AndyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(rolando);
+        resetearColor(Fabian);
+        resetearColor(Andres);
+        resetearColor(Kevin);
+        establecerColor(Andy);
+        
+        
+        
+        Infodecadauno.removeAll();
+        
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+    }//GEN-LAST:event_AndyMousePressed
+
+    private void AndresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(rolando);
+        resetearColor(Andy);
+        resetearColor(Fabian);
+        resetearColor(Kevin);
+        establecerColor(Andres);
+        
+        
+        
+        Infodecadauno.removeAll();
+        
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+    }//GEN-LAST:event_AndresMousePressed
+
+    private void KevinMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(rolando);
+        resetearColor(Andy);
+        resetearColor(Andres);
+        resetearColor(Fabian);
+        establecerColor(Kevin);
+        
+        
+        
+        Infodecadauno.removeAll();
+        
+        Infodecadauno.revalidate();
+        Infodecadauno.repaint();
+    }//GEN-LAST:event_KevinMousePressed
+
+    //Para obtener el color cuando pase MousePressed
+    public void establecerColor(JPanel panel) {
+        panel.setBackground(new Color(21, 101, 192));
+    }
+
+    // Para devolver el color por defecto
+    public void resetearColor(JPanel panel) {
+        panel.setBackground(new Color(18, 90, 173));
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Andres;
@@ -277,7 +370,6 @@ public class panelInfo extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel panelprin;
     private javax.swing.JPanel rolando;
     // End of variables declaration//GEN-END:variables
