@@ -229,7 +229,7 @@ public class InfoAnd extends javax.swing.JPanel {
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel12.setText("Chiquitiboom A La Bin Bon Ba");
+        jLabel12.setText("Chiquitiboom A La Bim Bom Ba");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

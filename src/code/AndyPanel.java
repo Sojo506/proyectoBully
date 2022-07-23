@@ -221,7 +221,7 @@ public class AndyPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel11.setText("Futuro Progamador");
+        jLabel11.setText("Tu tu tutu tu tu tutu");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));

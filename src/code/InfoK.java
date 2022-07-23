@@ -213,7 +213,7 @@ public class InfoK extends javax.swing.JPanel {
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel9.setText("Hobbys: Futbol y gamer");
+        jLabel9.setText("Hobbys: Futbolista y gamer");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
