@@ -7,6 +7,7 @@ package code;
 import static code.Home.panelContenido;
 import static code.panelCursos.idCursoModificar;
 import java.awt.BorderLayout;
+import java.awt.event.KeyEvent;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -33,6 +34,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
     public panelRegistroEstudiantes() {
         initComponents();
+        PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombre);
+        PlaceHolder pApellido = new PlaceHolder("Ingresar primer apellido", inputPrimerApellido);
+        PlaceHolder sApellido = new PlaceHolder("Ingresar segundo apellido", inputSegundoApellido);
+        PlaceHolder edad = new PlaceHolder("Ingresar edad", inputEdad);
+        PlaceHolder ced = new PlaceHolder("Ingresar cédula", inputCedula);
+        PlaceHolder tel = new PlaceHolder("Ingresar número telefónico", inputTelefono);
         
         conn = new Conexion();
         reg = conn.getConexion();
@@ -85,7 +92,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         panel1.add(etiquetaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         inputNombre.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        inputNombre.setText("Ingresar nombre");
+        inputNombre.setNextFocusableComponent(inputPrimerApellido);
         inputNombre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputNombreMousePressed(evt);
@@ -96,13 +103,18 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 inputNombreActionPerformed(evt);
             }
         });
+        inputNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                inputNombreKeyPressed(evt);
+            }
+        });
         panel1.add(inputNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 190, 30));
 
         etiquetaPrimerApellido.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         etiquetaPrimerApellido.setText("Primer Apellido");
         panel1.add(etiquetaPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, -1, -1));
 
-        inputPrimerApellido.setText("Ingresar primer apellido");
+        inputPrimerApellido.setNextFocusableComponent(inputSegundoApellido);
         inputPrimerApellido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputPrimerApellidoMousePressed(evt);
@@ -114,7 +126,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaSegundoApellido.setText("Segundo Apellido");
         panel1.add(etiquetaSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, -1));
 
-        inputSegundoApellido.setText("Ingresar segundo apellido");
+        inputSegundoApellido.setNextFocusableComponent(inputEdad);
         inputSegundoApellido.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputSegundoApellidoMousePressed(evt);
@@ -126,7 +138,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaEdad.setText("Edad");
         panel1.add(etiquetaEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, -1, -1));
 
-        inputEdad.setText("Ingresar edad");
+        inputEdad.setNextFocusableComponent(inputCedula);
         inputEdad.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputEdadMousePressed(evt);
@@ -138,7 +150,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaCedula.setText("Cédula");
         panel1.add(etiquetaCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, -1, -1));
 
-        inputCedula.setText("Ingresar cédula");
+        inputCedula.setNextFocusableComponent(inputTelefono);
         inputCedula.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputCedulaMousePressed(evt);
@@ -155,7 +167,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaTelefono.setText("Teléfono");
         panel1.add(etiquetaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 110, -1, -1));
 
-        inputTelefono.setText("Ingresar número telefónico");
+        inputTelefono.setNextFocusableComponent(listaCursos);
         inputTelefono.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputTelefonoMousePressed(evt);
@@ -174,6 +186,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         etiquetaGuardar.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         etiquetaGuardar.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaGuardar.setNextFocusableComponent(inputNombre);
 
         javax.swing.GroupLayout btnGuardarLayout = new javax.swing.GroupLayout(btnGuardar);
         btnGuardar.setLayout(btnGuardarLayout);
@@ -195,6 +208,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         panel1.add(etiquetaCurso, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 200, -1, -1));
 
         listaCursos.setModel(modeloCursos);
+        listaCursos.setNextFocusableComponent(etiquetaGuardar);
         panel1.add(listaCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 230, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -223,13 +237,14 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         }
         
         // Comprobar que todos los campos estén llenos
-        if (inputNombre.getText().equals("") || inputPrimerApellido.getText().equals("") || inputSegundoApellido.getText().equals("")
+        if (inputNombre.getText().equals("") || (inputNombre.getText().length() > 10) || inputPrimerApellido.getText().equals("") || (inputPrimerApellido.getText().length() > 10)
+                || inputSegundoApellido.getText().equals("") || (inputSegundoApellido.getText().length() > 10)
                 || inputEdad.getText().equals("") || !inputEdad.getText().matches(regexNums)
-                || inputCedula.getText().equals("") || !inputCedula.getText().matches(regexNums)
-                || inputTelefono.getText().equals("") || !inputTelefono.getText().matches(regexNums)
+                || inputCedula.getText().equals("") || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
+                || inputTelefono.getText().equals("") || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
                 || cu == null) {
             
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres (max 10)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             inputNombre.requestFocus();
 
         } else {
@@ -263,19 +278,19 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     } else {
                         if(modificarCantidadCurso(es.getCurso(), "")) {
                             insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
+                            // Reiniciar los campos
+                            inputNombre.setText("");
+                            inputPrimerApellido.setText("");
+                            inputSegundoApellido.setText("");
+                            inputEdad.setText("");
+                            inputTelefono.setText("");
+                            inputCedula.setText("");
+                            inputNombre.requestFocus();
                         } else {
                             JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
                         }
                         
                     }
-                    // Reiniciar los campos
-                    inputNombre.setText("");
-                    inputPrimerApellido.setText("");
-                    inputSegundoApellido.setText("");
-                    inputEdad.setText("");
-                    inputTelefono.setText("");
-                    inputCedula.setText("");
-                    inputNombre.requestFocus();
 
                 } catch (SQLException ex) {
                     Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
@@ -285,6 +300,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarMousePressed
     /*Autor : Andy*/
     private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
+        /*
         if (inputNombre.getText().equals("Ingresar nombre")) {
             inputNombre.setText("");
         }
@@ -303,10 +319,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
+        */
 
     }//GEN-LAST:event_inputNombreMousePressed
     /*Autor :Andy*/
     private void inputPrimerApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPrimerApellidoMousePressed
+        /*
         if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
             inputNombre.setText("Ingresar nombre");
         }
@@ -325,11 +343,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-
+        */
 
     }//GEN-LAST:event_inputPrimerApellidoMousePressed
     /*Autor : Andy*/
     private void inputSegundoApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputSegundoApellidoMousePressed
+        /*
         if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
             inputNombre.setText("Ingresar nombre");
         }
@@ -348,11 +367,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-
+        */
 
     }//GEN-LAST:event_inputSegundoApellidoMousePressed
     /*Autor : Andy*/
     private void inputEdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEdadMousePressed
+        /*
         if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
             inputNombre.setText("Ingresar nombre");
         }
@@ -371,11 +391,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-
+        */
 
     }//GEN-LAST:event_inputEdadMousePressed
     /*Autor : Andy*/
     private void inputCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCedulaMousePressed
+        /*
         if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
             inputNombre.setText("Ingresar nombre");
         }
@@ -394,11 +415,12 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-
+        */
 
     }//GEN-LAST:event_inputCedulaMousePressed
     /*Autor : Andy*/
     private void inputTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTelefonoMousePressed
+        /*
         if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
             inputNombre.setText("Ingresar nombre");
         }
@@ -417,9 +439,13 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("Ingresar número telefónico")) {
             inputTelefono.setText("");
         }
-
+        */
 
     }//GEN-LAST:event_inputTelefonoMousePressed
+
+    private void inputNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreKeyPressed
+
+    }//GEN-LAST:event_inputNombreKeyPressed
     // Metodo para insertar estudiante
     public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel, String curso) throws SQLException {
         Statement stm = reg.createStatement();

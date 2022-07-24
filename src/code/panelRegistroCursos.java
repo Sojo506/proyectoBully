@@ -35,6 +35,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         agregarModeloListaHorario();
         agregarModeloListaSede();
         initComponents();
+        PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombreC);
+        PlaceHolder cantidad = new PlaceHolder("Ingresar cantidad disponible", inputCantidadC);
         conn = new Conexion();
         reg = conn.getConexion();
     }
@@ -70,7 +72,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel1.setText("Nombre");
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 50, 20));
 
-        inputCantidadC.setText("Ingresar cantidad disponible");
+        inputCantidadC.setNextFocusableComponent(listaSedes);
         inputCantidadC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputCantidadCMousePressed(evt);
@@ -95,7 +97,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jLabel4.setText("Cantidad disponible");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 130, 20));
 
-        inputNombreC.setText("Ingresar nombre");
+        inputNombreC.setNextFocusableComponent(listaHorario);
         inputNombreC.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 inputNombreCMousePressed(evt);
@@ -115,14 +117,17 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         etiquetaGuardar.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         etiquetaGuardar.setForeground(new java.awt.Color(255, 255, 255));
         etiquetaGuardar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        etiquetaGuardar.setNextFocusableComponent(inputNombreC);
         btnGuardarC.add(etiquetaGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 50));
 
         jPanel1.add(btnGuardarC, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 250, 210, 50));
 
         listaHorario.setModel(modeloHorarioC);
+        listaHorario.setNextFocusableComponent(listaModalidad);
         jPanel1.add(listaHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 180, 190, 30));
 
         listaModalidad.setModel(modeloModalidadC);
+        listaModalidad.setNextFocusableComponent(inputCantidadC);
         jPanel1.add(listaModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -130,6 +135,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 60, 20));
 
         listaSedes.setModel(modeloSedeC);
+        listaSedes.setNextFocusableComponent(etiquetaGuardar);
         jPanel1.add(listaSedes, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 190, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -147,11 +153,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
         // Poner codigo aqui
         //Comprobar que todos los campos esten completos
-        if (inputCantidadC.getText().equals("") || !inputCantidadC.getText().matches(regexNums) || inputNombreC.getText().equals("")) {
-            if (!inputCantidadC.getText().matches(regexNums)) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso");
+        if (inputCantidadC.getText().equals("") || !inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
+                || inputNombreC.getText().equals("") || (inputNombreC.getText().length() > 10)) {
+            if (!inputCantidadC.getText().matches(regexNums) || inputCantidadC.getText().length() > 3) {
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso (max 100)");
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos para poder agregar el curso");
+                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos para poder agregar el curso (longitud de caracteres (max 10)");
             }
             inputNombreC.requestFocus();
         } else {
@@ -195,6 +202,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarCMousePressed
 
     private void inputNombreCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreCMousePressed
+        /*
         if (inputNombreC.getText().equals("Ingresar nombre")) {
             inputNombreC.setText("");
         }
@@ -202,12 +210,13 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
             inputCantidadC.setText("Ingresar cantidad disponible");
         }
-
+        */
 
     }//GEN-LAST:event_inputNombreCMousePressed
 
     /*Autor : Andy*/
     private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
+        /*
         if (inputNombreC.getText().equals("") || inputNombreC.getText() == null) {
             inputNombreC.setText("Ingresar nombre");
         }
@@ -216,7 +225,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
             inputCantidadC.setText("");
         }
 
-
+        */
     }//GEN-LAST:event_inputCantidadCMousePressed
 
     //Metodo para insertar curso a la BD
