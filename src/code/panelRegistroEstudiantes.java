@@ -29,6 +29,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
     private String regexNums = "^[0-9]+";
+    private String regexLetr = "^[aA-zZ]+";
     Conexion conn;
     Connection reg;
 
@@ -237,11 +238,11 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         }
         
         // Comprobar que todos los campos estén llenos
-        if (inputNombre.getText().equals("") || (inputNombre.getText().length() > 10) || inputPrimerApellido.getText().equals("") || (inputPrimerApellido.getText().length() > 10)
-                || inputSegundoApellido.getText().equals("") || (inputSegundoApellido.getText().length() > 10)
-                || inputEdad.getText().equals("") || !inputEdad.getText().matches(regexNums)
-                || inputCedula.getText().equals("") || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
-                || inputTelefono.getText().equals("") || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
+        if ((!inputNombre.getText().matches(regexLetr)) ||(inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr))||(inputPrimerApellido.getText().length() > 10)
+                ||(!inputSegundoApellido.getText().matches(regexLetr)) ||(inputSegundoApellido.getText().length() > 10)
+                || !inputEdad.getText().matches(regexNums)
+                || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
+                || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
                 || cu == null) {
             
             javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres (max 10)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);

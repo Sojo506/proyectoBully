@@ -21,6 +21,7 @@ import javax.swing.JTextField;
 public class panelRegistroCursos extends javax.swing.JPanel {
 
     private String regexNums = "^[0-9]+";
+    private String regexLtr = "^[aA-zZ]+";
     DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloSedeC = new DefaultComboBoxModel();
@@ -153,8 +154,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
         // Poner codigo aqui
         //Comprobar que todos los campos esten completos
-        if (inputCantidadC.getText().equals("") || !inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
-                || inputNombreC.getText().equals("") || (inputNombreC.getText().length() > 10)) {
+        if (inputCantidadC.getText().equals("") ||!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
+                ||!(inputNombreC.getText().matches(regexLtr)) ||(inputNombreC.getText().length() > 10)) {
             if (!inputCantidadC.getText().matches(regexNums) || inputCantidadC.getText().length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso (max 100)");
             } else {
