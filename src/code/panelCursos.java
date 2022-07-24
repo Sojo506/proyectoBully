@@ -42,7 +42,6 @@ public class panelCursos extends javax.swing.JPanel {
         }
 
         //agregarModeloTabla();
-
     }
 
     //Metodo para agregar las columnas de la tabla
@@ -86,14 +85,14 @@ public class panelCursos extends javax.swing.JPanel {
     }
 
     //Metodo para modificar algun curso
-    
-    public void establecerColor(JPanel panel){
+    public void establecerColor(JPanel panel) {
         panel.setBackground(new Color(21, 101, 192));
     }
-    
-    public void resetearColor(JPanel panel){
+
+    public void resetearColor(JPanel panel) {
         panel.setBackground(new Color(18, 90, 173));
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -102,7 +101,6 @@ public class panelCursos extends javax.swing.JPanel {
     @SuppressWarnings("unchecked")
 
 
-    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -110,7 +108,11 @@ public class panelCursos extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaCursos = new javax.swing.JTable();
+        tablaCursos = new javax.swing.JTable() {
+            public boolean isCellEditable(int fila, int columna) {
+                return false;
+            }
+        };
         btnAgregarC = new javax.swing.JPanel();
         agregar = new javax.swing.JLabel();
         btnModificarC = new javax.swing.JPanel();
@@ -240,8 +242,8 @@ public class panelCursos extends javax.swing.JPanel {
     private void btnBorrarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCMousePressed
         try {
             //Para obtener la fila de el curso seleccionado
-            int filaCuros = tablaCursos.getSelectedRow();
-            if (filaCuros < 0) {
+            int filaCurso = tablaCursos.getSelectedRow();
+            if (filaCurso < 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el curso que desea borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
                 //Ejecutamos la consulta
@@ -270,11 +272,17 @@ public class panelCursos extends javax.swing.JPanel {
                     i++;
                 }
                 //Variable para obtener el id del estudiante
-                int idCurso = Integer.parseInt(cursos[filaCuros][0]);
-                System.out.println(idCurso);
+                int idCurso = Integer.parseInt(cursos[filaCurso][0]);
+                String cursoEliminado = cursos[filaCurso][1];
+                
                 if (idCurso < 0) {
                     javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el curso que desea borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
+                    try {
+                        deleteStudents(cursoEliminado);
+                    } catch (SQLException ex) {
+                        System.out.println("Error: " + ex);
+                    }
                     //Ejecutamos la consulta
                     Statement stm2 = null;
                     try {
@@ -300,46 +308,45 @@ public class panelCursos extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBorrarCMousePressed
 
     private void btnAgregarCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCMouseEntered
-        if(btnAgregarC.getBackground().getRGB() == -15574355){
+        if (btnAgregarC.getBackground().getRGB() == -15574355) {
             establecerColor(btnAgregarC);
         }
     }//GEN-LAST:event_btnAgregarCMouseEntered
 
     private void btnAgregarCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCMouseExited
-        if(btnModificarC.getBackground().getRGB() != -15574355 || btnBorrarC.getBackground().getRGB() != -15574355){
+        if (btnModificarC.getBackground().getRGB() != -15574355 || btnBorrarC.getBackground().getRGB() != -15574355) {
             resetearColor(btnAgregarC);
         }
     }//GEN-LAST:event_btnAgregarCMouseExited
 
     private void btnModificarCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCMouseEntered
-        if(btnModificarC.getBackground().getRGB() == -15574355){
+        if (btnModificarC.getBackground().getRGB() == -15574355) {
             establecerColor(btnModificarC);
         }
     }//GEN-LAST:event_btnModificarCMouseEntered
 
     private void btnModificarCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCMouseExited
-        if(btnAgregarC.getBackground().getRGB() != -15574355 || btnBorrarC.getBackground().getRGB() != -15574355){
+        if (btnAgregarC.getBackground().getRGB() != -15574355 || btnBorrarC.getBackground().getRGB() != -15574355) {
             resetearColor(btnModificarC);
         }
     }//GEN-LAST:event_btnModificarCMouseExited
 
     private void btnBorrarCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCMouseEntered
-        if(btnBorrarC.getBackground().getRGB() == -15574355){
+        if (btnBorrarC.getBackground().getRGB() == -15574355) {
             establecerColor(btnBorrarC);
         }
     }//GEN-LAST:event_btnBorrarCMouseEntered
 
     private void btnBorrarCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCMouseExited
-        if(btnAgregarC.getBackground().getRGB() != -15574355 || btnModificarC.getBackground().getRGB() != -15574355){
+        if (btnAgregarC.getBackground().getRGB() != -15574355 || btnModificarC.getBackground().getRGB() != -15574355) {
             resetearColor(btnBorrarC);
         }
     }//GEN-LAST:event_btnBorrarCMouseExited
-    
-    
+
     private void getModificarCurso() {
         try {
             int filaCurso = tablaCursos.getSelectedRow(); //Para obtener la fila del curso
-            
+
             //Condicional para verificar que se seleccione un curso para ser modificado
             if (filaCurso < 0) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un curso para poder modificarlo. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -401,7 +408,39 @@ public class panelCursos extends javax.swing.JPanel {
         }
 
     }
-    
+
+    private void deleteStudents(String curso) throws SQLException {
+        // para ejecutar la consulta
+        Statement stm = reg.createStatement();
+        ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
+
+        // para obtener el numero de filas
+        int fila = 0;
+        while (contador.next()) {
+            fila++;
+        }
+
+        String estudiantes[][] = new String[fila][8]; // [filas][columnas]
+        int i = 0; // itera las filas
+
+        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
+        // recorre la tabla estudiantes
+        while (re.next()) {
+            estudiantes[i][0] = re.getString("idEstudiante");
+            estudiantes[i][7] = re.getString("curso");
+
+            if (estudiantes[i][7].equals(curso)) {
+                Statement stm2 = reg.createStatement();
+                try {
+                    stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + Integer.parseInt(estudiantes[i][0]) );
+                } catch (SQLException ex) {
+                    System.out.println("Error 2" + ex);
+                }
+            }
+            i++;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Image;
     private javax.swing.JLabel Title;

@@ -38,12 +38,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
         } catch (SQLException ex) {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
-        /*
-        panelContenido.removeAll();
-        panelContenido.add(this);
-        panelContenido.revalidate();
-        panelContenido.repaint();
-         */
     }
 
 
@@ -60,7 +54,11 @@ public class panelEstudiantes extends javax.swing.JPanel {
         Title = new javax.swing.JLabel();
         Image = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tablaEstudiantes = new javax.swing.JTable();
+        tablaEstudiantes = new javax.swing.JTable(){
+            public boolean isCellEditable(int fila, int columna) {
+                return false;
+            }
+        };
         btnAgregar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnModificar = new javax.swing.JPanel();

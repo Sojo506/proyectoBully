@@ -24,12 +24,13 @@ import javax.swing.JTextField;
  * @author XPC
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
+
     boolean verificacion;
     String cu = null;
     DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
     private String regexNums = "^[0-9]+";
-    private String regexLetr = "^[aA-zZ]+";
+    private String regexLetr = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
     Conexion conn;
     Connection reg;
 
@@ -41,10 +42,10 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         PlaceHolder edad = new PlaceHolder("Ingresar edad", inputEdad);
         PlaceHolder ced = new PlaceHolder("Ingresar cédula", inputCedula);
         PlaceHolder tel = new PlaceHolder("Ingresar número telefónico", inputTelefono);
-        
+
         conn = new Conexion();
         reg = conn.getConexion();
-        
+
         try {
             getListaCursos();
         } catch (NullPointerException ex) {
@@ -223,7 +224,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
-                                    
+
 
     private void inputNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNombreActionPerformed
         // TODO add your handling code here:
@@ -236,15 +237,15 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         } catch (NullPointerException ex) {
             System.out.println(cu);
         }
-        
+
         // Comprobar que todos los campos estén llenos
-        if ((!inputNombre.getText().matches(regexLetr)) ||(inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr))||(inputPrimerApellido.getText().length() > 10)
-                ||(!inputSegundoApellido.getText().matches(regexLetr)) ||(inputSegundoApellido.getText().length() > 10)
+        if ((!inputNombre.getText().matches(regexLetr)) || (inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr)) || (inputPrimerApellido.getText().length() > 10)
+                || (!inputSegundoApellido.getText().matches(regexLetr)) || (inputSegundoApellido.getText().length() > 10)
                 || !inputEdad.getText().matches(regexNums)
                 || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
                 || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
                 || cu == null) {
-            
+
             javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres (max 10)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             inputNombre.requestFocus();
 
@@ -270,14 +271,25 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     if (etiquetaGuardar.getText().equals("Modificar")) {
                         int id = panelEstudiantes.idEstudianteModificar;
                         String c = panelEstudiantes.nombreCurso;
-                        if(modificarCantidadCurso(es.getCurso(), c)) {
+                        if (modificarCantidadCurso(es.getCurso(), c)) {
                             modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
+                            
+                            // Instanciamos el panel&
+                            panelEstudiantes estudiantes = new panelEstudiantes();
+                            estudiantes.setSize(680, 360);
+                            estudiantes.setLocation(0, 0);
+
+                            // Removemos el panel anterior y pasamos el nuevo para mostrarlo
+                            panelContenido.removeAll();
+                            panelContenido.add(estudiantes, BorderLayout.CENTER);
+                            panelContenido.revalidate();
+                            panelContenido.repaint();
                         } else {
                             JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
                         }
 
                     } else {
-                        if(modificarCantidadCurso(es.getCurso(), "")) {
+                        if (modificarCantidadCurso(es.getCurso(), "")) {
                             insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
                             // Reiniciar los campos
                             inputNombre.setText("");
@@ -290,7 +302,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                         } else {
                             JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
                         }
-                        
+
                     }
 
                 } catch (SQLException ex) {
@@ -320,7 +332,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputNombreMousePressed
     /*Autor :Andy*/
@@ -344,7 +356,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputPrimerApellidoMousePressed
     /*Autor : Andy*/
@@ -368,7 +380,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputSegundoApellidoMousePressed
     /*Autor : Andy*/
@@ -392,7 +404,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputEdadMousePressed
     /*Autor : Andy*/
@@ -416,7 +428,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
             inputTelefono.setText("Ingresar número telefónico");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputCedulaMousePressed
     /*Autor : Andy*/
@@ -440,7 +452,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         if (inputTelefono.getText().equals("Ingresar número telefónico")) {
             inputTelefono.setText("");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputTelefonoMousePressed
 
@@ -470,16 +482,16 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     // Metodo para modificar cantidad de curso (agregar)
     private boolean modificarCantidadCurso(String curso, String c) throws SQLException {
         // variblaes para obtener cantidad disponible
-        int idAux=0;
-        int cantidadAux=0;
-        
+        int idAux = 0;
+        int cantidadAux = 0;
+
         // variables para obtener cantidad de estudiantes
-        int ce=0;
-        int ce2=0;
+        int ce = 0;
+        int ce2 = 0;
         panelCursos pC = new panelCursos();
         Curso cr = new Curso();
         int idCurso = -1;
-        
+
         try {
             //Ejecutamos la consulta
             Statement stm = reg.createStatement();
@@ -492,13 +504,13 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
             while (contador.next()) {
                 fila++;
             }
-            
+
             // [filas][columnas]
-            String cursos[][] = new String[fila][6]; 
-            
+            String cursos[][] = new String[fila][6];
+
             // iterador
             int i = 0;
-            
+
             // Para recorrer los datos 
             ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
 
@@ -508,7 +520,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                 cursos[i][1] = re.getString("nombre");
                 cursos[i][4] = re.getString("cantidad");
                 cursos[i][5] = re.getString("cantidadEstudiantes");
-                
+
                 // Comprobar y obtener datos del curso seleccionado
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
@@ -516,24 +528,24 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     cr.setCantidad(Integer.parseInt(cursos[i][4]));
                     ce = Integer.parseInt(cursos[i][5]);
                 }
-                
+
                 // Comprobar y obtener datos del curso seleccionado si la opcion es modificar
                 if (cursos[i][1].equals(c)) {
                     idAux = Integer.parseInt(cursos[i][0]);
                     cantidadAux = Integer.parseInt(cursos[i][4]);
                     ce2 = Integer.parseInt(cursos[i][5]);
                 }
-                
+
                 i++;
             }
             try {
-                if(etiquetaGuardar.getText().equals("Modificar")) {
+                if (etiquetaGuardar.getText().equals("Modificar")) {
                     // Verificar cantidad del curso
-                    if(cr.getCantidad() > 0) {
-                        cr.setCantidad(cr.getCantidad()-1);
+                    if (cr.getCantidad() > 0) {
+                        cr.setCantidad(cr.getCantidad() - 1);
                         cantidadAux += 1;
                         // Verificar que el curso seleccionado no sea el mismo al anterior
-                        if(!c.equals(curso)) {
+                        if (!c.equals(curso)) {
                             stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
                             stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
                         }
@@ -541,11 +553,11 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
                     } else {
                         verificacion = false;
                     }
-                    
+
                 } else {
                     // Verificar cantidad del curso
-                    if(cr.getCantidad() > 0) {
-                        cr.setCantidad(cr.getCantidad()-1);
+                    if (cr.getCantidad() > 0) {
+                        cr.setCantidad(cr.getCantidad() - 1);
                         stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
                         verificacion = true;
                     } else {

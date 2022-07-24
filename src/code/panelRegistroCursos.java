@@ -4,6 +4,7 @@
  */
 package code;
 
+import static code.Home.panelContenido;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ import javax.swing.JTextField;
 public class panelRegistroCursos extends javax.swing.JPanel {
 
     private String regexNums = "^[0-9]+";
-    private String regexLtr = "^[aA-zZ]+";
+    private String regexLtr = "^^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
     DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloSedeC = new DefaultComboBoxModel();
@@ -129,6 +130,16 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
         listaModalidad.setModel(modeloModalidadC);
         listaModalidad.setNextFocusableComponent(inputCantidadC);
+        listaModalidad.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                listaModalidadMousePressed(evt);
+            }
+        });
+        listaModalidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaModalidadActionPerformed(evt);
+            }
+        });
         jPanel1.add(listaModalidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 190, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
@@ -154,8 +165,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
         // Poner codigo aqui
         //Comprobar que todos los campos esten completos
-        if (inputCantidadC.getText().equals("") ||!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
-                ||!(inputNombreC.getText().matches(regexLtr)) ||(inputNombreC.getText().length() > 10)) {
+        if (!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
+                || !(inputNombreC.getText().matches(regexLtr)) || (inputNombreC.getText().length() > 10)) {
             if (!inputCantidadC.getText().matches(regexNums) || inputCantidadC.getText().length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso (max 100)");
             } else {
@@ -186,12 +197,23 @@ public class panelRegistroCursos extends javax.swing.JPanel {
                         //Agregar metodo
                         int id = panelCursos.idCursoModificar;
                         modificarCurso(nombre, horario, modalidad, cantidad, sede, id);
+
+                        panelCursos cursos = new panelCursos();
+                        cursos.setSize(680, 360);
+                        cursos.setLocation(0, 0);
+
+                        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
+                        panelContenido.removeAll();
+                        panelContenido.add(cursos, BorderLayout.CENTER);
+                        panelContenido.revalidate();
+                        panelContenido.repaint();
                     } else {
                         insertarCurso(nombre, horario, modalidad, cantidad, sede);
+
+                        //Resetear los campos
+                        inputCantidadC.setText("");
+                        inputNombreC.setText("");
                     }
-                    //Resetear los campos
-                    inputCantidadC.setText("");
-                    inputNombreC.setText("");
 
                 } catch (SQLException ex) {
                     Logger.getLogger(panelRegistroCursos.class.getName()).log(Level.SEVERE, null, ex);
@@ -211,7 +233,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
             inputCantidadC.setText("Ingresar cantidad disponible");
         }
-        */
+         */
 
     }//GEN-LAST:event_inputNombreCMousePressed
 
@@ -226,8 +248,19 @@ public class panelRegistroCursos extends javax.swing.JPanel {
             inputCantidadC.setText("");
         }
 
-        */
+         */
     }//GEN-LAST:event_inputCantidadCMousePressed
+
+    private void listaModalidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaModalidadMousePressed
+
+    }//GEN-LAST:event_listaModalidadMousePressed
+
+    private void listaModalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaModalidadActionPerformed
+        if (listaModalidad.getSelectedItem().equals("Virtual")) {
+            listaSedes.setSelectedItem("Virtual");
+            System.out.println("Hola");
+        }
+    }//GEN-LAST:event_listaModalidadActionPerformed
 
     //Metodo para insertar curso a la BD
     public void insertarCurso(String nombre, String horario, String modalidad, int cantidad, String sede) throws SQLException {
@@ -262,7 +295,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
     private void agregarModeloListaSede() {
         modeloSedeC.addElement("San Pedro");
-        modeloSedeC.addElement("Escazu");
+        modeloSedeC.addElement("Escazú");
         modeloSedeC.addElement("Guanacaste");
         modeloSedeC.addElement("Puerto Viejo");
         modeloSedeC.addElement("Alajuelita");
