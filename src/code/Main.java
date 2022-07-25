@@ -570,6 +570,12 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnCursos);
         resetearColor(btnInfo);
         establecerColor(btnReportes);
+        
+        
+        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
+        panelContenido.removeAll();
+        panelContenido.revalidate();
+        panelContenido.repaint();
     }//GEN-LAST:event_btnReportesMousePressed
 
     /**

@@ -51,11 +51,11 @@ public class FuncionesEstudiante {
         if ((!inputNombre.getText().matches(regexLetr)) || (inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr)) || (inputPrimerApellido.getText().length() > 10)
                 || (!inputSegundoApellido.getText().matches(regexLetr)) || (inputSegundoApellido.getText().length() > 10)
                 || !inputEdad.getText().matches(regexNums)
-                || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
-                || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
+                || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() < 9 || inputCedula.getText().length() > 9)
+                || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() < 8 || inputTelefono.getText().length() > 8)
                 || cu == null) {
 
-            javax.swing.JOptionPane.showMessageDialog(null, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres (max 10)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(null, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             inputNombre.requestFocus();
 
         } else {
@@ -291,7 +291,6 @@ public class FuncionesEstudiante {
                         getStudents();
                     } catch (SQLException ex) {
                         System.out.println("Error 2" + ex);
-                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }

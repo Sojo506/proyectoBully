@@ -33,7 +33,7 @@ public class FuncionesCurso {
     /* Funciones panelRegistroCursos */
     //Comprobar que todos los campos esten completos
     public void guardarDatosRegistroC() {
-        if (!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3) || !(inputNombreC.getText().matches(regexLtr)) || (inputNombreC.getText().length() > 16)) {
+        if (!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3) || !(inputNombreC.getText().matches(regexLtr)) || (inputNombreC.getText().length() < 3 || inputNombreC.getText().length() > 16)) {
             if (!inputCantidadC.getText().matches(regexNums) || inputCantidadC.getText().length() > 3) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso (max 100)");
             } else {
