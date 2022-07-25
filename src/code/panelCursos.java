@@ -4,13 +4,16 @@
  */
 package code;
 
+import static code.Main.establecerColor;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.util.logging.Logger;
 import java.util.logging.Level;
-import static code.Home.panelContenido;
+import static code.Main.panelContenido;
+import static code.Main.resetearColor;
+import static code.panelRegistroCursos.etiquetaGuardar;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.sql.Connection;
@@ -22,75 +25,25 @@ import javax.swing.JPanel;
  * @author Andrés
  */
 public class panelCursos extends javax.swing.JPanel {
-
-    Conexion conn;
-    Connection reg;
     private DefaultTableModel modeloTabla2 = new DefaultTableModel();
     public static int idCursoModificar;
+    public static String anteriorCurso;
+    FuncionesCurso funciones = new FuncionesCurso();
 
     /**
      * Creates new form panelCursos
      */
     public panelCursos() {
         initComponents();
-        conn = new Conexion();
-        reg = conn.getConexion();
+        Conexion conn = new Conexion();
+        Connection reg = conn.getConexion();
         try {
-            getCursos();
+            funciones.getCursos();
         } catch (SQLException ex) {
             Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //agregarModeloTabla();
-    }
-
-    //Metodo para agregar las columnas de la tabla
-    private void agregarModeloTabla() {
-        modeloTabla2.addColumn("Nombre");
-        modeloTabla2.addColumn("Horario");
-        modeloTabla2.addColumn("Modalidad");
-        modeloTabla2.addColumn("Cantidad");
-        modeloTabla2.addColumn("Disponibilidad");
-
-    }
-
-    //Metodo para mostrar los datos en las tablas
-    public void getCursos() throws SQLException {
-        Statement stm = reg.createStatement(); //Para procesar una sentencia SQL
-        ResultSet counter = stm.executeQuery("SELECT * FROM `cursos`"); //Para indicar que tabla vamos a utlizar
-
-        // Obtener el numero de filas
-        int contador = 0;
-        while (counter.next()) {
-            contador++;
-        }
-        //Creamos un arreglo para luego recorrerlo
-        String cursos[][] = new String[contador][6];//filas //columnas
-        int i = 0;
-        ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-        while (re.next()) {
-            cursos[i][0] = re.getString("nombre");
-            cursos[i][1] = re.getString("horario");
-            cursos[i][2] = re.getString("modalidad");
-            cursos[i][3] = re.getString("cantidad");
-            cursos[i][4] = re.getString("cantidadEstudiantes");
-            cursos[i][5] = re.getString("sede");
-            i++;
-        }
-
-        tablaCursos.setModel(new javax.swing.table.DefaultTableModel(cursos, new String[]{
-            "Nombre", "Horario", "Modalidad", "Cantidad", "Cantidad Estudiantes", "Campus"
-        }));
-
-    }
-
-    //Metodo para modificar algun curso
-    public void establecerColor(JPanel panel) {
-        panel.setBackground(new Color(21, 101, 192));
-    }
-
-    public void resetearColor(JPanel panel) {
-        panel.setBackground(new Color(18, 90, 173));
     }
 
     /**
@@ -224,87 +177,21 @@ public class panelCursos extends javax.swing.JPanel {
         panelRC.setSize(680, 360);
         panelRC.setLocation(0, 0);
 
-        panelRC.etiquetaGuardar.setText("Guardar");
+        etiquetaGuardar.setText("Guardar");
 
         panelContenido.removeAll();
         panelContenido.add(panelRC, BorderLayout.CENTER);
         panelContenido.revalidate();
         panelContenido.repaint();
-
-
     }//GEN-LAST:event_btnAgregarCMousePressed
 
     private void btnModificarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarCMousePressed
         //Llamar el metodo para modificar un curso
-        getModificarCurso();
+        funciones.getModificarCurso();
     }//GEN-LAST:event_btnModificarCMousePressed
 
     private void btnBorrarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarCMousePressed
-        try {
-            //Para obtener la fila de el curso seleccionado
-            int filaCurso = tablaCursos.getSelectedRow();
-            if (filaCurso < 0) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el curso que desea borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                //Ejecutamos la consulta
-                Statement stm = reg.createStatement();
-                ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-
-                //Obtenemos la consulta
-                int fila = 0;
-                while (contador.next()) {
-                    fila++;
-                }
-                //primero las filas y despues las columnas
-                String cursos[][] = new String[fila][6];
-                int i = 0; //Iterador de las filas
-                // Para recorrer los datos 
-                ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-
-                //Recorrer la tabla de los cursos
-                while (re.next()) {
-                    cursos[i][0] = re.getString("idCurso");
-                    cursos[i][1] = re.getString("nombre");
-                    cursos[i][2] = re.getString("horario");
-                    cursos[i][3] = re.getString("modalidad");
-                    cursos[i][4] = re.getString("cantidad");
-                    cursos[i][5] = re.getString("sede");
-                    i++;
-                }
-                //Variable para obtener el id del estudiante
-                int idCurso = Integer.parseInt(cursos[filaCurso][0]);
-                String cursoEliminado = cursos[filaCurso][1];
-                
-                if (idCurso < 0) {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el curso que desea borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    try {
-                        deleteStudents(cursoEliminado);
-                    } catch (SQLException ex) {
-                        System.out.println("Error: " + ex);
-                    }
-                    //Ejecutamos la consulta
-                    Statement stm2 = null;
-                    try {
-                        stm2 = reg.createStatement();
-                    } catch (SQLException ex) {
-                        System.out.println("Error 1");
-
-                    }
-                    try {
-                        stm2.executeUpdate("DELETE FROM `cursos` WHERE `idCurso` = " + idCurso + " LIMIT 1");
-                        javax.swing.JOptionPane.showMessageDialog(this, "Se borró el curso correctamente \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                        getCursos();
-                    } catch (SQLException ex) {
-                        System.out.println("Error 2" + ex);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
+        funciones.getDeleteCurso();
     }//GEN-LAST:event_btnBorrarCMousePressed
 
     private void btnAgregarCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarCMouseEntered
@@ -343,104 +230,6 @@ public class panelCursos extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnBorrarCMouseExited
 
-    private void getModificarCurso() {
-        try {
-            int filaCurso = tablaCursos.getSelectedRow(); //Para obtener la fila del curso
-
-            //Condicional para verificar que se seleccione un curso para ser modificado
-            if (filaCurso < 0) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un curso para poder modificarlo. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                //Ejecutar la consulta
-                Statement stm = reg.createStatement();
-                ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-
-                //Obtener el numero de filas
-                int fila = 0;
-                while (contador.next()) {
-                    fila++;
-                }
-
-                String cursos[][] = new String[fila][6];
-                int i = 0; //Iterador de las filas
-                ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-
-                //Recorrer la tabla
-                while (re.next()) {
-                    cursos[i][0] = re.getString("idCurso");
-                    cursos[i][1] = re.getString("nombre");
-                    cursos[i][2] = re.getString("horario");
-                    cursos[i][3] = re.getString("modalidad");
-                    cursos[i][4] = re.getString("cantidad");
-                    cursos[i][5] = re.getString("sede");
-                    i++;
-                }
-
-                //Para obtener los datos de los cursos
-                idCursoModificar = Integer.parseInt(cursos[filaCurso][0]);
-
-                //Otro condicional para verificar que se seleccione un curso a modificar
-                if (idCursoModificar < 0) {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar un curso para poder modificarlo. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    //Mostrar el panel
-                    panelRegistroCursos pRc = new panelRegistroCursos();
-                    pRc.setSize(680, 360);
-                    pRc.setLocation(0, 0);
-                    pRc.etiquetaGuardar.setText("Modificar");
-
-                    //Poner los datos en los campos
-                    pRc.inputNombreC.setText(cursos[filaCurso][1]);
-                    pRc.listaHorario.setSelectedItem(cursos[filaCurso][2]);
-                    pRc.listaModalidad.setSelectedItem(cursos[filaCurso][3]);
-                    pRc.inputCantidadC.setText(cursos[filaCurso][4]);
-                    pRc.listaSedes.setSelectedItem(cursos[filaCurso][5]);
-
-                    //Remover el panel anterior
-                    panelContenido.removeAll();
-                    panelContenido.add(pRc, BorderLayout.CENTER);
-                    panelContenido.revalidate();
-                    panelContenido.repaint();
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }
-
-    private void deleteStudents(String curso) throws SQLException {
-        // para ejecutar la consulta
-        Statement stm = reg.createStatement();
-        ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-        // para obtener el numero de filas
-        int fila = 0;
-        while (contador.next()) {
-            fila++;
-        }
-
-        String estudiantes[][] = new String[fila][8]; // [filas][columnas]
-        int i = 0; // itera las filas
-
-        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-        // recorre la tabla estudiantes
-        while (re.next()) {
-            estudiantes[i][0] = re.getString("idEstudiante");
-            estudiantes[i][7] = re.getString("curso");
-
-            if (estudiantes[i][7].equals(curso)) {
-                Statement stm2 = reg.createStatement();
-                try {
-                    stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + Integer.parseInt(estudiantes[i][0]) );
-                } catch (SQLException ex) {
-                    System.out.println("Error 2" + ex);
-                }
-            }
-            i++;
-        }
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Image;
     private javax.swing.JLabel Title;
@@ -452,6 +241,6 @@ public class panelCursos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tablaCursos;
+    public static javax.swing.JTable tablaCursos;
     // End of variables declaration//GEN-END:variables
 }

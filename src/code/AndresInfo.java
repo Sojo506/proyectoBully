@@ -6,14 +6,14 @@ package code;
 import java.awt.Color;
 /**
  *
- * @author Andy
+ * @author morri
  */
-public class RoloPanel extends javax.swing.JPanel {
+public class AndresInfo extends javax.swing.JPanel {
 
     /**
-     * Creates new form RoloPanel
+     * Creates new form InfoAnd
      */
-    public RoloPanel() {
+    public AndresInfo() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class RoloPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        gitHubPanel = new javax.swing.JPanel();
+        gitAndPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         linkPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -48,13 +48,14 @@ public class RoloPanel extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
+        jLabel12 = new javax.swing.JLabel();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/goku.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ricktiny.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 150));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -62,18 +63,18 @@ public class RoloPanel extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Rolando Algaba Aguilar");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 380, 60));
+        jLabel2.setText("Andres Zuñiga Sanchez");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
 
-        gitHubPanel.setBackground(new java.awt.Color(255, 255, 255));
-        gitHubPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        gitAndPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitAndPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                gitHubPanelMouseEntered(evt);
+                gitAndPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                gitHubPanelMouseExited(evt);
+                gitAndPanelMouseExited(evt);
             }
         });
 
@@ -81,22 +82,22 @@ public class RoloPanel extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout gitHubPanelLayout = new javax.swing.GroupLayout(gitHubPanel);
-        gitHubPanel.setLayout(gitHubPanelLayout);
-        gitHubPanelLayout.setHorizontalGroup(
-            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gitHubPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout gitAndPanelLayout = new javax.swing.GroupLayout(gitAndPanel);
+        gitAndPanel.setLayout(gitAndPanelLayout);
+        gitAndPanelLayout.setHorizontalGroup(
+            gitAndPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gitAndPanelLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        gitHubPanelLayout.setVerticalGroup(
-            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitHubPanelLayout.createSequentialGroup()
+        gitAndPanelLayout.setVerticalGroup(
+            gitAndPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitAndPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(gitHubPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
+        jPanel1.add(gitAndPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
 
         linkPanel.setBackground(new java.awt.Color(255, 255, 255));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -192,7 +193,7 @@ public class RoloPanel extends javax.swing.JPanel {
         jPanel1.add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
 
         gitHub.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 40, -1));
+        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 120, 20));
 
         linkedin.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
         jPanel1.add(linkedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
@@ -204,29 +205,32 @@ public class RoloPanel extends javax.swing.JPanel {
         jPanel1.add(insta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel7.setText("Ocupación: Proplayer");
+        jLabel7.setText("Ocupación: Hacker Blanco");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel8.setText("Residencia: Nueva Zelanda");
+        jLabel8.setText("Residencia: Westeros");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel9.setText("Hobby: Gamer y Deportista");
+        jLabel9.setText("Hobby: Programar y ver pc");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel10.setText("Edad: 17");
+        jLabel10.setText("Edad: 18");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel11.setText("Viva la Liga ");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
+
+        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        jLabel12.setText("Chiquitiboom A La Bim Bom Ba");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -246,19 +250,19 @@ public class RoloPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered
-        gitHubPanel.setBackground(new Color(204,204,204));
-        gitHub.setText("Rolo0519");
-    }//GEN-LAST:event_gitHubPanelMouseEntered
+    private void gitAndPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitAndPanelMouseEntered
+        gitAndPanel.setBackground(new Color(204,204,204));
+        gitHub.setText("andreS0103");
+    }//GEN-LAST:event_gitAndPanelMouseEntered
 
-    private void gitHubPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseExited
-        gitHubPanel.setBackground(Color.white);
+    private void gitAndPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitAndPanelMouseExited
+        gitAndPanel.setBackground(Color.white);
         gitHub.setText("");
-    }//GEN-LAST:event_gitHubPanelMouseExited
+    }//GEN-LAST:event_gitAndPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
         linkPanel.setBackground(new Color(204,204,204));
-        linkedin.setText("Rolando Algaba");
+        linkedin.setText("Andres Sanchez");
     }//GEN-LAST:event_linkPanelMouseEntered
 
     private void linkPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseExited
@@ -268,7 +272,7 @@ public class RoloPanel extends javax.swing.JPanel {
 
     private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
         instaPanel.setBackground(new Color(204,204,204));
-        insta.setText("rolando__0519");
+        insta.setText("andress0103");
     }//GEN-LAST:event_instaPanelMouseEntered
 
     private void instaPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseExited
@@ -278,7 +282,7 @@ public class RoloPanel extends javax.swing.JPanel {
 
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
         epicPanel.setBackground(new Color(204,204,204));
-        epic.setText("Rolocondaxdxd");
+        epic.setText("TheRealdressxd");
     }//GEN-LAST:event_epicPanelMouseEntered
 
     private void epicPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseExited
@@ -290,13 +294,14 @@ public class RoloPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel epic;
     private javax.swing.JPanel epicPanel;
+    private javax.swing.JPanel gitAndPanel;
     private javax.swing.JLabel gitHub;
-    private javax.swing.JPanel gitHubPanel;
     private javax.swing.JLabel insta;
     private javax.swing.JPanel instaPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

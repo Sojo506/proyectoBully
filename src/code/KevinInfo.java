@@ -8,12 +8,12 @@ import java.awt.Color;
  *
  * @author morri
  */
-public class InfoAnd extends javax.swing.JPanel {
+public class KevinInfo extends javax.swing.JPanel {
 
     /**
-     * Creates new form InfoAnd
+     * Creates new form InfoK
      */
-    public InfoAnd() {
+    public KevinInfo() {
         initComponents();
     }
 
@@ -30,7 +30,7 @@ public class InfoAnd extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        gitAndPanel = new javax.swing.JPanel();
+        gitKPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         linkPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -55,7 +55,7 @@ public class InfoAnd extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ricktiny.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rick.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 150));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
@@ -63,18 +63,18 @@ public class InfoAnd extends javax.swing.JPanel {
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Andres Zuñiga Sanchez");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
+        jLabel2.setText("Kevin Araya Cordero");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
 
-        gitAndPanel.setBackground(new java.awt.Color(255, 255, 255));
-        gitAndPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        gitKPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitKPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                gitAndPanelMouseEntered(evt);
+                gitKPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                gitAndPanelMouseExited(evt);
+                gitKPanelMouseExited(evt);
             }
         });
 
@@ -82,22 +82,22 @@ public class InfoAnd extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout gitAndPanelLayout = new javax.swing.GroupLayout(gitAndPanel);
-        gitAndPanel.setLayout(gitAndPanelLayout);
-        gitAndPanelLayout.setHorizontalGroup(
-            gitAndPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gitAndPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout gitKPanelLayout = new javax.swing.GroupLayout(gitKPanel);
+        gitKPanel.setLayout(gitKPanelLayout);
+        gitKPanelLayout.setHorizontalGroup(
+            gitKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gitKPanelLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        gitAndPanelLayout.setVerticalGroup(
-            gitAndPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitAndPanelLayout.createSequentialGroup()
+        gitKPanelLayout.setVerticalGroup(
+            gitKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitKPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(gitAndPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
+        jPanel1.add(gitKPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
 
         linkPanel.setBackground(new java.awt.Color(255, 255, 255));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -193,7 +193,7 @@ public class InfoAnd extends javax.swing.JPanel {
         jPanel1.add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
 
         gitHub.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 120, 20));
+        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 20));
 
         linkedin.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
         jPanel1.add(linkedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
@@ -205,15 +205,15 @@ public class InfoAnd extends javax.swing.JPanel {
         jPanel1.add(insta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel7.setText("Ocupación: Hacker Blanco");
+        jLabel7.setText("Ocupación: Pro Player");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel8.setText("Residencia: Westeros");
+        jLabel8.setText("Residencia: Estados Unidos");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel9.setText("Hobby: Programar y ver pc");
+        jLabel9.setText("Hobbys: Futbolista y gamer");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
@@ -229,40 +229,34 @@ public class InfoAnd extends javax.swing.JPanel {
         jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
 
         jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel12.setText("Chiquitiboom A La Bim Bom Ba");
+        jLabel12.setText("Pin Pan Truku Truku");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gitAndPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitAndPanelMouseEntered
-        gitAndPanel.setBackground(new Color(204,204,204));
-        gitHub.setText("andreS0103");
-    }//GEN-LAST:event_gitAndPanelMouseEntered
+    private void gitKPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitKPanelMouseEntered
+        gitKPanel.setBackground(new Color(204,204,204));
+        gitHub.setText("KAVA1712");
+    }//GEN-LAST:event_gitKPanelMouseEntered
 
-    private void gitAndPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitAndPanelMouseExited
-        gitAndPanel.setBackground(Color.white);
+    private void gitKPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitKPanelMouseExited
+        gitKPanel.setBackground(Color.white);
         gitHub.setText("");
-    }//GEN-LAST:event_gitAndPanelMouseExited
+    }//GEN-LAST:event_gitKPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
         linkPanel.setBackground(new Color(204,204,204));
-        linkedin.setText("Andres Sanchez");
+        linkedin.setText("Kevin Araya");
     }//GEN-LAST:event_linkPanelMouseEntered
 
     private void linkPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseExited
@@ -272,7 +266,7 @@ public class InfoAnd extends javax.swing.JPanel {
 
     private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
         instaPanel.setBackground(new Color(204,204,204));
-        insta.setText("andress0103");
+        insta.setText("a_kevs_c");
     }//GEN-LAST:event_instaPanelMouseEntered
 
     private void instaPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseExited
@@ -282,7 +276,7 @@ public class InfoAnd extends javax.swing.JPanel {
 
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
         epicPanel.setBackground(new Color(204,204,204));
-        epic.setText("TheRealdressxd");
+        epic.setText("Morriscrs7");
     }//GEN-LAST:event_epicPanelMouseEntered
 
     private void epicPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseExited
@@ -294,8 +288,8 @@ public class InfoAnd extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel epic;
     private javax.swing.JPanel epicPanel;
-    private javax.swing.JPanel gitAndPanel;
     private javax.swing.JLabel gitHub;
+    private javax.swing.JPanel gitKPanel;
     private javax.swing.JLabel insta;
     private javax.swing.JPanel instaPanel;
     private javax.swing.JLabel jLabel1;

@@ -3,18 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package code;
+
 import java.awt.Color;
+
 /**
  *
- * @author morri
+ * @author XPC
  */
-public class InfoK extends javax.swing.JPanel {
+public class SojoInfo extends javax.swing.JPanel {
 
     /**
-     * Creates new form InfoK
+     * Creates new form infoSojo
      */
-    public InfoK() {
+    public SojoInfo() {
         initComponents();
+        
     }
 
     /**
@@ -26,11 +29,10 @@ public class InfoK extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        gitKPanel = new javax.swing.JPanel();
+        gitHubPanel = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         linkPanel = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -48,33 +50,32 @@ public class InfoK extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jSeparator3 = new javax.swing.JSeparator();
-        jLabel12 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
+        setBackground(new java.awt.Color(255, 255, 255));
+        setForeground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(470, 350));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/saitama.jpg"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 150));
+
+        jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/rick.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 90, 150, 150));
-
-        jPanel2.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Kevin Araya Cordero");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 60));
+        jLabel2.setText("Fabián Sojo Mejías");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 380, 60));
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 390, 60));
 
-        gitKPanel.setBackground(new java.awt.Color(255, 255, 255));
-        gitKPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        gitHubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitHubPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                gitKPanelMouseEntered(evt);
+                gitHubPanelMouseEntered(evt);
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                gitKPanelMouseExited(evt);
+                gitHubPanelMouseExited(evt);
             }
         });
 
@@ -82,22 +83,22 @@ public class InfoK extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/github.png"))); // NOI18N
         jLabel5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        javax.swing.GroupLayout gitKPanelLayout = new javax.swing.GroupLayout(gitKPanel);
-        gitKPanel.setLayout(gitKPanelLayout);
-        gitKPanelLayout.setHorizontalGroup(
-            gitKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gitKPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout gitHubPanelLayout = new javax.swing.GroupLayout(gitHubPanel);
+        gitHubPanel.setLayout(gitHubPanelLayout);
+        gitHubPanelLayout.setHorizontalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gitHubPanelLayout.createSequentialGroup()
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
-        gitKPanelLayout.setVerticalGroup(
-            gitKPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitKPanelLayout.createSequentialGroup()
+        gitHubPanelLayout.setVerticalGroup(
+            gitHubPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gitHubPanelLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(gitKPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
+        add(gitHubPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 36, 36));
 
         linkPanel.setBackground(new java.awt.Color(255, 255, 255));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -128,7 +129,7 @@ public class InfoK extends javax.swing.JPanel {
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 36, 36));
+        add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 300, 36, 36));
 
         instaPanel.setBackground(new java.awt.Color(255, 255, 255));
         instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -159,7 +160,7 @@ public class InfoK extends javax.swing.JPanel {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 36, 36));
+        add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 300, 36, 36));
 
         epicPanel.setBackground(new java.awt.Color(255, 255, 255));
         epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -190,73 +191,59 @@ public class InfoK extends javax.swing.JPanel {
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        jPanel1.add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
+        add(epicPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 300, 36, 36));
 
         gitHub.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 100, 20));
+        add(gitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 280, 40, -1));
 
         linkedin.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(linkedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
+        add(linkedin, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 280, -1, -1));
 
         epic.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(epic, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
+        add(epic, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 280, -1, -1));
 
         insta.setFont(new java.awt.Font("Agency FB", 1, 12)); // NOI18N
-        jPanel1.add(insta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
+        add(insta, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 280, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel7.setText("Ocupación: Pro Player");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
+        jLabel7.setText("Ocupación: Web Developer");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel8.setText("Residencia: Estados Unidos");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
+        jLabel8.setText("Residencia: Nueva Zelanda");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 120, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel9.setText("Hobbys: Futbolista y gamer");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
+        jLabel9.setText("Hobby: Programar y programar");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel10.setText("Edad: 18");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
+        jLabel10.setText("Edad: 19");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
+        jLabel11.setText("La Da De La Da Da");
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         jSeparator3.setForeground(new java.awt.Color(204, 204, 204));
         jSeparator3.setOrientation(javax.swing.SwingConstants.VERTICAL);
         jSeparator3.setPreferredSize(new java.awt.Dimension(200, 10));
-        jPanel1.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
-
-        jLabel12.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        jLabel12.setText("Pin Pan Truku Truku");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 360, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void gitKPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitKPanelMouseEntered
-        gitKPanel.setBackground(new Color(204,204,204));
-        gitHub.setText("KAVA1712");
-    }//GEN-LAST:event_gitKPanelMouseEntered
+    private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered
+        gitHubPanel.setBackground(new Color(204,204,204));
+        gitHub.setText("Sojo506");
+    }//GEN-LAST:event_gitHubPanelMouseEntered
 
-    private void gitKPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitKPanelMouseExited
-        gitKPanel.setBackground(Color.white);
+    private void gitHubPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseExited
+        gitHubPanel.setBackground(Color.white);
         gitHub.setText("");
-    }//GEN-LAST:event_gitKPanelMouseExited
+    }//GEN-LAST:event_gitHubPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
         linkPanel.setBackground(new Color(204,204,204));
-        linkedin.setText("Kevin Araya");
+        linkedin.setText("Fabián Sojo");
     }//GEN-LAST:event_linkPanelMouseEntered
 
     private void linkPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseExited
@@ -264,19 +251,9 @@ public class InfoK extends javax.swing.JPanel {
         linkedin.setText("");
     }//GEN-LAST:event_linkPanelMouseExited
 
-    private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
-        instaPanel.setBackground(new Color(204,204,204));
-        insta.setText("a_kevs_c");
-    }//GEN-LAST:event_instaPanelMouseEntered
-
-    private void instaPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseExited
-        instaPanel.setBackground(Color.white);
-        insta.setText("");
-    }//GEN-LAST:event_instaPanelMouseExited
-
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
         epicPanel.setBackground(new Color(204,204,204));
-        epic.setText("Morriscrs7");
+        epic.setText("Sojo506");
     }//GEN-LAST:event_epicPanelMouseEntered
 
     private void epicPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseExited
@@ -284,18 +261,27 @@ public class InfoK extends javax.swing.JPanel {
         epic.setText("");
     }//GEN-LAST:event_epicPanelMouseExited
 
+    private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
+        instaPanel.setBackground(new Color(204,204,204));
+        insta.setText("sojo506");
+    }//GEN-LAST:event_instaPanelMouseEntered
+
+    private void instaPanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseExited
+        instaPanel.setBackground(Color.white);
+        insta.setText("");
+    }//GEN-LAST:event_instaPanelMouseExited
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel epic;
     private javax.swing.JPanel epicPanel;
     private javax.swing.JLabel gitHub;
-    private javax.swing.JPanel gitKPanel;
+    private javax.swing.JPanel gitHubPanel;
     private javax.swing.JLabel insta;
     private javax.swing.JPanel instaPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -305,7 +291,6 @@ public class InfoK extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JPanel linkPanel;
     private javax.swing.JLabel linkedin;

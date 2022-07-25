@@ -4,7 +4,7 @@
  */
 package code;
 
-import static code.Home.panelContenido;
+import static code.Main.panelContenido;
 import static code.panelCursos.idCursoModificar;
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
@@ -25,17 +25,16 @@ import javax.swing.JTextField;
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
-    boolean verificacion;
-    String cu = null;
-    DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
-
-    private String regexNums = "^[0-9]+";
-    private String regexLetr = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
-    Conexion conn;
-    Connection reg;
+    public static boolean verificacion;
+    public static String cu = null;
+    FuncionesEstudiante funcionesR = new FuncionesEstudiante();
+    public static DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
     public panelRegistroEstudiantes() {
+        modeloCursos.removeAllElements();
         initComponents();
+        
+        // Placeholders
         PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombre);
         PlaceHolder pApellido = new PlaceHolder("Ingresar primer apellido", inputPrimerApellido);
         PlaceHolder sApellido = new PlaceHolder("Ingresar segundo apellido", inputSegundoApellido);
@@ -43,11 +42,8 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
         PlaceHolder ced = new PlaceHolder("Ingresar cédula", inputCedula);
         PlaceHolder tel = new PlaceHolder("Ingresar número telefónico", inputTelefono);
 
-        conn = new Conexion();
-        reg = conn.getConexion();
-
         try {
-            getListaCursos();
+            funcionesR.getListaCursos();
         } catch (NullPointerException ex) {
             Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -231,401 +227,59 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     }//GEN-LAST:event_inputNombreActionPerformed
 
     private void btnGuardarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMousePressed
-        try {
-            cu = listaCursos.getSelectedItem().toString();
-            System.out.println(cu);
-        } catch (NullPointerException ex) {
-            System.out.println(cu);
-        }
-
-        // Comprobar que todos los campos estén llenos
-        if ((!inputNombre.getText().matches(regexLetr)) || (inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr)) || (inputPrimerApellido.getText().length() > 10)
-                || (!inputSegundoApellido.getText().matches(regexLetr)) || (inputSegundoApellido.getText().length() > 10)
-                || !inputEdad.getText().matches(regexNums)
-                || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() > 9)
-                || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() > 8)
-                || cu == null) {
-
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres (max 10)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            inputNombre.requestFocus();
-
-        } else {
-            // Comprobar que la edad sea válida
-            int comprobarEdad = Integer.parseInt(inputEdad.getText());
-            if (comprobarEdad < 0 && comprobarEdad > 150) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Edad no válida\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                inputEdad.requestFocus();
-            } else {
-                // guardar datos en variables
-                Estudiante es = new Estudiante();
-                es.setNombre(inputNombre.getText());
-                es.setPrimerApellido(inputPrimerApellido.getText());
-                es.setSegundoApellido(inputSegundoApellido.getText());
-                es.setEdad(comprobarEdad);
-                es.setCedula(inputCedula.getText());
-                es.setTelefono(inputTelefono.getText());
-                es.setCurso(listaCursos.getSelectedItem().toString());
-
-                try {
-                    // Control para saber si se debe hacer un UPDATE o INSERT
-                    if (etiquetaGuardar.getText().equals("Modificar")) {
-                        int id = panelEstudiantes.idEstudianteModificar;
-                        String c = panelEstudiantes.nombreCurso;
-                        if (modificarCantidadCurso(es.getCurso(), c)) {
-                            modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), id);
-                            
-                            // Instanciamos el panel&
-                            panelEstudiantes estudiantes = new panelEstudiantes();
-                            estudiantes.setSize(680, 360);
-                            estudiantes.setLocation(0, 0);
-
-                            // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-                            panelContenido.removeAll();
-                            panelContenido.add(estudiantes, BorderLayout.CENTER);
-                            panelContenido.revalidate();
-                            panelContenido.repaint();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
-                        }
-
-                    } else {
-                        if (modificarCantidadCurso(es.getCurso(), "")) {
-                            insertarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso());
-                            // Reiniciar los campos
-                            inputNombre.setText("");
-                            inputPrimerApellido.setText("");
-                            inputSegundoApellido.setText("");
-                            inputEdad.setText("");
-                            inputTelefono.setText("");
-                            inputCedula.setText("");
-                            inputNombre.requestFocus();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "No fue posible ingresar al curso, verificar cantidad disponible del curso seleccionado.");
-                        }
-
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(panelRegistroEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        }
+        funcionesR.guardarDatosRegistroE();
     }//GEN-LAST:event_btnGuardarMousePressed
     /*Autor : Andy*/
     private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
-        /*
-        if (inputNombre.getText().equals("Ingresar nombre")) {
-            inputNombre.setText("");
-        }
-        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido == null || inputPrimerApellido.getText().equals(" ")) {
-            inputPrimerApellido.setText("Ingresar primer apellido");
-        }
-        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
-            inputSegundoApellido.setText("Ingresar segundo apellido");
-        }
-        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
-            inputEdad.setText("Ingresar edad");
-        }
-        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
-            inputCedula.setText("Ingresar cédula");
-        }
-        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
-            inputTelefono.setText("Ingresar número telefónico");
-        }
-         */
+        
 
     }//GEN-LAST:event_inputNombreMousePressed
     /*Autor :Andy*/
     private void inputPrimerApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPrimerApellidoMousePressed
-        /*
-        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
-            inputNombre.setText("Ingresar nombre");
-        }
-        if (inputPrimerApellido.getText().equals("Ingresar primer apellido")) {
-            inputPrimerApellido.setText("");
-        }
-        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
-            inputSegundoApellido.setText("Ingresar segundo apellido");
-        }
-        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
-            inputEdad.setText("Ingresar edad");
-        }
-        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
-            inputCedula.setText("Ingresar cédula");
-        }
-        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
-            inputTelefono.setText("Ingresar número telefónico");
-        }
-         */
-
+       
     }//GEN-LAST:event_inputPrimerApellidoMousePressed
     /*Autor : Andy*/
     private void inputSegundoApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputSegundoApellidoMousePressed
-        /*
-        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
-            inputNombre.setText("Ingresar nombre");
-        }
-        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
-            inputPrimerApellido.setText("Ingresar primer apellido");
-        }
-        if (inputSegundoApellido.getText().equals("Ingresar segundo apellido")) {
-            inputSegundoApellido.setText("");
-        }
-        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
-            inputEdad.setText("Ingresar edad");
-        }
-        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
-            inputCedula.setText("Ingresar cédula");
-        }
-        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
-            inputTelefono.setText("Ingresar número telefónico");
-        }
-         */
-
+        
     }//GEN-LAST:event_inputSegundoApellidoMousePressed
     /*Autor : Andy*/
     private void inputEdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEdadMousePressed
-        /*
-        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
-            inputNombre.setText("Ingresar nombre");
-        }
-        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
-            inputPrimerApellido.setText("Ingresar primer apellido");
-        }
-        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
-            inputSegundoApellido.setText("Ingresar segundo apellido");
-        }
-        if (inputEdad.getText().equals("Ingresar edad")) {
-            inputEdad.setText("");
-        }
-        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
-            inputCedula.setText("Ingresar cédula");
-        }
-        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
-            inputTelefono.setText("Ingresar número telefónico");
-        }
-         */
+        
 
     }//GEN-LAST:event_inputEdadMousePressed
     /*Autor : Andy*/
     private void inputCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCedulaMousePressed
-        /*
-        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
-            inputNombre.setText("Ingresar nombre");
-        }
-        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
-            inputPrimerApellido.setText("Ingresar primer apellido");
-        }
-        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
-            inputSegundoApellido.setText("Ingresar segundo apellido");
-        }
-        if (inputEdad.getText().equals("Ingresar edad") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
-            inputEdad.setText("Ingresar edad");
-        }
-        if (inputCedula.getText().equals("Ingresar cédula")) {
-            inputCedula.setText("");
-        }
-        if (inputTelefono.getText().equals("") || inputTelefono.getText() == null || inputTelefono.getText().equals(" ")) {
-            inputTelefono.setText("Ingresar número telefónico");
-        }
-         */
+        
 
     }//GEN-LAST:event_inputCedulaMousePressed
     /*Autor : Andy*/
     private void inputTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTelefonoMousePressed
-        /*
-        if (inputNombre.getText().equals("") || inputNombre.getText() == null || inputNombre.getText().equals(" ")) {
-            inputNombre.setText("Ingresar nombre");
-        }
-        if (inputPrimerApellido.getText().equals("") || inputPrimerApellido.getText() == null || inputPrimerApellido.getText().equals(" ")) {
-            inputPrimerApellido.setText("Ingresar primer apellido");
-        }
-        if (inputSegundoApellido.getText().equals("") || inputSegundoApellido.getText() == null || inputSegundoApellido.getText().equals(" ")) {
-            inputSegundoApellido.setText("Ingresar segundo apellido");
-        }
-        if (inputEdad.getText().equals("") || inputEdad.getText() == null || inputEdad.getText().equals(" ")) {
-            inputEdad.setText("Ingresar edad");
-        }
-        if (inputCedula.getText().equals("") || inputCedula.getText() == null || inputCedula.getText().equals(" ")) {
-            inputCedula.setText("Ingresar cédula");
-        }
-        if (inputTelefono.getText().equals("Ingresar número telefónico")) {
-            inputTelefono.setText("");
-        }
-         */
-
+       
     }//GEN-LAST:event_inputTelefonoMousePressed
 
     private void inputNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreKeyPressed
 
     }//GEN-LAST:event_inputNombreKeyPressed
-    // Metodo para insertar estudiante
-    public void insertarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel, String curso) throws SQLException {
-        Statement stm = reg.createStatement();
 
-        stm.executeUpdate("INSERT INTO `estudiantes` (`nombre`, `primerApellido`, `segundoApellido`, `edad`, `cedula`, `telefono`, `curso`)"
-                + " VALUES ('" + nombre + "', '" + pA + "', '" + sP + "', '" + edad + "', '" + cedula + "', '" + tel + "', '" + curso + "')");
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-    }
-
-    // Metodo para modificar estudiante
-    public void modificarEstudiante(String nombre, String pA, String sP, int edad, String cedula, String tel, String curso, int id) throws SQLException {
-        Statement stm = reg.createStatement();
-        stm.executeUpdate("UPDATE `estudiantes` SET `nombre` = '" + nombre + "', `primerApellido` = '" + pA + "', `segundoApellido` = '" + sP + "', `edad` = '" + edad + "',"
-                + " `cedula` = '" + cedula + "', `telefono` = '" + tel + "', `curso` = '" + curso + "' WHERE `idEstudiante` = " + id + ";");
-
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante modificado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-    }
-
-    // Metodo para modificar cantidad de curso (agregar)
-    private boolean modificarCantidadCurso(String curso, String c) throws SQLException {
-        // variblaes para obtener cantidad disponible
-        int idAux = 0;
-        int cantidadAux = 0;
-
-        // variables para obtener cantidad de estudiantes
-        int ce = 0;
-        int ce2 = 0;
-        panelCursos pC = new panelCursos();
-        Curso cr = new Curso();
-        int idCurso = -1;
-
-        try {
-            //Ejecutamos la consulta
-            Statement stm = reg.createStatement();
-
-            //Recorremos la tabla
-            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-
-            // Obtener cantidad de filas de la tabla
-            int fila = 0;
-            while (contador.next()) {
-                fila++;
-            }
-
-            // [filas][columnas]
-            String cursos[][] = new String[fila][6];
-
-            // iterador
-            int i = 0;
-
-            // Para recorrer los datos 
-            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-
-            //Recorrer la tabla de los cursos
-            while (re.next()) {
-                cursos[i][0] = re.getString("idCurso");
-                cursos[i][1] = re.getString("nombre");
-                cursos[i][4] = re.getString("cantidad");
-                cursos[i][5] = re.getString("cantidadEstudiantes");
-
-                // Comprobar y obtener datos del curso seleccionado
-                if (cursos[i][1].equals(curso)) {
-                    idCurso = Integer.parseInt(cursos[i][0]);
-                    cr.setNombreCurso(curso);
-                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
-                    ce = Integer.parseInt(cursos[i][5]);
-                }
-
-                // Comprobar y obtener datos del curso seleccionado si la opcion es modificar
-                if (cursos[i][1].equals(c)) {
-                    idAux = Integer.parseInt(cursos[i][0]);
-                    cantidadAux = Integer.parseInt(cursos[i][4]);
-                    ce2 = Integer.parseInt(cursos[i][5]);
-                }
-
-                i++;
-            }
-            try {
-                if (etiquetaGuardar.getText().equals("Modificar")) {
-                    // Verificar cantidad del curso
-                    if (cr.getCantidad() > 0) {
-                        cr.setCantidad(cr.getCantidad() - 1);
-                        cantidadAux += 1;
-                        // Verificar que el curso seleccionado no sea el mismo al anterior
-                        if (!c.equals(curso)) {
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cantidadAux) + "', `cantidadEstudiantes` = '" + (ce2 - 1) + "' WHERE `idCurso` = " + idAux + ";");
-                        }
-                        verificacion = true;
-                    } else {
-                        verificacion = false;
-                    }
-
-                } else {
-                    // Verificar cantidad del curso
-                    if (cr.getCantidad() > 0) {
-                        cr.setCantidad(cr.getCantidad() - 1);
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (ce + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                        verificacion = true;
-                    } else {
-                        verificacion = false;
-                    }
-                }
-
-                pC.getCursos();
-
-            } catch (SQLException ex) {
-                System.out.println("Error 2 " + ex);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return verificacion;
-    }
-
-    // Obtener el nombre de los cursos de la tabla en mysql
-    public void getListaCursos() {
-        try {
-            //Ejecutar la consulta
-            Statement stm = reg.createStatement();
-
-            //Recorrer tabla
-            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-
-            //Obtener el numero de filas
-            int fila = 0;
-            while (contador.next()) {
-                fila++;
-            }
-
-            String cursos[][] = new String[fila][2];
-
-            //Iterador de las filas
-            int i = 0;
-            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-
-            //Recorrer la tabla
-            while (re.next()) {
-                modeloCursos.addElement(cursos[i][1] = re.getString("nombre"));
-                i++;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardar;
     private javax.swing.JLabel etiquetaCedula;
     private javax.swing.JLabel etiquetaCurso;
     private javax.swing.JLabel etiquetaEdad;
-    public javax.swing.JLabel etiquetaGuardar;
+    public static javax.swing.JLabel etiquetaGuardar;
     private javax.swing.JLabel etiquetaNombre;
     private javax.swing.JLabel etiquetaPrimerApellido;
     private javax.swing.JLabel etiquetaSegundoApellido;
     private javax.swing.JLabel etiquetaTelefono;
     public javax.swing.JLabel etiquetaTitulo;
-    public javax.swing.JTextField inputCedula;
-    public javax.swing.JTextField inputEdad;
-    public javax.swing.JTextField inputNombre;
-    public javax.swing.JTextField inputPrimerApellido;
-    public javax.swing.JTextField inputSegundoApellido;
-    public javax.swing.JTextField inputTelefono;
+    public static javax.swing.JTextField inputCedula;
+    public static javax.swing.JTextField inputEdad;
+    public static javax.swing.JTextField inputNombre;
+    public static javax.swing.JTextField inputPrimerApellido;
+    public static javax.swing.JTextField inputSegundoApellido;
+    public static javax.swing.JTextField inputTelefono;
     private javax.swing.JSeparator jSeparator3;
-    public javax.swing.JComboBox<String> listaCursos;
+    public static javax.swing.JComboBox<String> listaCursos;
     private javax.swing.JPanel panel1;
     // End of variables declaration//GEN-END:variables
 }

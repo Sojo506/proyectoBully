@@ -8,12 +8,12 @@ import java.awt.Color;
  *
  * @author Andy
  */
-public class AndyPanel extends javax.swing.JPanel {
+public class AndyInfo extends javax.swing.JPanel {
 
     /**
      * Creates new form AndyPanel
      */
-    public AndyPanel() {
+    public AndyInfo() {
         initComponents();
         
     }

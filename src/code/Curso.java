@@ -1,4 +1,3 @@
-
 package code;
 
 /**
@@ -9,19 +8,21 @@ public class Curso {
     private String nombreCurso;
     private String horario;
     private String modalidad;
+    private String sede;
     private int cantidad;
     private int cantidadEstudiantes;
+    
 
     public Curso() {
-        
+
     }
-    
-    public Curso(String nombreCurso, String horario, String modalidad, int cantidad, int cantidadEstudiantes) {
+
+    public Curso(String nombreCurso, String horario, String modalidad, int cantidad, String sede) {
         this.nombreCurso = nombreCurso;
         this.horario = horario;
         this.modalidad = modalidad;
         this.cantidad = cantidad;
-        this.cantidadEstudiantes = cantidadEstudiantes;
+        this.sede = sede;
     }
 
     public String getNombreCurso() {
@@ -48,6 +49,14 @@ public class Curso {
         this.modalidad = modalidad;
     }
 
+    public String getSede() {
+        return sede;
+    }
+
+    public void setSede(String sede) {
+        this.sede = sede;
+    }
+
     public int getCantidad() {
         return cantidad;
     }
@@ -63,6 +72,7 @@ public class Curso {
     public void setCantidadEstudiantes(int cantidadEstudiantes) {
         this.cantidadEstudiantes = cantidadEstudiantes;
     }
+    
     
     
 }

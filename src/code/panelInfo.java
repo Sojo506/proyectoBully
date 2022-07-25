@@ -19,7 +19,7 @@ public class panelInfo extends javax.swing.JPanel {
      */
     public panelInfo() {
         initComponents();
-        infoSojo so = new infoSojo();
+        SojoInfo so = new SojoInfo();
         so.setSize(390, 360);
         so.setLocation(0, 0);
 
@@ -260,7 +260,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Kevin);
         establecerColor(Fabian);
 
-        infoSojo so = new infoSojo();
+        SojoInfo so = new SojoInfo();
         so.setSize(390, 360);
         so.setLocation(0, 0);
 
@@ -280,7 +280,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Kevin);
         establecerColor(rolando);
 
-        RoloPanel RP = new RoloPanel();
+        RoloInfo RP = new RoloInfo();
         RP.setSize(390, 360);
         RP.setLocation(0, 0);
 
@@ -298,7 +298,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Kevin);
         establecerColor(Andy);
 
-        AndyPanel AP = new AndyPanel();
+        AndyInfo AP = new AndyInfo();
         AP.setSize(390, 360);
         AP.setLocation(0, 0);
 
@@ -316,7 +316,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Fabian);
         establecerColor(Kevin);
 
-        InfoK IK = new InfoK();
+        KevinInfo IK = new KevinInfo();
         IK.setSize(390, 360);
         IK.setLocation(0, 0);
 
@@ -342,7 +342,7 @@ public class panelInfo extends javax.swing.JPanel {
         resetearColor(Fabian);
         establecerColor(Andres);
 
-        InfoAnd and = new InfoAnd();
+        AndresInfo and = new AndresInfo();
         and.setSize(390, 360);
         and.setLocation(0, 0);
 

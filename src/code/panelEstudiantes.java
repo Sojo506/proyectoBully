@@ -4,7 +4,9 @@
  */
 package code;
 
-import static code.Home.panelContenido;
+import static code.Main.establecerColor;
+import static code.Main.panelContenido;
+import static code.Main.resetearColor;
 import java.sql.Connection;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,13 +30,14 @@ public class panelEstudiantes extends javax.swing.JPanel {
     private DefaultTableModel modeloTabla = new DefaultTableModel();
     public static int idEstudianteModificar=0;
     public static String nombreCurso="";
+    FuncionesEstudiante funciones = new FuncionesEstudiante();
 
     public panelEstudiantes() {
         initComponents();
         conn = new Conexion();
         reg = conn.getConexion();
         try {
-            getStudents();
+            funciones.getStudents();
         } catch (SQLException ex) {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -198,11 +201,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
             resetearColor(btnAgregar);
         }
     }//GEN-LAST:event_btnAgregarMouseExited
+    
     // Modificar Estudiantes
     private void btnModificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMousePressed
-      
-        // Instanciamos el panel
-        getStudent();
+       funciones.getStudent();
     }//GEN-LAST:event_btnModificarMousePressed
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered
@@ -231,231 +233,12 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
     // Borrar estudiantes
     private void btnBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMousePressed
-        try {
-            int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
-            if (filaEstudiante < 0) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                // para ejecutar la consulta
-                Statement stm = reg.createStatement();
-                ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-                // para obtener el numero de filas
-                int fila = 0;
-                while (contador.next()) {
-                    fila++;
-                }
-
-                // [filas][columnas]
-                String estudiantes[][] = new String[fila][7]; 
-                
-                // itera las filas
-                int i = 0;
-                // para reccorer los datos
-                ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-                while (re.next()) { //re.next obtiene la cantidad de filas a iterar
-                    estudiantes[i][0] = re.getString("idEstudiante");
-                    estudiantes[i][6] = re.getString("curso");
-                    i++;
-                }
-
-                int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]); // obtenemos el id del estudiante
-                modificarCantidadCurso(estudiantes[filaEstudiante][6]);
-                System.out.println(idEstudiante);
-                if (idEstudiante < 0) {
-                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    // para ejecutar la consulta
-                    Statement stm2 = null;
-                    try {
-                        stm2 = reg.createStatement();
-                    } catch (SQLException ex) {
-                        System.out.println("Error 1");
-                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    try {
-                        stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + idEstudiante + " LIMIT 1");
-                        javax.swing.JOptionPane.showMessageDialog(this, "¡Estudiante borrado! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                        getStudents();
-                    } catch (SQLException ex) {
-                        System.out.println("Error 2" + ex);
-                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        funciones.getDeleteEstudiante();
     }//GEN-LAST:event_btnBorrarMousePressed
 
     private void jScrollPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MousePressed
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane1MousePressed
-
-    private void getStudents() throws SQLException {
-        // para ejecutar la consulta
-        Statement stm = reg.createStatement();
-        ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-        // para obtener el numero de filas
-        int fila = 0;
-        while (contador.next()) {
-            fila++;
-        }
-
-        String estudiantes[][] = new String[fila][7]; // [filas][columnas]
-        int i = 0; // itera las filas
-
-        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-        // recorre la tabla estudiantes
-        while (re.next()) {
-            estudiantes[i][0] = re.getString("nombre");
-            estudiantes[i][1] = re.getString("primerApellido");
-            estudiantes[i][2] = re.getString("segundoApellido");
-            estudiantes[i][3] = re.getString("edad");
-            estudiantes[i][4] = re.getString("cedula");
-            estudiantes[i][5] = re.getString("telefono");
-            estudiantes[i][6] = re.getString("curso");
-            i++;
-        }
-
-        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
-                    "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono", "Curso"}));
-    }
-
-    // Obtener el estudiante para ser modificado
-    public void getStudent() {
-        try {
-            // Obtenemos la fila del estudiante seleccionado
-            int filaEstudiante = tablaEstudiantes.getSelectedRow(); 
-            
-            if (filaEstudiante < 0) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificarr. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                // para ejecutar la consulta
-                Statement stm = reg.createStatement();
-                ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-                // para obtener el numero de filas
-                int fila = 0;
-                while (contador.next()) {
-                    fila++;
-                }
-
-                String estudiantes[][] = new String[fila][8]; // [filas][columnas]
-                int i = 0; // itera las filas
-                // para reccorer los datos
-                ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-                
-                // recorre la tabla estudiantes
-                while (re.next()) { 
-                    estudiantes[i][0] = re.getString("idEstudiante");
-                    estudiantes[i][1] = re.getString("nombre");
-                    estudiantes[i][2] = re.getString("primerApellido");
-                    estudiantes[i][3] = re.getString("segundoApellido");
-                    estudiantes[i][4] = re.getString("edad");
-                    estudiantes[i][5] = re.getString("cedula");
-                    estudiantes[i][6] = re.getString("telefono");
-                    estudiantes[i][7] = re.getString("curso");
-                    i++;
-                }
-
-                // obtenemos el id del estudiante
-                idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
-                nombreCurso = estudiantes[filaEstudiante][7];
-                
-                
-                if (idEstudianteModificar <= 0) {   
-                    javax.swing.JOptionPane.showMessageDialog(this, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    // mostramos el panel
-                    panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
-                    rUp.setSize(680, 360);
-                    rUp.setLocation(0, 0);
-                    rUp.etiquetaTitulo.setText("Modificar Estudiante");
-                    rUp.etiquetaGuardar.setText("Modificar");
-                    
-                    // Pasamos los datos
-                    rUp.inputNombre.setText(estudiantes[filaEstudiante][1]);
-                    rUp.inputPrimerApellido.setText(estudiantes[filaEstudiante][2]);
-                    rUp.inputSegundoApellido.setText(estudiantes[filaEstudiante][3]);
-                    rUp.inputEdad.setText(estudiantes[filaEstudiante][4]);
-                    rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
-                    rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
-                    rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
-                    
-                    // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-                    panelContenido.removeAll();
-                    panelContenido.add(rUp, BorderLayout.CENTER);
-                    panelContenido.revalidate();
-                    panelContenido.repaint();
-                }
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    //Para obtener el color cuando pase MousePressed
-    public void establecerColor(JPanel panel) {
-        panel.setBackground(new Color(21, 101, 192));
-    }
-
-    // Para devolver el color por defecto
-    public void resetearColor(JPanel panel) {
-        panel.setBackground(new Color(18, 90, 173));
-    }
-    
-     private void modificarCantidadCurso(String curso) throws SQLException {
-        panelCursos pC = new panelCursos();
-        Curso cr = new Curso();
-        int idCurso = -1;
-        try {
-            //Ejecutamos la consulta
-            Statement stm = reg.createStatement();
-
-            //Recorremos la tabla
-            ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-
-            // Obtener cantidad de filas de la tabla
-            int fila = 0;
-            while (contador.next()) {
-                fila++;
-            }
-            String cursos[][] = new String[fila][6]; // [filas][columnas]
-            int i = 0; //Iterador de las filas
-            // Para recorrer los datos 
-            ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-
-            //Recorrer la tabla de los cursos
-            while (re.next()) {
-                cursos[i][0] = re.getString("idCurso");
-                cursos[i][1] = re.getString("nombre");
-                cursos[i][2] = re.getString("horario");
-                cursos[i][3] = re.getString("modalidad");
-                cursos[i][4] = re.getString("cantidad");
-                cursos[i][5] = re.getString("cantidadEstudiantes");
-                if (cursos[i][1].equals(curso)) {
-                    idCurso = Integer.parseInt(cursos[i][0]);
-                    cr.setNombreCurso(curso);
-                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
-                    cr.setCantidadEstudiantes(Integer.parseInt(cursos[i][5]));
-                }
-                i++;
-            }
-            try {
-                stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                pC.getCursos();
-                
-            } catch (SQLException ex) {
-                System.out.println("Error 2 " + ex);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Image;
@@ -468,6 +251,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel panel;
-    public javax.swing.JTable tablaEstudiantes;
+    public static javax.swing.JTable tablaEstudiantes;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,9 +4,11 @@
  */
 package code;
 
-import static code.Home.panelContenido;
+import static code.Main.panelContenido;
+import static code.panelCursos.anteriorCurso;
 import java.awt.BorderLayout;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
@@ -23,11 +25,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
 
     private String regexNums = "^[0-9]+";
     private String regexLtr = "^^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
+
     DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloSedeC = new DefaultComboBoxModel();
-    Conexion conn;
-    Connection reg;
+
+    FuncionesCurso funcionesR = new FuncionesCurso();
 
     /**
      * Creates new form panelRegistroCursos
@@ -36,11 +39,11 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         agregarModeloListaModalidad();
         agregarModeloListaHorario();
         agregarModeloListaSede();
+
         initComponents();
+
         PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombreC);
         PlaceHolder cantidad = new PlaceHolder("Ingresar cantidad disponible", inputCantidadC);
-        conn = new Conexion();
-        reg = conn.getConexion();
     }
 
     /**
@@ -163,92 +166,16 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarCMousePressed
-        // Poner codigo aqui
-        //Comprobar que todos los campos esten completos
-        if (!inputCantidadC.getText().matches(regexNums) || (inputCantidadC.getText().length() > 3)
-                || !(inputNombreC.getText().matches(regexLtr)) || (inputNombreC.getText().length() > 10)) {
-            if (!inputCantidadC.getText().matches(regexNums) || inputCantidadC.getText().length() > 3) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos y/o verificar la cantidad para poder agregar el curso (max 100)");
-            } else {
-                javax.swing.JOptionPane.showMessageDialog(this, "Debe llenar todos los campos para poder agregar el curso (longitud de caracteres (max 10)");
-            }
-            inputNombreC.requestFocus();
-        } else {
-            //Comprobar que virtual sea igual a la sede
-            String verificarModalidadC = listaModalidad.getSelectedItem().toString();
-            String verificarSedeC = listaSedes.getSelectedItem().toString();
-
-            //Comprobar que la cantidad sea valida
-            int comprobarCantidad = Integer.parseInt(inputCantidadC.getText());
-            //Verificamos la cantidad y que si la modalidad es virtual entonces la sede tambien tiene que ser virtual
-            if (comprobarCantidad < 0 || (verificarModalidadC.equals("Virtual") && !verificarModalidadC.equals(verificarSedeC))) {
-                javax.swing.JOptionPane.showMessageDialog(this, "Cantidad de cursos no valida y/o verificar la sede");
-                inputNombreC.requestFocus();
-            } else {
-                //Guardamos los datos en las variables
-                String nombre = inputNombreC.getText();
-                String horario = listaHorario.getSelectedItem().toString();
-                String modalidad = listaModalidad.getSelectedItem().toString();
-                int cantidad = comprobarCantidad;
-                String sede = listaSedes.getSelectedItem().toString();
-
-                try {
-                    if (etiquetaGuardar.getText().equals("Modificar")) {
-                        //Agregar metodo
-                        int id = panelCursos.idCursoModificar;
-                        modificarCurso(nombre, horario, modalidad, cantidad, sede, id);
-
-                        panelCursos cursos = new panelCursos();
-                        cursos.setSize(680, 360);
-                        cursos.setLocation(0, 0);
-
-                        // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-                        panelContenido.removeAll();
-                        panelContenido.add(cursos, BorderLayout.CENTER);
-                        panelContenido.revalidate();
-                        panelContenido.repaint();
-                    } else {
-                        insertarCurso(nombre, horario, modalidad, cantidad, sede);
-
-                        //Resetear los campos
-                        inputCantidadC.setText("");
-                        inputNombreC.setText("");
-                    }
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(panelRegistroCursos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        }
-
+        funcionesR.guardarDatosRegistroC();
     }//GEN-LAST:event_btnGuardarCMousePressed
 
     private void inputNombreCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreCMousePressed
-        /*
-        if (inputNombreC.getText().equals("Ingresar nombre")) {
-            inputNombreC.setText("");
-        }
-
-        if (inputCantidadC.getText().equals("") || inputCantidadC.getText() == null) {
-            inputCantidadC.setText("Ingresar cantidad disponible");
-        }
-         */
 
     }//GEN-LAST:event_inputNombreCMousePressed
 
     /*Autor : Andy*/
     private void inputCantidadCMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCantidadCMousePressed
-        /*
-        if (inputNombreC.getText().equals("") || inputNombreC.getText() == null) {
-            inputNombreC.setText("Ingresar nombre");
-        }
 
-        if (inputCantidadC.getText().equals("Ingresar cantidad disponible")) {
-            inputCantidadC.setText("");
-        }
-
-         */
     }//GEN-LAST:event_inputCantidadCMousePressed
 
     private void listaModalidadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listaModalidadMousePressed
@@ -258,27 +185,10 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void listaModalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaModalidadActionPerformed
         if (listaModalidad.getSelectedItem().equals("Virtual")) {
             listaSedes.setSelectedItem("Virtual");
-            System.out.println("Hola");
+        } else if(listaModalidad.getSelectedItem().equals("Presencial")) {
+            listaSedes.setSelectedItem("San Pedro");
         }
     }//GEN-LAST:event_listaModalidadActionPerformed
-
-    //Metodo para insertar curso a la BD
-    public void insertarCurso(String nombre, String horario, String modalidad, int cantidad, String sede) throws SQLException {
-        Statement stm = reg.createStatement();
-
-        stm.executeUpdate("INSERT INTO `cursos` (`nombre`, `horario`, `modalidad`, `cantidad`, `cantidadEstudiantes`, `sede`) VALUES ('" + nombre + "', '" + horario + "', '" + modalidad + "', '" + cantidad + "', '" + 0 + "', '" + sede + "')");
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Curso registrado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-    }
-
-    //Metodo para modificar curso en la BD
-    public void modificarCurso(String nombre, String horario, String modalidad, int cantidad, String sede, int id) throws SQLException {
-        Statement stm = reg.createStatement();
-
-        stm.executeUpdate("UPDATE `cursos` SET `nombre` = '" + nombre + "', `horario` = '" + horario + "', `modalidad` = '" + modalidad + "', `cantidad` = '" + cantidad + "', `sede` = '" + sede + "' WHERE `idCurso` = " + id + ";");
-        javax.swing.JOptionPane.showMessageDialog(this, "¡Curso editado correctamente! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-
-    }
 
     private void agregarModeloListaHorario() {
         modeloHorarioC.addElement("8:00am - 11:00am");
@@ -301,13 +211,12 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         modeloSedeC.addElement("Alajuelita");
         modeloSedeC.addElement("Virtual");
     }
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardarC;
-    public javax.swing.JLabel etiquetaGuardar;
-    public javax.swing.JTextField inputCantidadC;
-    public javax.swing.JTextField inputNombreC;
+    public static javax.swing.JLabel etiquetaGuardar;
+    public static javax.swing.JTextField inputCantidadC;
+    public static javax.swing.JTextField inputNombreC;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -315,8 +224,8 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator3;
-    public javax.swing.JComboBox<String> listaHorario;
-    public javax.swing.JComboBox<String> listaModalidad;
-    public javax.swing.JComboBox<String> listaSedes;
+    public static javax.swing.JComboBox<String> listaHorario;
+    public static javax.swing.JComboBox<String> listaModalidad;
+    public static javax.swing.JComboBox<String> listaSedes;
     // End of variables declaration//GEN-END:variables
 }

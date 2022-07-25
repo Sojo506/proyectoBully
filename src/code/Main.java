@@ -13,12 +13,12 @@ import javax.swing.JPanel;
  *
  * @author XPC
  */
-public class Home extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
     // Hola
     /**
      * Creates new form Home
      */
-    public Home() {
+    public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
         
@@ -66,6 +66,9 @@ public class Home extends javax.swing.JFrame {
         iconInfo = new javax.swing.JLabel();
         etiquetaInicio2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
+        btnReportes = new javax.swing.JPanel();
+        etiquetaReporte = new javax.swing.JLabel();
+        iconReporte = new javax.swing.JLabel();
         panelEncabezado = new javax.swing.JPanel();
         etiquetaPalabrasClaves = new javax.swing.JLabel();
         etiquetaFecha = new javax.swing.JLabel();
@@ -272,7 +275,7 @@ public class Home extends javax.swing.JFrame {
                 .addGap(16, 16, 16))
         );
 
-        panelLateral.add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 290, 50));
+        panelLateral.add(btnInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 310, 290, 50));
 
         etiquetaInicio2.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         etiquetaInicio2.setForeground(new java.awt.Color(255, 255, 255));
@@ -282,6 +285,53 @@ public class Home extends javax.swing.JFrame {
         jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator1.setPreferredSize(new java.awt.Dimension(50, 5));
         panelLateral.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 220, 20));
+
+        btnReportes.setBackground(new java.awt.Color(18, 90, 173));
+        btnReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnReportes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnReportesMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnReportesMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnReportesMousePressed(evt);
+            }
+        });
+
+        etiquetaReporte.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        etiquetaReporte.setForeground(new java.awt.Color(0, 0, 0));
+        etiquetaReporte.setText("Reportes");
+
+        iconReporte.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        iconReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/report.png"))); // NOI18N
+
+        javax.swing.GroupLayout btnReportesLayout = new javax.swing.GroupLayout(btnReportes);
+        btnReportes.setLayout(btnReportesLayout);
+        btnReportesLayout.setHorizontalGroup(
+            btnReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnReportesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(iconReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(etiquetaReporte)
+                .addContainerGap(170, Short.MAX_VALUE))
+        );
+        btnReportesLayout.setVerticalGroup(
+            btnReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnReportesLayout.createSequentialGroup()
+                .addGroup(btnReportesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(btnReportesLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(iconReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(btnReportesLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(etiquetaReporte)))
+                .addGap(16, 16, 16))
+        );
+
+        panelLateral.add(btnReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 290, 50));
 
         bgPanel.add(panelLateral, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 290, 540));
 
@@ -368,6 +418,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnEstudiantes);
         resetearColor(btnCursos);
         resetearColor(btnInfo);
+        resetearColor(btnReportes);
         establecerColor(btnInicio);
         
         // Instanciamos el panel
@@ -387,6 +438,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInicio);
         resetearColor(btnCursos);
         resetearColor(btnInfo);
+        resetearColor(btnReportes);
         establecerColor(btnEstudiantes);
         
         // Instanciamos el panel&
@@ -410,7 +462,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseExited
         if(btnEstudiantes.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355) {
+            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnInicio);
         }
     }//GEN-LAST:event_btnInicioMouseExited
@@ -423,7 +475,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseExited
         if(btnInicio.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355) {
+            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnEstudiantes);
         }
     }//GEN-LAST:event_btnEstudiantesMouseExited
@@ -433,6 +485,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInicio);
         resetearColor(btnEstudiantes);
         resetearColor(btnInfo);
+        resetearColor(btnReportes);
         establecerColor(btnCursos);
         
         // Instanciamos el panel
@@ -455,7 +508,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnCursosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMouseExited
         if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355) {
+            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnCursos);
         }
     }//GEN-LAST:event_btnCursosMouseExited
@@ -465,6 +518,7 @@ public class Home extends javax.swing.JFrame {
         resetearColor(btnInicio);
         resetearColor(btnEstudiantes);
         resetearColor(btnCursos);
+        resetearColor(btnReportes);
         establecerColor(btnInfo);
         
         // Instanciamos el panel
@@ -487,7 +541,7 @@ public class Home extends javax.swing.JFrame {
 
     private void btnInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseExited
         if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
-            || btnCursos.getBackground().getRGB() != -15574355) {
+            || btnCursos.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnInfo);
         }
     }//GEN-LAST:event_btnInfoMouseExited
@@ -495,6 +549,28 @@ public class Home extends javax.swing.JFrame {
     private void btnSalirMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSalirMousePressed
         System.exit(0);
     }//GEN-LAST:event_btnSalirMousePressed
+
+    private void btnReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseEntered
+        if(btnReportes.getBackground().getRGB() == -15574355) {
+            establecerColor(btnReportes);
+        }
+    }//GEN-LAST:event_btnReportesMouseEntered
+
+    private void btnReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseExited
+        if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
+            || btnCursos.getBackground().getRGB() != -15574355 || btnInfo.getBackground().getRGB() != -15574355) {
+            resetearColor(btnReportes);
+        }
+    }//GEN-LAST:event_btnReportesMouseExited
+
+    private void btnReportesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMousePressed
+        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
+        resetearColor(btnInicio);
+        resetearColor(btnEstudiantes);
+        resetearColor(btnCursos);
+        resetearColor(btnInfo);
+        establecerColor(btnReportes);
+    }//GEN-LAST:event_btnReportesMousePressed
 
     /**
      * @param args the command line arguments
@@ -505,6 +581,7 @@ public class Home extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+        /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -521,22 +598,23 @@ public class Home extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        */
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new Main().setVisible(true);
             }
         });
     }
     
     //Para obtener el color cuando pase MousePressed
-    public void establecerColor(JPanel panel){
+    public static void establecerColor(JPanel panel){
         panel.setBackground(new Color(21,101,192));
     }
     // Para devolver el color por defecto
-    public void resetearColor(JPanel panel){
+    public static void resetearColor(JPanel panel){
         panel.setBackground(new Color(18,90,173));
     }
 
@@ -546,6 +624,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel btnEstudiantes;
     private javax.swing.JPanel btnInfo;
     private javax.swing.JPanel btnInicio;
+    private javax.swing.JPanel btnReportes;
     private javax.swing.JLabel btnSalir;
     private javax.swing.JLabel etiquetaCursos;
     private javax.swing.JLabel etiquetaEstudiante;
@@ -554,11 +633,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel etiquetaInicio;
     private javax.swing.JLabel etiquetaInicio2;
     private javax.swing.JLabel etiquetaPalabrasClaves;
+    private javax.swing.JLabel etiquetaReporte;
     private javax.swing.JLabel honor;
     private javax.swing.JLabel iconCursos;
     private javax.swing.JLabel iconEstudiante;
     private javax.swing.JLabel iconInfo;
     private javax.swing.JLabel iconInicio;
+    private javax.swing.JLabel iconReporte;
     private javax.swing.JSeparator jSeparator1;
     public static javax.swing.JPanel panelContenido;
     private javax.swing.JPanel panelEncabezado;
