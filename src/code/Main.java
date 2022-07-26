@@ -571,9 +571,13 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnInfo);
         establecerColor(btnReportes);
         
+        panelReportes reportes = new panelReportes();
+        reportes.setSize(680, 360);
+        reportes.setLocation(0, 0);
         
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
+        panelContenido.add(reportes);
         panelContenido.revalidate();
         panelContenido.repaint();
     }//GEN-LAST:event_btnReportesMousePressed

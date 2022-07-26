@@ -77,9 +77,9 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Rolando");
-        rolando.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 30));
+        rolando.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
-        panelprin.add(rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, 140, 30));
+        panelprin.add(rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 30));
 
         Andy.setBackground(new java.awt.Color(18, 90, 173));
         Andy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -100,9 +100,9 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Andy");
-        Andy.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 30));
+        Andy.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
-        panelprin.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 140, 30));
+        panelprin.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 30));
 
         Fabian.setBackground(new java.awt.Color(18, 90, 173));
         Fabian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -123,9 +123,9 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("Fabián");
-        Fabian.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 28));
+        Fabian.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 28));
 
-        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 170, 140, -1));
+        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 110, -1));
 
         Kevin.setBackground(new java.awt.Color(18, 90, 173));
         Kevin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -146,9 +146,9 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("Kevin");
-        Kevin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 139, 30));
+        Kevin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
 
-        panelprin.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 290, 140, 30));
+        panelprin.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 110, 30));
 
         Infodecadauno.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -184,9 +184,9 @@ public class panelInfo extends javax.swing.JPanel {
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("Andrés");
-        Andres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 28));
+        Andres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 28));
 
-        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 140, -1));
+        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
