@@ -260,11 +260,11 @@ public class panelReportes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rpEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMouseEntered
-
+        rpEstudiantes.setBackground(new Color(21,101,192));
     }//GEN-LAST:event_rpEstudiantesMouseEntered
 
     private void rpEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMouseExited
-
+        rpEstudiantes.setBackground(new Color(18,90,173));
     }//GEN-LAST:event_rpEstudiantesMouseExited
 
     private void rpEstudiantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMousePressed
@@ -272,11 +272,11 @@ public class panelReportes extends javax.swing.JPanel {
     }//GEN-LAST:event_rpEstudiantesMousePressed
 
     private void rpCursosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMouseEntered
-
+        rpCursos.setBackground(new Color(21,101,192));
     }//GEN-LAST:event_rpCursosMouseEntered
 
     private void rpCursosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMouseExited
-
+        rpCursos.setBackground(new Color(18,90,173));
     }//GEN-LAST:event_rpCursosMouseExited
 
     private void rpCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMousePressed
