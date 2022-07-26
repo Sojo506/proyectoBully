@@ -20,14 +20,13 @@ public class panelInfo extends javax.swing.JPanel {
     public panelInfo() {
         initComponents();
         SojoInfo so = new SojoInfo();
-        so.setSize(390, 360);
+        so.setSize(680, 260);
         so.setLocation(0, 0);
 
-        Infodecadauno.removeAll();
-        Infodecadauno.add(so, BorderLayout.CENTER);
-        establecerColor(Fabian);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(so, BorderLayout.CENTER);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
     }
 
     /**
@@ -40,17 +39,12 @@ public class panelInfo extends javax.swing.JPanel {
     private void initComponents() {
 
         panelprin = new javax.swing.JPanel();
-        rolando = new javax.swing.JPanel();
+        panelInfoContenido = new javax.swing.JPanel();
+        Fabian = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        Andy = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        Fabian = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
-        Kevin = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
-        Infodecadauno = new javax.swing.JPanel();
-        Andres = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
@@ -58,135 +52,70 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.setPreferredSize(new java.awt.Dimension(680, 360));
         panelprin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        rolando.setBackground(new java.awt.Color(18, 90, 173));
-        rolando.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        rolando.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                rolandoMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                rolandoMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                rolandoMousePressed(evt);
-            }
-        });
-        rolando.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelInfoContenido.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Rolando");
-        rolando.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
+        javax.swing.GroupLayout panelInfoContenidoLayout = new javax.swing.GroupLayout(panelInfoContenido);
+        panelInfoContenido.setLayout(panelInfoContenidoLayout);
+        panelInfoContenidoLayout.setHorizontalGroup(
+            panelInfoContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        panelInfoContenidoLayout.setVerticalGroup(
+            panelInfoContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+        );
 
-        panelprin.add(rolando, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 110, 30));
+        panelprin.add(panelInfoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 260));
 
-        Andy.setBackground(new java.awt.Color(18, 90, 173));
-        Andy.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Andy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AndyMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AndyMouseExited(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                AndyMousePressed(evt);
-            }
-        });
-        Andy.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Andy");
-        Andy.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
-
-        panelprin.add(Andy, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 110, 30));
-
-        Fabian.setBackground(new java.awt.Color(18, 90, 173));
+        Fabian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Fabian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
         Fabian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fabian.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                FabianMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                FabianMouseExited(evt);
-            }
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 FabianMousePressed(evt);
             }
         });
-        Fabian.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 48, 48));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.jpg"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+        panelprin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 48, 48));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.jpg"))); // NOI18N
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel2MousePressed(evt);
+            }
+        });
+        panelprin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 48, 48));
+
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Fabián");
-        Fabian.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 28));
-
-        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 110, -1));
-
-        Kevin.setBackground(new java.awt.Color(18, 90, 173));
-        Kevin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Kevin.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                KevinMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                KevinMouseExited(evt);
-            }
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.jpg"))); // NOI18N
+        jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                KevinMousePressed(evt);
+                jLabel4MousePressed(evt);
             }
         });
-        Kevin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panelprin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 48, 48));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("Kevin");
-        Kevin.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 30));
-
-        panelprin.add(Kevin, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 110, 30));
-
-        Infodecadauno.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout InfodecadaunoLayout = new javax.swing.GroupLayout(Infodecadauno);
-        Infodecadauno.setLayout(InfodecadaunoLayout);
-        InfodecadaunoLayout.setHorizontalGroup(
-            InfodecadaunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 390, Short.MAX_VALUE)
-        );
-        InfodecadaunoLayout.setVerticalGroup(
-            InfodecadaunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 360, Short.MAX_VALUE)
-        );
-
-        panelprin.add(Infodecadauno, new org.netbeans.lib.awtextra.AbsoluteConstraints(295, 0, 390, 360));
-
-        Andres.setBackground(new java.awt.Color(18, 90, 173));
-        Andres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Andres.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                AndresMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                AndresMouseExited(evt);
-            }
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.jpg"))); // NOI18N
+        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                AndresMousePressed(evt);
+                jLabel3MousePressed(evt);
             }
         });
-        Andres.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Andrés");
-        Andres.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, 28));
-
-        panelprin.add(Andres, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, -1));
+        panelprin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 48, 48));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -200,157 +129,60 @@ public class panelInfo extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rolandoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseEntered
-        if (rolando.getBackground().getRGB() == -15574355) {
-            establecerColor(rolando);
-        }
-    }//GEN-LAST:event_rolandoMouseEntered
-
-    private void rolandoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMouseExited
-        if (Andy.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
-                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
-            resetearColor(rolando);
-        }
-    }//GEN-LAST:event_rolandoMouseExited
-
-    private void AndyMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMouseEntered
-        if (Andy.getBackground().getRGB() == -15574355) {
-            establecerColor(Andy);
-        }
-    }//GEN-LAST:event_AndyMouseEntered
-
-    private void AndyMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMouseExited
-        if (rolando.getBackground().getRGB() != -15574355 || Fabian.getBackground().getRGB() != -15574355
-                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
-            resetearColor(Andy);
-        }
-    }//GEN-LAST:event_AndyMouseExited
-
-    private void FabianMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMouseEntered
-        if (Fabian.getBackground().getRGB() == -15574355) {
-            establecerColor(Fabian);
-        }
-    }//GEN-LAST:event_FabianMouseEntered
-
-    private void FabianMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMouseExited
-        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
-                || Kevin.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
-            resetearColor(Fabian);
-        }
-    }//GEN-LAST:event_FabianMouseExited
-
-    private void KevinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMouseEntered
-        if (Kevin.getBackground().getRGB() == -15574355) {
-            establecerColor(Kevin);
-        }
-    }//GEN-LAST:event_KevinMouseEntered
-
-    private void KevinMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMouseExited
-        if (rolando.getBackground().getRGB() != -15574355 || Andy.getBackground().getRGB() != -15574355
-                || Fabian.getBackground().getRGB() != -15574355 || Andres.getBackground().getRGB() != -15574355) {
-            resetearColor(Kevin);
-        }
-    }//GEN-LAST:event_KevinMouseExited
-
     private void FabianMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FabianMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(rolando);
-        resetearColor(Andy);
-        resetearColor(Andres);
-        resetearColor(Kevin);
-        establecerColor(Fabian);
-
         SojoInfo so = new SojoInfo();
-        so.setSize(390, 360);
+        so.setSize(680, 260);
         so.setLocation(0, 0);
 
-        Infodecadauno.removeAll();
-        Infodecadauno.add(so, BorderLayout.CENTER);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-
-
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(so, BorderLayout.CENTER);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
     }//GEN-LAST:event_FabianMousePressed
 
-    private void rolandoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rolandoMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(Fabian);
-        resetearColor(Andy);
-        resetearColor(Andres);
-        resetearColor(Kevin);
-        establecerColor(rolando);
-
-        RoloInfo RP = new RoloInfo();
-        RP.setSize(390, 360);
-        RP.setLocation(0, 0);
-
-        Infodecadauno.removeAll();
-        Infodecadauno.add(RP, BorderLayout.CENTER);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-    }//GEN-LAST:event_rolandoMousePressed
-
-    private void AndyMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndyMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(rolando);
-        resetearColor(Fabian);
-        resetearColor(Andres);
-        resetearColor(Kevin);
-        establecerColor(Andy);
-
-        AndyInfo AP = new AndyInfo();
-        AP.setSize(390, 360);
-        AP.setLocation(0, 0);
-
-        Infodecadauno.removeAll();
-        Infodecadauno.add(AP, BorderLayout.CENTER);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-    }//GEN-LAST:event_AndyMousePressed
-
-    private void KevinMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KevinMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(rolando);
-        resetearColor(Andy);
-        resetearColor(Andres);
-        resetearColor(Fabian);
-        establecerColor(Kevin);
-
-        KevinInfo IK = new KevinInfo();
-        IK.setSize(390, 360);
-        IK.setLocation(0, 0);
-
-        Infodecadauno.removeAll();
-        Infodecadauno.add(IK, BorderLayout.CENTER);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-    }//GEN-LAST:event_KevinMousePressed
-
-    private void AndresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseEntered
-        
-    }//GEN-LAST:event_AndresMouseEntered
-
-    private void AndresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMouseExited
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AndresMouseExited
-
-    private void AndresMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AndresMousePressed
-        // Reseteamos el color de los btns, y establecemos el color al btn seleccionado
-        resetearColor(rolando);
-        resetearColor(Andy);
-        resetearColor(Kevin);
-        resetearColor(Fabian);
-        establecerColor(Andres);
-
+    private void jLabel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MousePressed
         AndresInfo and = new AndresInfo();
-        and.setSize(390, 360);
+        and.setSize(680, 260);
         and.setLocation(0, 0);
 
-        Infodecadauno.removeAll();
-        Infodecadauno.add(and, BorderLayout.CENTER);
-        Infodecadauno.revalidate();
-        Infodecadauno.repaint();
-    }//GEN-LAST:event_AndresMousePressed
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(and, BorderLayout.CENTER);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
+    }//GEN-LAST:event_jLabel1MousePressed
+
+    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
+        RoloInfo rl = new RoloInfo();
+        rl.setSize(680, 260);
+        rl.setLocation(0, 0);
+        
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(rl);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
+    }//GEN-LAST:event_jLabel2MousePressed
+
+    private void jLabel4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MousePressed
+        AndyInfo AP = new AndyInfo();
+        AP.setSize(680, 260);
+        AP.setLocation(0, 0);
+
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(AP, BorderLayout.CENTER);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
+    }//GEN-LAST:event_jLabel4MousePressed
+
+    private void jLabel3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MousePressed
+        KevinInfo IK = new KevinInfo();
+        IK.setSize(680, 260);
+        IK.setLocation(0, 0);
+
+        panelInfoContenido.removeAll();
+        panelInfoContenido.add(IK, BorderLayout.CENTER);
+        panelInfoContenido.revalidate();
+        panelInfoContenido.repaint();
+    }//GEN-LAST:event_jLabel3MousePressed
 
     //Para obtener el color cuando pase MousePressed
     public void establecerColor(JPanel panel) {
@@ -363,17 +195,12 @@ public class panelInfo extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Andres;
-    private javax.swing.JPanel Andy;
-    private javax.swing.JPanel Fabian;
-    private javax.swing.JPanel Infodecadauno;
-    private javax.swing.JPanel Kevin;
+    private javax.swing.JLabel Fabian;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JPanel panelInfoContenido;
     private javax.swing.JPanel panelprin;
-    private javax.swing.JPanel rolando;
     // End of variables declaration//GEN-END:variables
 }
