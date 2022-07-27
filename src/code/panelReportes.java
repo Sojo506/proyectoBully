@@ -370,7 +370,7 @@ public class panelReportes extends javax.swing.JPanel {
         }
         
         // Obtener cantidad de presencial y virtual
-        String cursos[][] = new String[estActivos][5]; // [filas][columnas]
+        String cursos[][] = new String[cursosActivos][5]; // [filas][columnas]
         
         // itera las filas
         int i = 0; 

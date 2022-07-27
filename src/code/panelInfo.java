@@ -41,10 +41,10 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin = new javax.swing.JPanel();
         panelInfoContenido = new javax.swing.JPanel();
         Fabian = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
@@ -68,27 +68,17 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(panelInfoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 260));
 
         Fabian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Fabian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/1.jpg"))); // NOI18N
+        Fabian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FS 48X48.jpg"))); // NOI18N
         Fabian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fabian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 FabianMousePressed(evt);
             }
         });
-        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 48, 48));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/2.jpg"))); // NOI18N
-        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel1MousePressed(evt);
-            }
-        });
-        panelprin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 290, 48, 48));
+        panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 48, 48));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/3.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RA 48X48.jpg"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -98,7 +88,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 48, 48));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/4.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AN 48X48.jpg"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -108,14 +98,24 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 48, 48));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/5.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/KA 48X48.jpg"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jLabel3MousePressed(evt);
             }
         });
-        panelprin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 48, 48));
+        panelprin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 48, 48));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AS 48X48.jpg"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel1MousePressed(evt);
+            }
+        });
+        panelprin.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 290, 48, 48));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
