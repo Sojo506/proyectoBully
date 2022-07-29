@@ -55,7 +55,7 @@ public class SojoInfo extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
         jLabel8.setText("Residencia: Nueva Zelanda");
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(239, 248, 247));
         setForeground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(470, 350));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,9 +73,9 @@ public class SojoInfo extends javax.swing.JPanel {
         jLabel2.setText("Fabián Sojo Mejías");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 50));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
-        gitHubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitHubPanel.setBackground(new java.awt.Color(239, 248, 247));
         gitHubPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 gitHubPanelMouseEntered(evt);
@@ -106,7 +106,7 @@ public class SojoInfo extends javax.swing.JPanel {
 
         add(gitHubPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 36, 36));
 
-        linkPanel.setBackground(new java.awt.Color(255, 255, 255));
+        linkPanel.setBackground(new java.awt.Color(239, 248, 247));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         linkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -137,7 +137,7 @@ public class SojoInfo extends javax.swing.JPanel {
 
         add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 36, 36));
 
-        instaPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instaPanel.setBackground(new java.awt.Color(239, 248, 247));
         instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         instaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -168,7 +168,7 @@ public class SojoInfo extends javax.swing.JPanel {
 
         add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 36, 36));
 
-        epicPanel.setBackground(new java.awt.Color(255, 255, 255));
+        epicPanel.setBackground(new java.awt.Color(239, 248, 247));
         epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         epicPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -179,6 +179,7 @@ public class SojoInfo extends javax.swing.JPanel {
             }
         });
 
+        jLabel3.setBackground(new java.awt.Color(239, 248, 247));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/games.png"))); // NOI18N
 
@@ -212,7 +213,7 @@ public class SojoInfo extends javax.swing.JPanel {
         add(insta, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 70, 20));
 
         jLabel7.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel7.setText("¿Que tal? Mi nombre es Fabián Sojo.");
+        jLabel7.setText("¿Qué tal? Mi nombre es Fabián Sojo.");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, 320, -1));
 
         jLabel9.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -220,7 +221,7 @@ public class SojoInfo extends javax.swing.JPanel {
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel10.setText("y el ingenio.");
+        jLabel10.setText("y el ingenio");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, 270, -1));
 
         jLabel11.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
@@ -233,8 +234,9 @@ public class SojoInfo extends javax.swing.JPanel {
         add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 10, 350));
 
         jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
-        jLabel12.setText("\"A veces las personas que todos piensan que no harán nada, son las que hacen cosas que nadie había imaginado\"");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 240, 650, -1));
+        jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel12.setText("\"Nos convertimos en lo que pensamos\"");
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 240, 670, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered

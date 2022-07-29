@@ -48,11 +48,11 @@ public class panelInfo extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
-        panelprin.setBackground(new java.awt.Color(255, 255, 255));
+        panelprin.setBackground(new java.awt.Color(239, 248, 247));
         panelprin.setPreferredSize(new java.awt.Dimension(680, 360));
         panelprin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelInfoContenido.setBackground(new java.awt.Color(255, 255, 255));
+        panelInfoContenido.setBackground(new java.awt.Color(239, 248, 247));
 
         javax.swing.GroupLayout panelInfoContenidoLayout = new javax.swing.GroupLayout(panelInfoContenido);
         panelInfoContenido.setLayout(panelInfoContenidoLayout);
@@ -68,7 +68,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(panelInfoContenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 260));
 
         Fabian.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Fabian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/FS 48X48.jpg"))); // NOI18N
+        Fabian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fs.jpeg"))); // NOI18N
         Fabian.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Fabian.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -78,7 +78,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(Fabian, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 48, 48));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/RA 48X48.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ra.jpeg"))); // NOI18N
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -88,7 +88,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 48, 48));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AN 48X48.jpg"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/an.jpeg"))); // NOI18N
         jLabel4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -98,7 +98,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 290, 48, 48));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/KA 48X48.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/ka.jpeg"))); // NOI18N
         jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -108,7 +108,7 @@ public class panelInfo extends javax.swing.JPanel {
         panelprin.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 290, 48, 48));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/AS 48X48.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/as.jpeg"))); // NOI18N
         jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {

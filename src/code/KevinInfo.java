@@ -53,7 +53,7 @@ public class KevinInfo extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(680, 260));
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(239, 248, 247));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,7 +72,7 @@ public class KevinInfo extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
-        gitKPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitKPanel.setBackground(new java.awt.Color(239, 248, 247));
         gitKPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 gitKPanelMouseEntered(evt);
@@ -103,7 +103,7 @@ public class KevinInfo extends javax.swing.JPanel {
 
         jPanel1.add(gitKPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 36, 36));
 
-        linkPanel.setBackground(new java.awt.Color(255, 255, 255));
+        linkPanel.setBackground(new java.awt.Color(239, 248, 247));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         linkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -134,7 +134,7 @@ public class KevinInfo extends javax.swing.JPanel {
 
         jPanel1.add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 36, 36));
 
-        instaPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instaPanel.setBackground(new java.awt.Color(239, 248, 247));
         instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         instaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -165,7 +165,7 @@ public class KevinInfo extends javax.swing.JPanel {
 
         jPanel1.add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 36, 36));
 
-        epicPanel.setBackground(new java.awt.Color(255, 255, 255));
+        epicPanel.setBackground(new java.awt.Color(239, 248, 247));
         epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         epicPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {

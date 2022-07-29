@@ -50,7 +50,7 @@ public class AndresInfo extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(239, 248, 247));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -69,7 +69,7 @@ public class AndresInfo extends javax.swing.JPanel {
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
-        gitAndPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitAndPanel.setBackground(new java.awt.Color(239, 248, 247));
         gitAndPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 gitAndPanelMouseEntered(evt);
@@ -100,7 +100,7 @@ public class AndresInfo extends javax.swing.JPanel {
 
         jPanel1.add(gitAndPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 36, 36));
 
-        linkPanel.setBackground(new java.awt.Color(255, 255, 255));
+        linkPanel.setBackground(new java.awt.Color(239, 248, 247));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         linkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -131,7 +131,7 @@ public class AndresInfo extends javax.swing.JPanel {
 
         jPanel1.add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 36, 36));
 
-        instaPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instaPanel.setBackground(new java.awt.Color(239, 248, 247));
         instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         instaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -162,7 +162,7 @@ public class AndresInfo extends javax.swing.JPanel {
 
         jPanel1.add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 36, 36));
 
-        epicPanel.setBackground(new java.awt.Color(255, 255, 255));
+        epicPanel.setBackground(new java.awt.Color(239, 248, 247));
         epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         epicPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -218,7 +218,7 @@ public class AndresInfo extends javax.swing.JPanel {
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 80, -1, -1));
 
         jLabel10.setFont(new java.awt.Font("Georgia", 0, 14)); // NOI18N
-        jLabel10.setText("Tengo 18 años y vivo en Westeros");
+        jLabel10.setText("Tengo 18 años y vivo en Sydney, Austraulia");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 120, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N

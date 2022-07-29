@@ -50,7 +50,7 @@ public class RoloInfo extends javax.swing.JPanel {
         jSeparator3 = new javax.swing.JSeparator();
         jLabel12 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(239, 248, 247));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
         jPanel1.setPreferredSize(new java.awt.Dimension(470, 350));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -65,11 +65,12 @@ public class RoloInfo extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Rolando Algaba Aguilar");
+        jLabel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 680, 60));
 
-        gitHubPanel.setBackground(new java.awt.Color(255, 255, 255));
+        gitHubPanel.setBackground(new java.awt.Color(239, 248, 247));
         gitHubPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 gitHubPanelMouseEntered(evt);
@@ -100,7 +101,7 @@ public class RoloInfo extends javax.swing.JPanel {
 
         jPanel1.add(gitHubPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 36, 36));
 
-        linkPanel.setBackground(new java.awt.Color(255, 255, 255));
+        linkPanel.setBackground(new java.awt.Color(239, 248, 247));
         linkPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         linkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -131,7 +132,7 @@ public class RoloInfo extends javax.swing.JPanel {
 
         jPanel1.add(linkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 190, 36, 36));
 
-        instaPanel.setBackground(new java.awt.Color(255, 255, 255));
+        instaPanel.setBackground(new java.awt.Color(239, 248, 247));
         instaPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         instaPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -162,7 +163,7 @@ public class RoloInfo extends javax.swing.JPanel {
 
         jPanel1.add(instaPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 36, 36));
 
-        epicPanel.setBackground(new java.awt.Color(255, 255, 255));
+        epicPanel.setBackground(new java.awt.Color(239, 248, 247));
         epicPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         epicPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
