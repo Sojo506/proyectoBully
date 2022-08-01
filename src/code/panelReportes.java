@@ -100,11 +100,11 @@ public class panelReportes extends javax.swing.JPanel {
         labelActivosE.setBackground(new java.awt.Color(0, 0, 0));
         labelActivosE.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         labelActivosE.setText("Estudiantes Activos");
-        estudiantes.add(labelActivosE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        estudiantes.add(labelActivosE, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/users.png"))); // NOI18N
-        estudiantes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 24, 24));
+        estudiantes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 24, 24));
 
         cantidadEstudiantes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         cantidadEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -127,11 +127,11 @@ public class panelReportes extends javax.swing.JPanel {
 
         labelActivosC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         labelActivosC.setText("Cursos Activos");
-        jPanel1.add(labelActivosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jPanel1.add(labelActivosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/courses2.png"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 24, 24));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 24, 24));
 
         cantidadCursos.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         cantidadCursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
