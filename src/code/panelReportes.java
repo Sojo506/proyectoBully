@@ -5,10 +5,15 @@
 package code;
 
 import java.awt.Color;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,11 +25,8 @@ public class panelReportes extends javax.swing.JPanel {
 
     Conexion conn = new Conexion();
     Connection reg = conn.getConexion();
-    int estActivos;
-    int cursosActivos;
-    int promEdad;
-    int prs;
-    int vir;
+    FuncionesReportes funcionesReportes = new FuncionesReportes();
+    
 
     /**
      * Creates new form panelReportes
@@ -32,9 +34,12 @@ public class panelReportes extends javax.swing.JPanel {
     public panelReportes() {
         initComponents();
 
+        // PlaceHolders
+        PlaceHolder nombreREstd = new PlaceHolder("Ingrese nombre del archivo txt", nombreArchivoEstd);
+        PlaceHolder nombreRCursos = new PlaceHolder("Ingrese nombre del archivo txt", nombreArchivoCursos);
         try {
-            estudiantesActivos();
-            cursosActivos();
+            funcionesReportes.estudiantesActivos();
+            funcionesReportes.cursosActivos();
         } catch (SQLException ex) {
             Logger.getLogger(panelReportes.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,6 +77,8 @@ public class panelReportes extends javax.swing.JPanel {
         labelEdad = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         promedioEdad = new javax.swing.JLabel();
+        nombreArchivoEstd = new javax.swing.JTextField();
+        nombreArchivoCursos = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -90,7 +97,6 @@ public class panelReportes extends javax.swing.JPanel {
 
         labelActivosE.setBackground(new java.awt.Color(0, 0, 0));
         labelActivosE.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        labelActivosE.setForeground(new java.awt.Color(0, 0, 0));
         labelActivosE.setText("Estudiantes Activos");
         estudiantes.add(labelActivosE, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
@@ -99,12 +105,11 @@ public class panelReportes extends javax.swing.JPanel {
         estudiantes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 24, 24));
 
         cantidadEstudiantes.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        cantidadEstudiantes.setForeground(new java.awt.Color(0, 0, 0));
         cantidadEstudiantes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantidadEstudiantes.setText("0");
         estudiantes.add(cantidadEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
-        add(estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 110));
+        add(estudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 300, 100));
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -119,7 +124,6 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelActivosC.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        labelActivosC.setForeground(new java.awt.Color(0, 0, 0));
         labelActivosC.setText("Cursos Activos");
         jPanel1.add(labelActivosC, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
 
@@ -128,12 +132,11 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 24, 24));
 
         cantidadCursos.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        cantidadCursos.setForeground(new java.awt.Color(0, 0, 0));
         cantidadCursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         cantidadCursos.setText("0");
         jPanel1.add(cantidadCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, -1, -1));
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 300, 110));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 300, 100));
 
         rpEstudiantes.setBackground(new java.awt.Color(18, 90, 173));
         rpEstudiantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,10 +156,10 @@ public class panelReportes extends javax.swing.JPanel {
         estd.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         estd.setForeground(new java.awt.Color(255, 255, 255));
         estd.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        estd.setText("Reporte Estd.");
+        estd.setText("Generar Reporte");
         rpEstudiantes.add(estd, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
 
-        add(rpEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 310, 130, 30));
+        add(rpEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 130, 30));
 
         rpCursos.setBackground(new java.awt.Color(18, 90, 173));
         rpCursos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -176,10 +179,10 @@ public class panelReportes extends javax.swing.JPanel {
         cursos.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         cursos.setForeground(new java.awt.Color(255, 255, 255));
         cursos.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        cursos.setText("Reporte Cursos");
+        cursos.setText("Generar Reporte");
         rpCursos.add(cursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 130, 30));
 
-        add(rpCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 310, 130, 30));
+        add(rpCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 310, 130, 30));
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
         jPanel2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -194,7 +197,6 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         porcentajeMod.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        porcentajeMod.setForeground(new java.awt.Color(0, 0, 0));
         porcentajeMod.setText("Modalidades Activas");
         jPanel2.add(porcentajeMod, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
@@ -203,29 +205,25 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 24, 24));
 
         prsCantidad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        prsCantidad.setForeground(new java.awt.Color(0, 0, 0));
         prsCantidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         prsCantidad.setText("0");
         jPanel2.add(prsCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 40, -1, -1));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Vir");
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Prs");
         jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, -1, -1));
 
         virCantidad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        virCantidad.setForeground(new java.awt.Color(0, 0, 0));
         virCantidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         virCantidad.setText("0");
         jPanel2.add(virCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
 
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 110));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 100));
         jPanel2.getAccessibleContext().setAccessibleName("");
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -241,7 +239,6 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         labelEdad.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
-        labelEdad.setForeground(new java.awt.Color(0, 0, 0));
         labelEdad.setText("Promedio De Edad");
         jPanel3.add(labelEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
@@ -251,36 +248,51 @@ public class panelReportes extends javax.swing.JPanel {
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 24, 24));
 
         promedioEdad.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        promedioEdad.setForeground(new java.awt.Color(0, 0, 0));
         promedioEdad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         promedioEdad.setText("0");
         jPanel3.add(promedioEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, -1, -1));
 
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 300, 110));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 300, 100));
+
+        nombreArchivoEstd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreArchivoEstdActionPerformed(evt);
+            }
+        });
+        add(nombreArchivoEstd, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 170, 30));
+
+        nombreArchivoCursos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nombreArchivoCursosActionPerformed(evt);
+            }
+        });
+        add(nombreArchivoCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 170, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rpEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMouseEntered
-        rpEstudiantes.setBackground(new Color(21,101,192));
+        rpEstudiantes.setBackground(new Color(21, 101, 192));
     }//GEN-LAST:event_rpEstudiantesMouseEntered
 
     private void rpEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMouseExited
-        rpEstudiantes.setBackground(new Color(18,90,173));
+        rpEstudiantes.setBackground(new Color(18, 90, 173));
     }//GEN-LAST:event_rpEstudiantesMouseExited
 
     private void rpEstudiantesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMousePressed
-
+        // archivo txt
+        funcionesReportes.archivoEstudiantes();
     }//GEN-LAST:event_rpEstudiantesMousePressed
 
     private void rpCursosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMouseEntered
-        rpCursos.setBackground(new Color(21,101,192));
+        rpCursos.setBackground(new Color(21, 101, 192));
     }//GEN-LAST:event_rpCursosMouseEntered
 
     private void rpCursosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMouseExited
-        rpCursos.setBackground(new Color(18,90,173));
+        rpCursos.setBackground(new Color(18, 90, 173));
     }//GEN-LAST:event_rpCursosMouseExited
 
     private void rpCursosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpCursosMousePressed
-
+        // archivo txt
+        funcionesReportes.archivoCursos();
     }//GEN-LAST:event_rpCursosMousePressed
 
     private void estudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_estudiantesMouseEntered
@@ -323,81 +335,20 @@ public class panelReportes extends javax.swing.JPanel {
         porcentajeMod.setForeground(Color.black);
     }//GEN-LAST:event_jPanel2MouseExited
 
-    // Metodo para obtener estudiantes activos
-    private void estudiantesActivos() throws SQLException {
-        // para ejecutar la consulta
-        Statement stm = reg.createStatement();
-        ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
+    private void nombreArchivoEstdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreArchivoEstdActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreArchivoEstdActionPerformed
 
-        // para obtener el numero de filas
-        estActivos = 0;
-        while (contador.next()) {
-            estActivos++;
-        }
+    private void nombreArchivoCursosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreArchivoCursosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nombreArchivoCursosActionPerformed
 
-        String estudiantes[][] = new String[estActivos][5]; // [filas][columnas]
-        
-        int i = 0; // itera las filas
-        promEdad = 0;
-        
-        // para reccorer los datos
-        ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-
-        // recorre la tabla estudiantes
-        while (re.next()) {
-            estudiantes[i][4] = re.getString("edad");
-            promEdad += Integer.parseInt(estudiantes[i][4]);
-            i++;
-        }
-        if(estActivos != 0) {
-            promEdad/=estActivos;
-        }
-        promedioEdad.setText("" + promEdad);
-        cantidadEstudiantes.setText("" + estActivos);
-    }
-
-    // Metodo para obtener cursos activos
-    private void cursosActivos() throws SQLException {
-        // para ejecutar la consulta
-        Statement stm = reg.createStatement();
-        ResultSet contador = stm.executeQuery("SELECT * FROM `cursos`");
-        
-        // para obtener el numero de filas
-        cursosActivos = 0;
-        while (contador.next()) {
-            cursosActivos++;
-            
-        }
-        
-        // Obtener cantidad de presencial y virtual
-        String cursos[][] = new String[cursosActivos][5]; // [filas][columnas]
-        
-        // itera las filas
-        int i = 0; 
-        prs = 0;
-        vir = 0;
-        
-        // para reccorer los datos
-        ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
-        
-        while (re.next()) {
-            cursos[i][3] = re.getString("modalidad");
-            if(cursos[i][3].equals("Presencial")) {
-                prs++;
-            } else {
-                vir++;
-            }
-        }
-        
-        prsCantidad.setText("" + prs);
-        virCantidad.setText("" + vir);
-        cantidadCursos.setText("" + cursosActivos);
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel cantidadCursos;
-    private javax.swing.JLabel cantidadEstudiantes;
+    public static javax.swing.JLabel cantidadCursos;
+    public static javax.swing.JLabel cantidadEstudiantes;
     private javax.swing.JLabel cursos;
     private javax.swing.JLabel estd;
     private javax.swing.JPanel estudiantes;
@@ -413,11 +364,13 @@ public class panelReportes extends javax.swing.JPanel {
     private javax.swing.JLabel labelActivosC;
     private javax.swing.JLabel labelActivosE;
     private javax.swing.JLabel labelEdad;
+    public static javax.swing.JTextField nombreArchivoCursos;
+    public static javax.swing.JTextField nombreArchivoEstd;
     private javax.swing.JLabel porcentajeMod;
-    private javax.swing.JLabel promedioEdad;
-    private javax.swing.JLabel prsCantidad;
+    public static javax.swing.JLabel promedioEdad;
+    public static javax.swing.JLabel prsCantidad;
     private javax.swing.JPanel rpCursos;
     private javax.swing.JPanel rpEstudiantes;
-    private javax.swing.JLabel virCantidad;
+    public static javax.swing.JLabel virCantidad;
     // End of variables declaration//GEN-END:variables
 }

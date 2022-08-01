@@ -22,6 +22,7 @@ public class Main extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        // agregar fecha
         LocalDate now = LocalDate.now();
         int ano = now.getYear();
         int dia = now.getDayOfMonth();

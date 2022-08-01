@@ -48,11 +48,11 @@ public class panelInfo extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(680, 360));
 
-        panelprin.setBackground(new java.awt.Color(239, 248, 247));
+        panelprin.setBackground(new java.awt.Color(252, 252, 252));
         panelprin.setPreferredSize(new java.awt.Dimension(680, 360));
         panelprin.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panelInfoContenido.setBackground(new java.awt.Color(239, 248, 247));
+        panelInfoContenido.setBackground(new java.awt.Color(252, 252, 252));
 
         javax.swing.GroupLayout panelInfoContenidoLayout = new javax.swing.GroupLayout(panelInfoContenido);
         panelInfoContenido.setLayout(panelInfoContenidoLayout);
