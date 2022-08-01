@@ -79,6 +79,8 @@ public class panelReportes extends javax.swing.JPanel {
         promedioEdad = new javax.swing.JLabel();
         nombreArchivoEstd = new javax.swing.JTextField();
         nombreArchivoCursos = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -267,6 +269,16 @@ public class panelReportes extends javax.swing.JPanel {
             }
         });
         add(nombreArchivoCursos, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 170, 30));
+
+        jLabel3.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel3.setText("Descargar reporte de estudiantes");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Arial", 0, 10)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("Descargar reporte de cursos");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rpEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rpEstudiantesMouseEntered
@@ -354,6 +366,8 @@ public class panelReportes extends javax.swing.JPanel {
     private javax.swing.JPanel estudiantes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;

@@ -44,21 +44,25 @@ public class FuncionesReportes {
     int prs;
     int vir;
 
+    // Metodo para crear archivo txt de estudiantes
     public void archivoEstudiantes() {
         if (!nombreArchivoEstd.getText().matches(regexLetr) || nombreArchivoEstd.getText().length() > 10) {
             javax.swing.JOptionPane.showMessageDialog(null, "Nombre de archivo incorrecto y/o longitud de caracteres no permitida (max 10)", "AVISO",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE);
         } else {
+            // direccion del archivo
             String carpeta = System.getProperty("user.dir");
             String direccionCompleta = carpeta + "/src/reportesArchivos/" + nombreArchivoEstd.getText() + ".txt";
+            
+            // Crear archivo
             FileWriter url = null;
-
             try {
                 url = new FileWriter(direccionCompleta);
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            // Añadir al archivo
             try {
                 BufferedWriter agregar = new BufferedWriter(url);
                 agregar.write("\nEmpresa:   Bully Academy   Teléfono:   8888-8888\n\n"
@@ -94,7 +98,8 @@ public class FuncionesReportes {
                     agregar.write(estudiantes[i][6] = re.getString("curso") + "\n");
                     i++;
                 }
-
+                
+                // Cerrar archivo
                 agregar.close();
                 javax.swing.JOptionPane.showMessageDialog(null, "¡Archivo Generado Correctamente!",
                         "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
@@ -104,21 +109,26 @@ public class FuncionesReportes {
             }
         }
     }
+    
+    // Metodo para crear archivo txt de cursos
     public void archivoCursos() {
         if (!nombreArchivoCursos.getText().matches(regexLetr) || nombreArchivoCursos.getText().length() > 10) {
             javax.swing.JOptionPane.showMessageDialog(null, "Nombre de archivo incorrecto y/o longitud de caracteres no permitida (max 10)", "AVISO",
                     javax.swing.JOptionPane.INFORMATION_MESSAGE);
         } else {
+            // direccion del archivo
             String carpeta = System.getProperty("user.dir");
             String direccionCompleta = carpeta + "/src/reportesArchivos/" + nombreArchivoCursos.getText() + ".txt";
+            
+            // Crear archivo
             FileWriter url = null;
-
             try {
                 url = new FileWriter(direccionCompleta);
             } catch (IOException ex) {
                 Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
             }
 
+            // Añadir al archivo
             try {
                 BufferedWriter agregar = new BufferedWriter(url);
                 agregar.write("\nEmpresa:   Bully Academy   Teléfono:   8888-8888\n\n"
@@ -154,6 +164,7 @@ public class FuncionesReportes {
                     i++;
                 }
 
+                // Cerrar archivo
                 agregar.close();
                 javax.swing.JOptionPane.showMessageDialog(null, "¡Archivo Generado Correctamente!",
                         "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
