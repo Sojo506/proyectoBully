@@ -14,6 +14,7 @@ import javax.swing.JPanel;
  * @author XPC
  */
 public class Main extends javax.swing.JFrame {
+
     // Hola
     /**
      * Creates new form Home
@@ -21,17 +22,16 @@ public class Main extends javax.swing.JFrame {
     public Main() {
         initComponents();
         this.setLocationRelativeTo(null);
-        
+
         // agregar fecha
         LocalDate now = LocalDate.now();
         int ano = now.getYear();
         int dia = now.getDayOfMonth();
         int mes = now.getMonthValue();
-        String[] meses = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto"," ;Septiembre"
-            ,"Octubre","Noviembre","Diciemrbre"};
-        etiquetaFecha.setText(+dia+"/"+meses[mes - 1]+"/"+ano);
-        
-        
+        String[] meses = {"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", " ;Septiembre",
+             "Octubre", "Noviembre", "Diciemrbre"};
+        etiquetaFecha.setText(+dia + "/" + meses[mes - 1] + "/" + ano);
+
         panelInicio inicio = new panelInicio();
         inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
@@ -421,12 +421,12 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnInfo);
         resetearColor(btnReportes);
         establecerColor(btnInicio);
-        
+
         // Instanciamos el panel
         panelInicio inicio = new panelInicio();
         inicio.setSize(680, 360);
         inicio.setLocation(0, 0);
-        
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
         panelContenido.add(inicio, BorderLayout.CENTER);
@@ -441,12 +441,12 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnInfo);
         resetearColor(btnReportes);
         establecerColor(btnEstudiantes);
-        
+
         // Instanciamos el panel&
         panelEstudiantes estudiantes = new panelEstudiantes();
         estudiantes.setSize(680, 360);
         estudiantes.setLocation(0, 0);
-        
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
         panelContenido.add(estudiantes, BorderLayout.CENTER);
@@ -456,27 +456,27 @@ public class Main extends javax.swing.JFrame {
     // MouseEntered: Cuando pase el mouse por encima del panel
     // MouseExited: Cuando el mouse salga del panel
     private void btnInicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseEntered
-        if(btnInicio.getBackground().getRGB() == -15574355) {
+        if (btnInicio.getBackground().getRGB() == -15574355) {
             establecerColor(btnInicio);
         }
     }//GEN-LAST:event_btnInicioMouseEntered
 
     private void btnInicioMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInicioMouseExited
-        if(btnEstudiantes.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
+        if (btnEstudiantes.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
+                || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnInicio);
         }
     }//GEN-LAST:event_btnInicioMouseExited
 
     private void btnEstudiantesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseEntered
-        if(btnEstudiantes.getBackground().getRGB() == -15574355) {
+        if (btnEstudiantes.getBackground().getRGB() == -15574355) {
             establecerColor(btnEstudiantes);
         }
     }//GEN-LAST:event_btnEstudiantesMouseEntered
 
     private void btnEstudiantesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEstudiantesMouseExited
-        if(btnInicio.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
+        if (btnInicio.getBackground().getRGB() != -15574355 || btnCursos.getBackground().getRGB() != -15574355
+                || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnEstudiantes);
         }
     }//GEN-LAST:event_btnEstudiantesMouseExited
@@ -488,12 +488,12 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnInfo);
         resetearColor(btnReportes);
         establecerColor(btnCursos);
-        
+
         // Instanciamos el panel
         panelCursos cursos = new panelCursos();
         cursos.setSize(680, 360);
         cursos.setLocation(0, 0);
-        
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
         panelContenido.add(cursos, BorderLayout.CENTER);
@@ -502,14 +502,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCursosMousePressed
 
     private void btnCursosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMouseEntered
-        if(btnCursos.getBackground().getRGB() == -15574355) {
+        if (btnCursos.getBackground().getRGB() == -15574355) {
             establecerColor(btnCursos);
         }
     }//GEN-LAST:event_btnCursosMouseEntered
 
     private void btnCursosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCursosMouseExited
-        if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
-            || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
+        if (btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
+                || btnInfo.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnCursos);
         }
     }//GEN-LAST:event_btnCursosMouseExited
@@ -521,12 +521,12 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnCursos);
         resetearColor(btnReportes);
         establecerColor(btnInfo);
-        
+
         // Instanciamos el panel
         panelInfo info = new panelInfo();
         info.setSize(680, 360);
         info.setLocation(0, 0);
-        
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
         panelContenido.add(info, BorderLayout.CENTER);
@@ -535,14 +535,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInfoMousePressed
 
     private void btnInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseEntered
-        if(btnInfo.getBackground().getRGB() == -15574355) {
+        if (btnInfo.getBackground().getRGB() == -15574355) {
             establecerColor(btnInfo);
         }
     }//GEN-LAST:event_btnInfoMouseEntered
 
     private void btnInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnInfoMouseExited
-        if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
-            || btnCursos.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
+        if (btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
+                || btnCursos.getBackground().getRGB() != -15574355 || btnReportes.getBackground().getRGB() != -15574355) {
             resetearColor(btnInfo);
         }
     }//GEN-LAST:event_btnInfoMouseExited
@@ -552,14 +552,14 @@ public class Main extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirMousePressed
 
     private void btnReportesMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseEntered
-        if(btnReportes.getBackground().getRGB() == -15574355) {
+        if (btnReportes.getBackground().getRGB() == -15574355) {
             establecerColor(btnReportes);
         }
     }//GEN-LAST:event_btnReportesMouseEntered
 
     private void btnReportesMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnReportesMouseExited
-        if(btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
-            || btnCursos.getBackground().getRGB() != -15574355 || btnInfo.getBackground().getRGB() != -15574355) {
+        if (btnInicio.getBackground().getRGB() != -15574355 || btnEstudiantes.getBackground().getRGB() != -15574355
+                || btnCursos.getBackground().getRGB() != -15574355 || btnInfo.getBackground().getRGB() != -15574355) {
             resetearColor(btnReportes);
         }
     }//GEN-LAST:event_btnReportesMouseExited
@@ -571,11 +571,11 @@ public class Main extends javax.swing.JFrame {
         resetearColor(btnCursos);
         resetearColor(btnInfo);
         establecerColor(btnReportes);
-        
+
         panelReportes reportes = new panelReportes();
         reportes.setSize(680, 360);
         reportes.setLocation(0, 0);
-        
+
         // Removemos el panel anterior y pasamos el nuevo para mostrarlo
         panelContenido.removeAll();
         panelContenido.add(reportes);
@@ -592,7 +592,7 @@ public class Main extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        /*
+ /*
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -609,7 +609,7 @@ public class Main extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        */
+         */
         //</editor-fold>
 
         /* Create and display the form */
@@ -619,14 +619,15 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-    
+
     //Para obtener el color cuando pase MousePressed
-    public static void establecerColor(JPanel panel){
-        panel.setBackground(new Color(21,101,192));
+    public static void establecerColor(JPanel panel) {
+        panel.setBackground(new Color(21, 101, 192));
     }
+
     // Para devolver el color por defecto
-    public static void resetearColor(JPanel panel){
-        panel.setBackground(new Color(18,90,173));
+    public static void resetearColor(JPanel panel) {
+        panel.setBackground(new Color(18, 90, 173));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

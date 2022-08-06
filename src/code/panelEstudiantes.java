@@ -1,4 +1,4 @@
-    /*
+/*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
-
 /**
  *
  * @author Sojo
@@ -28,8 +27,8 @@ public class panelEstudiantes extends javax.swing.JPanel {
     Conexion conn;
     Connection reg;
     private DefaultTableModel modeloTabla = new DefaultTableModel();
-    public static int idEstudianteModificar=0;
-    public static String nombreCurso="";
+    public static int idEstudianteModificar = 0;
+    public static String nombreCurso = "";
     FuncionesEstudiante funciones = new FuncionesEstudiante();
 
     public panelEstudiantes() {
@@ -42,7 +41,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -174,7 +172,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
     // Agregar Estudiantes
     private void btnAgregarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnAgregarMousePressed
-        
+
         // Instanciamos el panel
         panelRegistroEstudiantes rAg = new panelRegistroEstudiantes();
         rAg.setSize(680, 360);
@@ -201,10 +199,10 @@ public class panelEstudiantes extends javax.swing.JPanel {
             resetearColor(btnAgregar);
         }
     }//GEN-LAST:event_btnAgregarMouseExited
-    
+
     // Modificar Estudiantes
     private void btnModificarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMousePressed
-       funciones.getStudent();
+        funciones.getStudent();
     }//GEN-LAST:event_btnModificarMousePressed
 
     private void btnModificarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnModificarMouseEntered

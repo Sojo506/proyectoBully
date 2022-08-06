@@ -33,7 +33,7 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     public panelRegistroEstudiantes() {
         modeloCursos.removeAllElements();
         initComponents();
-        
+
         // Placeholders
         PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombre);
         PlaceHolder pApellido = new PlaceHolder("Ingresar primer apellido", inputPrimerApellido);
@@ -231,30 +231,30 @@ public class panelRegistroEstudiantes extends javax.swing.JPanel {
     }//GEN-LAST:event_btnGuardarMousePressed
     /*Autor : Andy*/
     private void inputNombreMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputNombreMousePressed
-        
+
 
     }//GEN-LAST:event_inputNombreMousePressed
     /*Autor :Andy*/
     private void inputPrimerApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputPrimerApellidoMousePressed
-       
+
     }//GEN-LAST:event_inputPrimerApellidoMousePressed
     /*Autor : Andy*/
     private void inputSegundoApellidoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputSegundoApellidoMousePressed
-        
+
     }//GEN-LAST:event_inputSegundoApellidoMousePressed
     /*Autor : Andy*/
     private void inputEdadMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputEdadMousePressed
-        
+
 
     }//GEN-LAST:event_inputEdadMousePressed
     /*Autor : Andy*/
     private void inputCedulaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputCedulaMousePressed
-        
+
 
     }//GEN-LAST:event_inputCedulaMousePressed
     /*Autor : Andy*/
     private void inputTelefonoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_inputTelefonoMousePressed
-       
+
     }//GEN-LAST:event_inputTelefonoMousePressed
 
     private void inputNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_inputNombreKeyPressed

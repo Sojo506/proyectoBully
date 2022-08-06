@@ -25,6 +25,7 @@ import javax.swing.JPanel;
  * @author Andrés
  */
 public class panelCursos extends javax.swing.JPanel {
+
     private DefaultTableModel modeloTabla2 = new DefaultTableModel();
     public static int idCursoModificar;
     public static String anteriorCurso;

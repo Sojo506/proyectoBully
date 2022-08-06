@@ -214,7 +214,7 @@ public class panelReportes extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel1.setText("Vir");
-        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, -1, -1));
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 20, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         jLabel2.setText("Prs");
@@ -223,7 +223,7 @@ public class panelReportes extends javax.swing.JPanel {
         virCantidad.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         virCantidad.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         virCantidad.setText("0");
-        jPanel2.add(virCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 40, -1, -1));
+        jPanel2.add(virCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 40, -1, -1));
 
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 150, 300, 100));
         jPanel2.getAccessibleContext().setAccessibleName("");

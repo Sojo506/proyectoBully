@@ -1,4 +1,3 @@
-
 package code;
 
 import java.sql.Connection;
@@ -10,6 +9,7 @@ import java.sql.SQLException;
  * @author Sojo
  */
 public class Conexion {
+
     private static Connection conn;
     private static final String driver = "com.mysql.cj.jdbc.Driver";
     private static final String url = "jdbc:mysql://localhost:3306/proyecto_bully";
@@ -18,20 +18,21 @@ public class Conexion {
 
     public Conexion() {
         conn = null;
-        try{
+        try {
             Class.forName(driver);
             conn = DriverManager.getConnection(url, user, pass);
             System.out.println("Conexión realizada");
-            if(conn != null)
+            if (conn != null) {
                 System.out.println("Conexión establecida exitosamente");
-            
-        }catch (ClassNotFoundException | SQLException ex){
-            System.out.println("Conexión Fallida:\n\n"+ex);
+            }
+
+        } catch (ClassNotFoundException | SQLException ex) {
+            System.out.println("Conexión Fallida:\n\n" + ex);
         }
     }
-    
+
     public Connection getConexion() {
         return conn;
     }
-    
+
 }

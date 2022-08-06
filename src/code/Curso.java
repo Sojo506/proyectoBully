@@ -5,13 +5,13 @@ package code;
  * @author andres
  */
 public class Curso {
+
     private String nombreCurso;
     private String horario;
     private String modalidad;
     private String sede;
     private int cantidad;
     private int cantidadEstudiantes;
-    
 
     public Curso() {
 
@@ -72,7 +72,5 @@ public class Curso {
     public void setCantidadEstudiantes(int cantidadEstudiantes) {
         this.cantidadEstudiantes = cantidadEstudiantes;
     }
-    
-    
-    
+
 }

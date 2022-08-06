@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package code;
+
 import java.awt.Color;
+
 /**
  *
  * @author Andy
@@ -253,7 +255,7 @@ public class RoloInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered
-        gitHubPanel.setBackground(new Color(204,204,204));
+        gitHubPanel.setBackground(new Color(204, 204, 204));
         gitHub.setText("Rolo0519");
     }//GEN-LAST:event_gitHubPanelMouseEntered
 
@@ -263,7 +265,7 @@ public class RoloInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_gitHubPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
-        linkPanel.setBackground(new Color(204,204,204));
+        linkPanel.setBackground(new Color(204, 204, 204));
         linkedin.setText("Rolando Algaba");
     }//GEN-LAST:event_linkPanelMouseEntered
 
@@ -273,7 +275,7 @@ public class RoloInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_linkPanelMouseExited
 
     private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
-        instaPanel.setBackground(new Color(204,204,204));
+        instaPanel.setBackground(new Color(204, 204, 204));
         insta.setText("rolando__0519");
     }//GEN-LAST:event_instaPanelMouseEntered
 
@@ -283,7 +285,7 @@ public class RoloInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_instaPanelMouseExited
 
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
-        epicPanel.setBackground(new Color(204,204,204));
+        epicPanel.setBackground(new Color(204, 204, 204));
         epic.setText("Rolocondaxdxd");
     }//GEN-LAST:event_epicPanelMouseEntered
 

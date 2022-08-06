@@ -53,7 +53,7 @@ public class FuncionesReportes {
             // direccion del archivo
             String carpeta = System.getProperty("user.dir");
             String direccionCompleta = carpeta + "/src/reportesArchivos/" + nombreArchivoEstd.getText() + ".txt";
-            
+
             // Crear archivo
             FileWriter url = null;
             try {
@@ -98,7 +98,7 @@ public class FuncionesReportes {
                     agregar.write(estudiantes[i][6] = re.getString("curso") + "\n");
                     i++;
                 }
-                
+
                 // Cerrar archivo
                 agregar.close();
                 javax.swing.JOptionPane.showMessageDialog(null, "¡Archivo Generado Correctamente!",
@@ -109,7 +109,7 @@ public class FuncionesReportes {
             }
         }
     }
-    
+
     // Metodo para crear archivo txt de cursos
     public void archivoCursos() {
         if (!nombreArchivoCursos.getText().matches(regexLetr) || nombreArchivoCursos.getText().length() > 10) {
@@ -119,7 +119,7 @@ public class FuncionesReportes {
             // direccion del archivo
             String carpeta = System.getProperty("user.dir");
             String direccionCompleta = carpeta + "/src/reportesArchivos/" + nombreArchivoCursos.getText() + ".txt";
-            
+
             // Crear archivo
             FileWriter url = null;
             try {
@@ -174,7 +174,7 @@ public class FuncionesReportes {
             }
         }
     }
-    
+
     // Metodo para obtener estudiantes activos
     public void estudiantesActivos() throws SQLException {
         // para ejecutar la consulta

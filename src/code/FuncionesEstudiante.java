@@ -120,7 +120,7 @@ public class FuncionesEstudiante {
     // Metodo para modificar cantidad de curso
     private boolean modificarCantidadCurso(String curso, String c) throws SQLException {
         int idAux = 0;
-        
+
         Curso cr = new Curso();
         Curso cr2 = new Curso();
         int idCurso = -1;
@@ -197,7 +197,7 @@ public class FuncionesEstudiante {
                         verificacion = false;
                     }
                 }
-                
+
             } catch (SQLException ex) {
                 System.out.println("Error 2 " + ex);
             }
@@ -231,7 +231,7 @@ public class FuncionesEstudiante {
 
             //Recorrer la tabla
             while (re.next()) {
-                    modeloCursos.addElement(cursos[i][1] = re.getString("nombre"));
+                modeloCursos.addElement(cursos[i][1] = re.getString("nombre"));
                 i++;
             }
         } catch (SQLException ex) {
@@ -298,13 +298,13 @@ public class FuncionesEstudiante {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     // Obtener el estudiante para ser modificado
     public void getStudent() {
         try {
             // Obtenemos la fila del estudiante seleccionado
-            int filaEstudiante = tablaEstudiantes.getSelectedRow(); 
-            
+            int filaEstudiante = tablaEstudiantes.getSelectedRow();
+
             if (filaEstudiante < 0) {
                 javax.swing.JOptionPane.showMessageDialog(null, "Debe seleccionar el estudiante a modificarr. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             } else {
@@ -322,9 +322,9 @@ public class FuncionesEstudiante {
                 int i = 0; // itera las filas
                 // para reccorer los datos
                 ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
-                
+
                 // recorre la tabla estudiantes
-                while (re.next()) { 
+                while (re.next()) {
                     estudiantes[i][0] = re.getString("idEstudiante");
                     estudiantes[i][1] = re.getString("nombre");
                     estudiantes[i][2] = re.getString("primerApellido");
@@ -339,9 +339,8 @@ public class FuncionesEstudiante {
                 // obtenemos el id del estudiante
                 idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
                 nombreCurso = estudiantes[filaEstudiante][7];
-                
-                
-                if (idEstudianteModificar <= 0) {   
+
+                if (idEstudianteModificar <= 0) {
                     javax.swing.JOptionPane.showMessageDialog(null, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     // mostramos el panel
@@ -350,7 +349,7 @@ public class FuncionesEstudiante {
                     rUp.setLocation(0, 0);
                     rUp.etiquetaTitulo.setText("Modificar Estudiante");
                     rUp.etiquetaGuardar.setText("Modificar");
-                    
+
                     // Pasamos los datos
                     rUp.inputNombre.setText(estudiantes[filaEstudiante][1]);
                     rUp.inputPrimerApellido.setText(estudiantes[filaEstudiante][2]);
@@ -359,7 +358,7 @@ public class FuncionesEstudiante {
                     rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
                     rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
                     rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
-                    
+
                     // Removemos el panel anterior y pasamos el nuevo para mostrarlo
                     panelContenido.removeAll();
                     panelContenido.add(rUp, BorderLayout.CENTER);
@@ -371,6 +370,7 @@ public class FuncionesEstudiante {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     // Metodo para traer los estudiantes de la Base de Datos
     public void getStudents() throws SQLException {
         // para ejecutar la consulta
@@ -399,10 +399,10 @@ public class FuncionesEstudiante {
             i++;
         }
 
-        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes,new String[]{
-                    "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono", "Curso"}));
+        tablaEstudiantes.setModel(new javax.swing.table.DefaultTableModel(estudiantes, new String[]{
+            "Nombre", "Primer Apellido", "Segundo Apellido", "Edad", "Cédula", "Teléfono", "Curso"}));
     }
-    
+
     // Metodo para la cantidad disponible y de estudiantes cuando un estudiante se elimina
     private void modificarCantidadCurso(String curso) throws SQLException {
         Curso cr = new Curso();
@@ -443,7 +443,7 @@ public class FuncionesEstudiante {
             try {
                 stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idCurso + ";");
                 //pC.getCursos();
-                
+
             } catch (SQLException ex) {
                 System.out.println("Error 2 " + ex);
             }

@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package code;
+
 import java.awt.Color;
+
 /**
  *
  * @author morri
@@ -248,7 +250,7 @@ public class AndresInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gitAndPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitAndPanelMouseEntered
-        gitAndPanel.setBackground(new Color(204,204,204));
+        gitAndPanel.setBackground(new Color(204, 204, 204));
         gitHub.setText("andresS0103");
     }//GEN-LAST:event_gitAndPanelMouseEntered
 
@@ -258,7 +260,7 @@ public class AndresInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_gitAndPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
-        linkPanel.setBackground(new Color(204,204,204));
+        linkPanel.setBackground(new Color(204, 204, 204));
         linkedin.setText("Andres Sanchez");
     }//GEN-LAST:event_linkPanelMouseEntered
 
@@ -268,7 +270,7 @@ public class AndresInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_linkPanelMouseExited
 
     private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
-        instaPanel.setBackground(new Color(204,204,204));
+        instaPanel.setBackground(new Color(204, 204, 204));
         insta.setText("andress0103");
     }//GEN-LAST:event_instaPanelMouseEntered
 
@@ -278,7 +280,7 @@ public class AndresInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_instaPanelMouseExited
 
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
-        epicPanel.setBackground(new Color(204,204,204));
+        epicPanel.setBackground(new Color(204, 204, 204));
         epic.setText("TheRealdres xD");
     }//GEN-LAST:event_epicPanelMouseEntered
 

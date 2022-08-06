@@ -185,7 +185,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
     private void listaModalidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaModalidadActionPerformed
         if (listaModalidad.getSelectedItem().equals("Virtual")) {
             listaSedes.setSelectedItem("Virtual");
-        } else if(listaModalidad.getSelectedItem().equals("Presencial")) {
+        } else if (listaModalidad.getSelectedItem().equals("Presencial")) {
             listaSedes.setSelectedItem("San Pedro");
         }
     }//GEN-LAST:event_listaModalidadActionPerformed
@@ -211,7 +211,7 @@ public class panelRegistroCursos extends javax.swing.JPanel {
         modeloSedeC.addElement("Alajuelita");
         modeloSedeC.addElement("Virtual");
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel btnGuardarC;
     public static javax.swing.JLabel etiquetaGuardar;

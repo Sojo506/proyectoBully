@@ -1,13 +1,12 @@
-
 package code;
 
 /**
  *
  * @author Sojo
  */
-
 //prueba
 public class Estudiante {
+
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
@@ -15,7 +14,6 @@ public class Estudiante {
     private String cedula;
     private String telefono;
     private String curso;
-
 
     public String getNombre() {
         return nombre;
@@ -63,7 +61,7 @@ public class Estudiante {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
-    } 
+    }
 
     public String getCurso() {
         return curso;
@@ -72,6 +70,5 @@ public class Estudiante {
     public void setCurso(String curso) {
         this.curso = curso;
     }
-    
-    
+
 }

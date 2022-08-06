@@ -155,7 +155,7 @@ public class panelInfo extends javax.swing.JPanel {
         RoloInfo rl = new RoloInfo();
         rl.setSize(680, 260);
         rl.setLocation(0, 0);
-        
+
         panelInfoContenido.removeAll();
         panelInfoContenido.add(rl);
         panelInfoContenido.revalidate();

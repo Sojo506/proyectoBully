@@ -17,7 +17,7 @@ public class SojoInfo extends javax.swing.JPanel {
      */
     public SojoInfo() {
         initComponents();
-        
+
     }
 
     /**
@@ -239,7 +239,7 @@ public class SojoInfo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void gitHubPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gitHubPanelMouseEntered
-        gitHubPanel.setBackground(new Color(204,204,204));
+        gitHubPanel.setBackground(new Color(204, 204, 204));
         gitHub.setText("Sojo506");
     }//GEN-LAST:event_gitHubPanelMouseEntered
 
@@ -249,7 +249,7 @@ public class SojoInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_gitHubPanelMouseExited
 
     private void linkPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_linkPanelMouseEntered
-        linkPanel.setBackground(new Color(204,204,204));
+        linkPanel.setBackground(new Color(204, 204, 204));
         linkedin.setText("Fabián Sojo");
     }//GEN-LAST:event_linkPanelMouseEntered
 
@@ -259,7 +259,7 @@ public class SojoInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_linkPanelMouseExited
 
     private void epicPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_epicPanelMouseEntered
-        epicPanel.setBackground(new Color(204,204,204));
+        epicPanel.setBackground(new Color(204, 204, 204));
         epic.setText("Sojo506");
     }//GEN-LAST:event_epicPanelMouseEntered
 
@@ -269,7 +269,7 @@ public class SojoInfo extends javax.swing.JPanel {
     }//GEN-LAST:event_epicPanelMouseExited
 
     private void instaPanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_instaPanelMouseEntered
-        instaPanel.setBackground(new Color(204,204,204));
+        instaPanel.setBackground(new Color(204, 204, 204));
         insta.setText("sojo506");
     }//GEN-LAST:event_instaPanelMouseEntered
 
