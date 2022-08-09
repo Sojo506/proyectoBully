@@ -23,9 +23,6 @@ import javax.swing.JTextField;
  */
 public class panelRegistroCursos extends javax.swing.JPanel {
 
-    private String regexNums = "^[0-9]+";
-    private String regexLtr = "^^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
-
     DefaultComboBoxModel modeloHorarioC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloModalidadC = new DefaultComboBoxModel();
     DefaultComboBoxModel modeloSedeC = new DefaultComboBoxModel();

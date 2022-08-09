@@ -202,7 +202,11 @@ public class FuncionesReportes {
             i++;
         }
         if (activos != 0) {
-            promEdad /= activos;
+            try {
+                promEdad /= activos;
+            } catch(Exception ex) {
+                System.out.println(ex);
+            }
         }
         promedioEdad.setText("" + promEdad);
         cantidadEstudiantes.setText("" + activos);
@@ -218,7 +222,6 @@ public class FuncionesReportes {
         activos = 0;
         while (contador.next()) {
             activos++;
-
         }
 
         // Obtener cantidad de presencial y virtual

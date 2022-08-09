@@ -184,15 +184,6 @@ public class panelInfo extends javax.swing.JPanel {
         panelInfoContenido.repaint();
     }//GEN-LAST:event_jLabel3MousePressed
 
-    //Para obtener el color cuando pase MousePressed
-    public void establecerColor(JPanel panel) {
-        panel.setBackground(new Color(21, 101, 192));
-    }
-
-    // Para devolver el color por defecto
-    public void resetearColor(JPanel panel) {
-        panel.setBackground(new Color(18, 90, 173));
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Fabian;

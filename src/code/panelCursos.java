@@ -36,8 +36,6 @@ public class panelCursos extends javax.swing.JPanel {
      */
     public panelCursos() {
         initComponents();
-        Conexion conn = new Conexion();
-        Connection reg = conn.getConexion();
         try {
             funciones.getCursos();
         } catch (SQLException ex) {

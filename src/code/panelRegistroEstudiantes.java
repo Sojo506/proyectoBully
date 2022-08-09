@@ -25,14 +25,13 @@ import javax.swing.JTextField;
  */
 public class panelRegistroEstudiantes extends javax.swing.JPanel {
 
-    public static boolean verificacion;
     public static String cu = null;
     FuncionesEstudiante funcionesR = new FuncionesEstudiante();
     public static DefaultComboBoxModel modeloCursos = new DefaultComboBoxModel();
 
     public panelRegistroEstudiantes() {
-        modeloCursos.removeAllElements();
         initComponents();
+        modeloCursos.removeAllElements();
 
         // Placeholders
         PlaceHolder nombre = new PlaceHolder("Ingresar nombre", inputNombre);

@@ -15,6 +15,16 @@ public class Estudiante {
     private String telefono;
     private String curso;
 
+    public Estudiante(String nombre, String primerApellido, String segundoApellido, int edad, String cedula, String telefono, String curso) {
+        this.nombre = nombre;
+        this.primerApellido = primerApellido;
+        this.segundoApellido = segundoApellido;
+        this.edad = edad;
+        this.cedula = cedula;
+        this.telefono = telefono;
+        this.curso = curso;
+    }
+    
     public String getNombre() {
         return nombre;
     }

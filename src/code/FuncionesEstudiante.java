@@ -14,7 +14,7 @@ import static code.panelRegistroEstudiantes.inputSegundoApellido;
 import static code.panelRegistroEstudiantes.inputTelefono;
 import static code.panelRegistroEstudiantes.listaCursos;
 import static code.panelRegistroEstudiantes.modeloCursos;
-import static code.panelRegistroEstudiantes.verificacion;
+//import static code.panelRegistroEstudiantes.verificacion;
 import java.awt.BorderLayout;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -33,6 +33,8 @@ public class FuncionesEstudiante {
 
     private String regexNums = "^[0-9]+";
     private String regexLetr = "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+(\\s*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]*)*[a-zA-ZÀ-ÿ\\u00f1\\u00d1]+$";
+    private boolean verificacion;
+
     FuncionesCurso cursosF = new FuncionesCurso();
     Conexion conn = new Conexion();
     Connection reg = conn.getConexion();
@@ -50,10 +52,10 @@ public class FuncionesEstudiante {
         // Comprobar que todos los campos estén llenos
         if ((!inputNombre.getText().matches(regexLetr)) || (inputNombre.getText().length() > 10) || (!inputPrimerApellido.getText().matches(regexLetr)) || (inputPrimerApellido.getText().length() > 10)
                 || (!inputSegundoApellido.getText().matches(regexLetr)) || (inputSegundoApellido.getText().length() > 10)
-                || !inputEdad.getText().matches(regexNums)
-                || !inputCedula.getText().matches(regexNums) || (inputCedula.getText().length() < 9 || inputCedula.getText().length() > 9)
-                || !inputTelefono.getText().matches(regexNums) || (inputTelefono.getText().length() < 8 || inputTelefono.getText().length() > 8)
-                || cu == null) {
+                || (!inputEdad.getText().matches(regexNums))
+                || (!inputCedula.getText().matches(regexNums)) || (inputCedula.getText().length() < 9) || (inputCedula.getText().length() > 9)
+                || (!inputTelefono.getText().matches(regexNums)) || (inputTelefono.getText().length() < 8) || (inputTelefono.getText().length() > 8)
+                || (cu == null)) {
 
             javax.swing.JOptionPane.showMessageDialog(null, "Debe llenar todos los campos y/o verificar los datos introducidos (campos numéricos y/o longitud de caracteres)\n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
             inputNombre.requestFocus();
@@ -66,18 +68,19 @@ public class FuncionesEstudiante {
                 inputEdad.requestFocus();
             } else {
                 // guardar datos en variables
-                Estudiante es = new Estudiante();
-                es.setNombre(inputNombre.getText());
-                es.setPrimerApellido(inputPrimerApellido.getText());
-                es.setSegundoApellido(inputSegundoApellido.getText());
-                es.setEdad(comprobarEdad);
-                es.setCedula(inputCedula.getText());
-                es.setTelefono(inputTelefono.getText());
-                es.setCurso(listaCursos.getSelectedItem().toString());
+                String nombre = inputNombre.getText();
+                String primerA = inputPrimerApellido.getText();
+                String segundoA = inputSegundoApellido.getText();
+                int edad = comprobarEdad;
+                String ced = inputCedula.getText();
+                String tel = inputTelefono.getText();
+                String curso = listaCursos.getSelectedItem().toString();
+                Estudiante es = new Estudiante(nombre, primerA, segundoA, edad, ced, tel, curso);
 
                 try {
                     // Control para saber si se debe hacer un UPDATE o INSERT
                     if (etiquetaGuardar.getText().equals("Modificar")) {
+                        System.out.println(nombreCurso);
                         if (modificarCantidadCurso(es.getCurso(), nombreCurso)) {
                             modificarEstudiante(es.getNombre(), es.getPrimerApellido(), es.getSegundoApellido(), es.getEdad(), es.getCedula(), es.getTelefono(), es.getCurso(), idEstudianteModificar);
 
@@ -118,11 +121,11 @@ public class FuncionesEstudiante {
     }
 
     // Metodo para modificar cantidad de curso
-    private boolean modificarCantidadCurso(String curso, String c) throws SQLException {
-        int idAux = 0;
-
+    private boolean modificarCantidadCurso(String curso, String c) {
         Curso cr = new Curso();
         Curso cr2 = new Curso();
+
+        int idAux = -1;
         int idCurso = -1;
 
         try {
@@ -176,11 +179,13 @@ public class FuncionesEstudiante {
                     // Verificar cantidad del curso
                     if (cr.getCantidad() > 0) {
                         cr.setCantidad(cr.getCantidad() - 1);
+                        cr.setCantidadEstudiantes(cr.getCantidadEstudiantes() + 1);
                         cr2.setCantidad(cr2.getCantidad() + 1);
+                        cr2.setCantidadEstudiantes(cr.getCantidadEstudiantes() - 1);
                         // Verificar que el curso seleccionado no sea el mismo al anterior
                         if (!c.equals(curso)) {
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idAux + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idCurso + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idAux + ";");
                         }
                         verificacion = true;
                     } else {
@@ -191,7 +196,8 @@ public class FuncionesEstudiante {
                     // Verificar cantidad del curso
                     if (cr.getCantidad() > 0) {
                         cr.setCantidad(cr.getCantidad() - 1);
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                        cr.setCantidad(cr.getCantidadEstudiantes() + 1);
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idCurso + ";");
                         verificacion = true;
                     } else {
                         verificacion = false;
@@ -199,11 +205,11 @@ public class FuncionesEstudiante {
                 }
 
             } catch (SQLException ex) {
-                System.out.println("Error 2 " + ex);
+                Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
         return verificacion;
     }
@@ -271,7 +277,8 @@ public class FuncionesEstudiante {
                     i++;
                 }
 
-                int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]); // obtenemos el id del estudiante
+                // obtenemos el id del estudiante
+                int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]);
                 modificarCantidadCurso(estudiantes[filaEstudiante][6]);
                 System.out.println(idEstudiante);
                 if (idEstudiante < 0) {
@@ -281,16 +288,17 @@ public class FuncionesEstudiante {
                     Statement stm2 = null;
                     try {
                         stm2 = reg.createStatement();
+
                     } catch (SQLException ex) {
-                        System.out.println("Error 1");
-                        //Logger.getLogger(Reports.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     try {
                         stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + idEstudiante + " LIMIT 1");
                         javax.swing.JOptionPane.showMessageDialog(null, "¡Estudiante borrado! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
                         getStudents();
+
                     } catch (SQLException ex) {
-                        System.out.println("Error 2" + ex);
+                        Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
             }
@@ -340,34 +348,31 @@ public class FuncionesEstudiante {
                 idEstudianteModificar = Integer.parseInt(estudiantes[filaEstudiante][0]);
                 nombreCurso = estudiantes[filaEstudiante][7];
 
-                if (idEstudianteModificar <= 0) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Debe seleccionar el estudiante a modificar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    // mostramos el panel
-                    panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
-                    rUp.setSize(680, 360);
-                    rUp.setLocation(0, 0);
-                    rUp.etiquetaTitulo.setText("Modificar Estudiante");
-                    rUp.etiquetaGuardar.setText("Modificar");
+                // mostramos el panel
+                panelRegistroEstudiantes rUp = new panelRegistroEstudiantes();
+                rUp.setSize(680, 360);
+                rUp.setLocation(0, 0);
+                rUp.etiquetaTitulo.setText("Modificar Estudiante");
+                rUp.etiquetaGuardar.setText("Modificar");
 
-                    // Pasamos los datos
-                    rUp.inputNombre.setText(estudiantes[filaEstudiante][1]);
-                    rUp.inputPrimerApellido.setText(estudiantes[filaEstudiante][2]);
-                    rUp.inputSegundoApellido.setText(estudiantes[filaEstudiante][3]);
-                    rUp.inputEdad.setText(estudiantes[filaEstudiante][4]);
-                    rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
-                    rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
-                    rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
+                // Pasamos los datos
+                rUp.inputNombre.setText(estudiantes[filaEstudiante][1]);
+                rUp.inputPrimerApellido.setText(estudiantes[filaEstudiante][2]);
+                rUp.inputSegundoApellido.setText(estudiantes[filaEstudiante][3]);
+                rUp.inputEdad.setText(estudiantes[filaEstudiante][4]);
+                rUp.inputCedula.setText(estudiantes[filaEstudiante][5]);
+                rUp.inputTelefono.setText(estudiantes[filaEstudiante][6]);
+                rUp.listaCursos.setSelectedItem(estudiantes[filaEstudiante][7]);
 
-                    // Removemos el panel anterior y pasamos el nuevo para mostrarlo
-                    panelContenido.removeAll();
-                    panelContenido.add(rUp, BorderLayout.CENTER);
-                    panelContenido.revalidate();
-                    panelContenido.repaint();
-                }
+                // Removemos el panel anterior y pasamos el nuevo para mostrarlo
+                panelContenido.removeAll();
+                panelContenido.add(rUp, BorderLayout.CENTER);
+                panelContenido.revalidate();
+                panelContenido.repaint();
+
             }
         } catch (SQLException ex) {
-            Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -449,7 +454,7 @@ public class FuncionesEstudiante {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(panelCursos.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -229,16 +229,20 @@ public class FuncionesCurso {
 
                 // Obtener nombre para eliminar estudiantes que llevan el curso
                 String cursoEliminado = cursos[filaCurso][1];
-                deleteStudents(cursoEliminado);
+                
 
-                //Ejecutamos la consulta
-                Statement stm2 = reg.createStatement();
-                try {
-                    stm2.executeUpdate("DELETE FROM `cursos` WHERE `idCurso` = " + idCurso + " LIMIT 1");
-                    javax.swing.JOptionPane.showMessageDialog(null, "Se borró el curso correctamente \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                    getCursos();
-                } catch (SQLException ex) {
-                    System.out.println("Error 2" + ex);
+                if(deleteStudents(cursoEliminado) > 0) {
+                    javax.swing.JOptionPane.showMessageDialog(null, "Debe eliminar estudiantes del curso. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    //Ejecutamos la consulta
+                    Statement stm2 = reg.createStatement();
+                    try {
+                        stm2.executeUpdate("DELETE FROM `cursos` WHERE `idCurso` = " + idCurso + " LIMIT 1");
+                        javax.swing.JOptionPane.showMessageDialog(null, "Se borró el curso correctamente \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                        getCursos();
+                    } catch (SQLException ex) {
+                        System.out.println("Error 2" + ex);
+                    }
                 }
 
             }
@@ -275,7 +279,8 @@ public class FuncionesCurso {
     }
 
     // Metodo para eliminar estudiantes que se han registrado al curso eliminado
-    private void deleteStudents(String curso) throws SQLException {
+    private int deleteStudents(String curso) throws SQLException {
+        int Cantestudiantes=0;
         // para ejecutar la consulta
         Statement stm = reg.createStatement();
         ResultSet contador = stm.executeQuery("SELECT * FROM `estudiantes`");
@@ -296,15 +301,20 @@ public class FuncionesCurso {
             estudiantes[i][7] = re.getString("curso");
 
             if (estudiantes[i][7].equals(curso)) {
+                Cantestudiantes++;
+                break;
+                /*
                 Statement stm2 = reg.createStatement();
                 try {
                     stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + Integer.parseInt(estudiantes[i][0]));
                 } catch (SQLException ex) {
                     System.out.println("Error 2" + ex);
                 }
+                */
             }
             i++;
         }
+        return Cantestudiantes;
     }
 
     /* Base de Datos */
