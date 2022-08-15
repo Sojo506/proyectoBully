@@ -179,13 +179,11 @@ public class FuncionesEstudiante {
                     // Verificar cantidad del curso
                     if (cr.getCantidad() > 0) {
                         cr.setCantidad(cr.getCantidad() - 1);
-                        cr.setCantidadEstudiantes(cr.getCantidadEstudiantes() + 1);
                         cr2.setCantidad(cr2.getCantidad() + 1);
-                        cr2.setCantidadEstudiantes(cr.getCantidadEstudiantes() - 1);
                         // Verificar que el curso seleccionado no sea el mismo al anterior
                         if (!c.equals(curso)) {
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idCurso + ";");
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idAux + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()+1) + "' WHERE `idCurso` = " + idCurso + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes()-1) + "' WHERE `idCurso` = " + idAux + ";");
                         }
                         verificacion = true;
                     } else {
@@ -196,8 +194,7 @@ public class FuncionesEstudiante {
                     // Verificar cantidad del curso
                     if (cr.getCantidad() > 0) {
                         cr.setCantidad(cr.getCantidad() - 1);
-                        cr.setCantidad(cr.getCantidadEstudiantes() + 1);
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()) + "' WHERE `idCurso` = " + idCurso + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()+1) + "' WHERE `idCurso` = " + idCurso + ";");
                         verificacion = true;
                     } else {
                         verificacion = false;
