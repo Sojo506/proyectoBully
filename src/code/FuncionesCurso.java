@@ -45,7 +45,7 @@ public class FuncionesCurso {
             //Comprobar que virtual sea igual a la sede
             String verificarModalidadC = listaModalidad.getSelectedItem().toString();
             String verificarSedeC = listaSedes.getSelectedItem().toString();
-
+            
             //Comprobar que la cantidad sea valida
             int comprobarCantidad = Integer.parseInt(inputCantidadC.getText());
             //Verificamos la cantidad y que si la modalidad es virtual entonces la sede tambien tiene que ser virtual
@@ -104,16 +104,16 @@ public class FuncionesCurso {
             fila++;
         }
 
-        String estudiantes[][] = new String[fila][8]; // [filas][columnas]
+        String estudiantes[][] = new String[fila][2]; // [filas][columnas]
         int i = 0; // itera las filas
 
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {
             estudiantes[i][0] = re.getString("idEstudiante");
-            estudiantes[i][7] = re.getString("curso");
+            estudiantes[i][1] = re.getString("curso");
 
-            if (estudiantes[i][7].equals(anteriorCurso)) {
+            if (estudiantes[i][1].equals(anteriorCurso)) {
                 int id = Integer.parseInt(estudiantes[i][0]);
                 Statement stm2 = reg.createStatement();
                 try {
@@ -291,16 +291,16 @@ public class FuncionesCurso {
             fila++;
         }
 
-        String estudiantes[][] = new String[fila][8]; // [filas][columnas]
+        String estudiantes[][] = new String[fila][2]; // [filas][columnas]
         int i = 0; // itera las filas
 
         ResultSet re = stm.executeQuery("SELECT * FROM `estudiantes`");
         // recorre la tabla estudiantes
         while (re.next()) {
             estudiantes[i][0] = re.getString("idEstudiante");
-            estudiantes[i][7] = re.getString("curso");
+            estudiantes[i][1] = re.getString("curso");
 
-            if (estudiantes[i][7].equals(curso)) {
+            if (estudiantes[i][1].equals(curso)) {
                 Cantestudiantes++;
                 break;
                 /*

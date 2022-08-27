@@ -24,8 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class panelEstudiantes extends javax.swing.JPanel {
 
-    Conexion conn;
-    Connection reg;
+    
     private DefaultTableModel modeloTabla = new DefaultTableModel();
     public static int idEstudianteModificar = 0;
     public static String nombreCurso = "";
@@ -33,8 +32,6 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
     public panelEstudiantes() {
         initComponents();
-        conn = new Conexion();
-        reg = conn.getConexion();
         try {
             funciones.getStudents();
         } catch (SQLException ex) {
@@ -231,7 +228,7 @@ public class panelEstudiantes extends javax.swing.JPanel {
 
     // Borrar estudiantes
     private void btnBorrarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBorrarMousePressed
-        funciones.getDeleteEstudiante();
+        funciones.deleteEstudiante();
     }//GEN-LAST:event_btnBorrarMousePressed
 
     private void jScrollPane1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane1MousePressed

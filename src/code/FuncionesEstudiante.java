@@ -182,8 +182,8 @@ public class FuncionesEstudiante {
                         cr2.setCantidad(cr2.getCantidad() + 1);
                         // Verificar que el curso seleccionado no sea el mismo al anterior
                         if (!c.equals(curso)) {
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()+1) + "' WHERE `idCurso` = " + idCurso + ";");
-                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes()-1) + "' WHERE `idCurso` = " + idAux + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
+                            stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr2.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr2.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idAux + ";");
                         }
                         verificacion = true;
                     } else {
@@ -194,7 +194,7 @@ public class FuncionesEstudiante {
                     // Verificar cantidad del curso
                     if (cr.getCantidad() > 0) {
                         cr.setCantidad(cr.getCantidad() - 1);
-                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes()+1) + "' WHERE `idCurso` = " + idCurso + ";");
+                        stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad()) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() + 1) + "' WHERE `idCurso` = " + idCurso + ";");
                         verificacion = true;
                     } else {
                         verificacion = false;
@@ -244,7 +244,7 @@ public class FuncionesEstudiante {
 
     /* Funciones panelEstudiantes */
     // Obtener id del estudiante para eliminarlo
-    public void getDeleteEstudiante() {
+    public void deleteEstudiante() {
         try {
             int filaEstudiante = tablaEstudiantes.getSelectedRow(); // Obtenemos la fila del estudiante seleccionado
             if (filaEstudiante < 0) {
@@ -261,7 +261,7 @@ public class FuncionesEstudiante {
                 }
 
                 // [filas][columnas]
-                String estudiantes[][] = new String[fila][7];
+                String estudiantes[][] = new String[fila][2];
 
                 // itera las filas
                 int i = 0;
@@ -270,34 +270,30 @@ public class FuncionesEstudiante {
 
                 while (re.next()) { //re.next obtiene la cantidad de filas a iterar
                     estudiantes[i][0] = re.getString("idEstudiante");
-                    estudiantes[i][6] = re.getString("curso");
+                    estudiantes[i][1] = re.getString("curso");
                     i++;
                 }
 
                 // obtenemos el id del estudiante
                 int idEstudiante = Integer.parseInt(estudiantes[filaEstudiante][0]);
-                modificarCantidadCurso(estudiantes[filaEstudiante][6]);
-                System.out.println(idEstudiante);
-                if (idEstudiante < 0) {
-                    javax.swing.JOptionPane.showMessageDialog(null, "Debe seleccionar el estudiante a borrar. \n", "AVISO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                } else {
-                    // para ejecutar la consulta
-                    Statement stm2 = null;
-                    try {
-                        stm2 = reg.createStatement();
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    try {
-                        stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + idEstudiante + " LIMIT 1");
-                        javax.swing.JOptionPane.showMessageDialog(null, "¡Estudiante borrado! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
-                        getStudents();
-
-                    } catch (SQLException ex) {
-                        Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                modificarCantidadCurso(estudiantes[filaEstudiante][1]);
+                
+                // para ejecutar la consulta
+                Statement stm2 = null;
+                try {
+                    stm2 = reg.createStatement();
+                } catch (SQLException ex) {
+                    Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                try {
+                    stm2.executeUpdate("DELETE FROM `estudiantes` WHERE `idEstudiante` = " + idEstudiante + " LIMIT 1");
+                    javax.swing.JOptionPane.showMessageDialog(null, "¡Estudiante borrado! \n", "HECHO", javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                    getStudents();
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(FuncionesEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
             }
         } catch (SQLException ex) {
             Logger.getLogger(panelEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
@@ -406,7 +402,7 @@ public class FuncionesEstudiante {
     }
 
     // Metodo para la cantidad disponible y de estudiantes cuando un estudiante se elimina
-    private void modificarCantidadCurso(String curso) throws SQLException {
+    private void modificarCantidadCurso(String curso) {
         Curso cr = new Curso();
         int idCurso = -1;
         try {
@@ -421,7 +417,7 @@ public class FuncionesEstudiante {
             while (contador.next()) {
                 fila++;
             }
-            String cursos[][] = new String[fila][6]; // [filas][columnas]
+            String cursos[][] = new String[fila][4]; // [filas][columnas]
             int i = 0; //Iterador de las filas
             // Para recorrer los datos 
             ResultSet re = stm.executeQuery("SELECT * FROM `cursos`");
@@ -430,22 +426,18 @@ public class FuncionesEstudiante {
             while (re.next()) {
                 cursos[i][0] = re.getString("idCurso");
                 cursos[i][1] = re.getString("nombre");
-                cursos[i][2] = re.getString("horario");
-                cursos[i][3] = re.getString("modalidad");
-                cursos[i][4] = re.getString("cantidad");
-                cursos[i][5] = re.getString("cantidadEstudiantes");
+                cursos[i][2] = re.getString("cantidad");
+                cursos[i][3] = re.getString("cantidadEstudiantes");
                 if (cursos[i][1].equals(curso)) {
                     idCurso = Integer.parseInt(cursos[i][0]);
                     cr.setNombreCurso(curso);
-                    cr.setCantidad(Integer.parseInt(cursos[i][4]));
-                    cr.setCantidadEstudiantes(Integer.parseInt(cursos[i][5]));
+                    cr.setCantidad(Integer.parseInt(cursos[i][2]));
+                    cr.setCantidadEstudiantes(Integer.parseInt(cursos[i][3]));
                 }
                 i++;
             }
             try {
                 stm.executeUpdate("UPDATE `cursos` SET `cantidad` = '" + (cr.getCantidad() + 1) + "', `cantidadEstudiantes` = '" + (cr.getCantidadEstudiantes() - 1) + "' WHERE `idCurso` = " + idCurso + ";");
-                //pC.getCursos();
-
             } catch (SQLException ex) {
                 System.out.println("Error 2 " + ex);
             }

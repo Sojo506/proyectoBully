@@ -19,12 +19,12 @@ public class panelInfo extends javax.swing.JPanel {
      */
     public panelInfo() {
         initComponents();
-        SojoInfo so = new SojoInfo();
-        so.setSize(680, 260);
-        so.setLocation(0, 0);
+        AndyInfo an = new AndyInfo();
+        an.setSize(680, 260);
+        an.setLocation(0, 0);
 
         panelInfoContenido.removeAll();
-        panelInfoContenido.add(so, BorderLayout.CENTER);
+        panelInfoContenido.add(an, BorderLayout.CENTER);
         panelInfoContenido.revalidate();
         panelInfoContenido.repaint();
     }
